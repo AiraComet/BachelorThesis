@@ -1,0 +1,22 @@
+\contentsline {section}{\numberline {1}Introduction}{2}
+\contentsline {subsection}{\numberline {1.1}Mathhub}{2}
+\contentsline {subsection}{\numberline {1.2}Drupal Attack}{2}
+\contentsline {subsection}{\numberline {1.3}Tools for building an interactive Frontend}{2}
+\contentsline {section}{\numberline {2}React}{2}
+\contentsline {subsection}{\numberline {2.1}Core concept}{2}
+\contentsline {subsection}{\numberline {2.2}Building new components}{2}
+\contentsline {section}{\numberline {3}The Structure of Mathhub}{2}
+\contentsline {subsection}{\numberline {3.1}Libraries}{2}
+\contentsline {subsection}{\numberline {3.2}Archives}{2}
+\contentsline {subsection}{\numberline {3.3}Modules: Theories and Views}{2}
+\contentsline {subsection}{\numberline {3.4}Statistics}{2}
+\contentsline {section}{\numberline {4}The Applications of Mathhub}{2}
+\contentsline {subsection}{\numberline {4.1}Glossary}{2}
+\contentsline {subsection}{\numberline {4.2}Math Dictionary}{2}
+\contentsline {section}{\numberline {5}Communication with the backend}{2}
+\contentsline {section}{\numberline {6}Future Work}{2}
+\contentsline {subsection}{\numberline {6.1}TGView}{2}
+\contentsline {subsection}{\numberline {6.2}MathWebSearch}{2}
+\contentsline {subsection}{\numberline {6.3}Subset Frontends}{2}
+\contentsline {subsection}{\numberline {6.4}Issue report: Mathhub and content}{2}
+\contentsline {subsection}{\numberline {6.5}Conclusion}{2}
