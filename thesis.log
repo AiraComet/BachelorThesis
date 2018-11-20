@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.24)  17 NOV 2018 01:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.24)  20 NOV 2018 01:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -439,30 +439,35 @@ Overfull \hbox (65.1751pt too wide) in paragraph at lines 55--56
  []
 
 [1]
-Overfull \hbox (1.24261pt too wide) in paragraph at lines 68--68
- [][][][]\OT1/cmr/m/n/10.95 Statistics 
+Overfull \hbox (2.6504pt too wide) in paragraph at lines 69--69
+ [][][][]\OT1/cmr/m/n/10.95 Declarations 
  []
 
 
-Overfull \hbox (3.07625pt too wide) in paragraph at lines 69--69
+Overfull \hbox (3.07625pt too wide) in paragraph at lines 70--70
  [][][][]\OT1/cmr/m/n/10.95 Applications 
  []
 
-EdNote!
+
+Overfull \hbox (6.80743pt too wide) in paragraph at lines 85--86
+[] 
+ []
+
+[2] EdNote!
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 100.
+(Font)              <9> on input line 104.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 100.
- [2]
+(Font)              <5> on input line 104.
+ [3]
 
 There are still 1 EdNotes, New/Oldparts, and Issues to resolve!
 
-[3] (./thesis.aux) ) 
+[4] (./thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 11749 strings out of 492639
- 237317 string characters out of 6133087
- 308701 words of memory out of 5000000
- 15423 multiletter control sequences out of 15000+600000
+ 11770 strings out of 492639
+ 237654 string characters out of 6133087
+ 312943 words of memory out of 5000000
+ 15444 multiletter control sequences out of 15000+600000
  10330 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,9n,54p,387b,715s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -476,10 +481,10 @@ pe1/public/amsfonts/cm/cmr6.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmr8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmr9.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb>
 
-Output written on thesis.pdf (4 pages, 124117 bytes).
+Output written on thesis.pdf (5 pages, 125272 bytes).
 PDF statistics:
- 62 PDF objects out of 1000 (max. 8388607)
- 44 compressed objects within 1 object stream
+ 65 PDF objects out of 1000 (max. 8388607)
+ 46 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  19 words of extra memory for PDF output out of 10000 (max. 10000000)
 

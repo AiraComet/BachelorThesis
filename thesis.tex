@@ -37,7 +37,7 @@
                                     top color=white, bottom color=blue!20]
 \node (user) {user}; 
 \node[system,right of =user,text width=2cm, xshift=3cm] (browser) {Browser}; 
-\node[system,right of= browser,text width=2.3cm, xshift=2.6cm] (drupal) {React.JS};
+\node[system,right of= browser,text width=2.3cm, xshift=2.6cm] (drupal) {React};
 \node[system,above right of =drupal, xshift = 2.8cm] (mmt) {MMT};
 \node[system,below right of =drupal, xshift = 2.8cm, text width=1.2cm] (gl) {GitLab};
 \node[database,below left of =gl, yshift = -0.6cm, xshift = -3cm] (lib) {library};
@@ -54,33 +54,37 @@
 \draw[->,dotted] (lib) -- node[below]{import} (gl);
 \end{tikzpicture}
 
-\subsection{The inner Architecture}
+\subsection{Mathhub Routes}
 \begin{tikzpicture}[xscale=\myxscale, yscale=\myyscale]
-  \tikzstyle{component} = [rectangle, draw, fill=blue!20, text width=1cm, text centered,
+  \tikzstyle{component} = [rectangle, draw, fill=blue!20, text width=2cm, text centered,
                                     rounded corners, minimum height=.8cm,shade, 
                                     top color=white, bottom color=blue!20]
-\node[component, text width=2cm] (MH) {Mathhub};
-\node[component, below left of =MH, xshift = -3cm, yshift=-0.7cm, text width=2cm] (lib) {Libraries};
-\node[component, below of =lib, text width=2cm, yshift=-0.7cm] (archives) {Archives};
-\node[component, below of =archives, text width=2cm, yshift=-0.7cm] (mod) {Modules};
-\node[component, below left of =mod, text width=2cm, xshift=-0.5cm, yshift=-0.7cm] (theo) {Theories};
-\node[component, below right of =mod, text width=1.5cm, xshift=0.5cm, yshift=-0.7cm] (views) {Views};
-\node[component, right of =archives, text width=1.5cm, xshift=2cm] (stat) {Statistics};
-\node[component, below right of =MH, text width=2cm, xshift=3cm, yshift=-0.7cm] (apps) {Applications};
-\node[component, below left of =apps, text width =2cm, xshift=-0.5cm, yshift=-0.7cm] (glos) {Glossary};
-\node[component, below right of =apps, text width =2cm, xshift=0.5cm, yshift=-0.7cm] (dict) {Math Dictionary};
+\node[component] (MH) {Mathhub};
+\node[component, below of =MH, xshift=-1.2cm, yshift=-0.7cm] (lib) {Library};
+\node[component, below of =lib, yshift=-0.7cm] (groups) {Groups};
+\node[component, below of =groups, yshift=-0.7cm] (archives) {Archives};
+\node[component, below of =archives, text width=5cm, text height=1.8cm, yshift=-1.3cm, label ={[shift={(0ex,-4ex)}]north:Modules}] (mod) {};
+\node[component, below left of =mod, xshift=-0.5cm, yshift=0.5cm] (theo) {Theories};
+\node[component, below right of =mod, text width=1.5cm, xshift=0.5cm, yshift=0.5cm] (views) {Views};
+\node[component, below of=mod, yshift=-1.2cm] (decl) {Declarations};
+\node[component, below left of =MH, xshift = -4.3cm, yshift=-0.7cm] (apps) {Applications};
+\node[component, below left of =apps, xshift=-0.5cm, yshift=-0.7cm] (glos) {Glossary};
+\node[component, below right of =apps, xshift=0.5cm, yshift=-0.7cm] (dict) {Math Dictionary};
+\node[component, below of=MH, xshift=1.6cm, yshift=-0.7cm] (news) {News};
+\node[component, below right of=MH, xshift=3.7cm, yshift=-0.7cm] (legal) {Legal};
 \draw[->,dotted] (MH) -- node[above]{} (lib);
 \draw[->,dotted] (MH) -- node[above]{} (apps);
-\draw[->,dotted] (lib) -- node[above]{} (stat);
-\draw[->,dotted] (archives) -- node[above]{} (stat);
-\draw[->,dotted] (mod) -- node[above]{} (stat);
-\draw[->,thick] (lib) -- node[above]{} (archives);
+\draw[->,dotted] (MH) -- node[above]{} (news);
+\draw[->,dotted] (MH) -- node[above]{} (legal);
+\draw[->,thick] (lib) -- node[above]{} (groups);
+\draw[->, thick] (groups) -- node[above]{} (archives);
 \draw[->,thick] (archives) -- node[above]{} (mod);
-\draw[->,thick] (mod) -- node[above]{} (theo);
-\draw[->,thick] (mod) -- node[above]{} (views);
+\draw [->,thick] (mod) -- node[above]{} (decl);
 \draw[->,thick] (apps) -- node[above]{} (glos);
 \draw[->,thick] (apps) -- node[above]{} (dict);
 \end{tikzpicture}
+
+\subsection{Mathhub API}
 
 
 \section{Mathhub Components}
