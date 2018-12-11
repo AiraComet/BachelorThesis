@@ -53,6 +53,7 @@
 \draw[->,dotted] (author) -- node[above]{local} node[below]{edit} (gl);
 \draw[->,dotted] (lib) -- node[below]{import} (gl);
 \end{tikzpicture}
+\ednote{look for author and user pictures}
 
 \subsection{Mathhub Routes}
 \begin{tikzpicture}[xscale=\myxscale, yscale=\myyscale]
@@ -84,8 +85,13 @@
 \draw[->,thick] (apps) -- node[above]{} (dict);
 \end{tikzpicture}
 
-\subsection{Mathhub API}
+Routes are used to navigate through the many different uses of Mathhub. Every application and every component has its own route. At the top of the Mathhub frontend there is a menu which contains the links to home under "Mathhub". The math dictionary and the glossary can be accessed through the dropdown menu "Applications". The "News" tab has the route to the news. The dropdown menu "Help" has three external links "Documentation", which leads to the the "Mathhub Documentation wiki" on github.com, "Browse Sources", where the different project of the KWARC group can be found and "Contact a Human" to write an E-Mail to the KWARC staff. To learn more about Mathhub itself the tab "About" links to "About Mathhub.info" in the Mathhub wiki.
 
+At the bottom of the frontend the routes to the Imprint, Privacy Policy and Licenses can be found.
+
+The most interesting part are the library routes. Every step in the library hierarchy is its own route. Starting with the different groups to their archives with their modules, which can be either theories or views. 
+\subsection{Mathhub Library API}
+The library is build with IApiObjectItems. An IApiObjectItem consists of an ID, a name, a parent if one exists and statistics if available. Further attributes are dependent on its kind. The possible kinds are group, archive, document, opaque, module, declaration, component and tag. \ednote{What's up with Theory and View?} Since most objects have many children it would be unnecessary to load every information for every child at once. To reduce the cost for loading a page there exists a smaller version of every object called a reference. These reference objects only have the necessary information like ID, name, parent, statistics and in some cases a short teaser of the content. For example when a group is opened it only loads a list of references to the archives contained in this group instead of the complete archives.
 
 \section{Mathhub Components}
 	\subsection{Libraries}

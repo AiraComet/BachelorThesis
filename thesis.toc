@@ -7,7 +7,7 @@
 \contentsline {subsection}{\numberline {2.2}Building new components}{2}
 \contentsline {section}{\numberline {3}The Architecture of Mathhub}{2}
 \contentsline {subsection}{\numberline {3.1}Mathhub Routes}{3}
-\contentsline {subsection}{\numberline {3.2}Mathhub API}{4}
+\contentsline {subsection}{\numberline {3.2}Mathhub Library API}{3}
 \contentsline {section}{\numberline {4}Mathhub Components}{4}
 \contentsline {subsection}{\numberline {4.1}Libraries}{4}
 \contentsline {subsection}{\numberline {4.2}Archives}{4}
