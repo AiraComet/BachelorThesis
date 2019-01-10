@@ -1,6 +1,7 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage[show]{ed}
 \usepackage{tikz}
+\usepackage{hyperref}
 
 
 \title{Building Mathhub using React\\ \vspace{2 mm} Bachelor Thesis}
@@ -18,6 +19,11 @@
 \section{Introduction}
 	\subsection{Mathhub}
 	\subsection{Drupal Attack}
+	Up until April 2018 Mathhub was build with Drupal. Drupal is an open source content-management framework used by millions of different websites.
+	But in April 2018 a critical security flaw in the versions 6 to 8 went public. The problem was that the Drupal core in these versions accepts request parameters without any validation. This means the core processes any input from anybody. To exploit this weakness an attacker doesn't even need to log in or have any other privileges on a vulnerable website. With this flaw it is possible to inject malicious code and compromise a website in multiple ways. This can be used to access, change and delete private data and create backdoors to make future attacks possible. The Drupal community called this weakness "Drupalgeddon2" while its official name was "CVE-2018-7600". Some code that was injected installed the program XMRig Monero miner, which is a cryptocurrency mining program, as well as deleting other mining programs on the compromised system. The National Institute of Standards (NIST) and Technology gave Drupal a "Highly Critical" Rating because of this vulnerability. After this flaw was discovered a patch was published and a warning to update every website that used a vulnerable version was given.
+	
+Since this was not the first detected flaw in Drupal the decision to stop using it and rebuild Mathhub from the ground up to not be affected by future attacks was made.
+
 	\subsection{Building an interactive Frontend - State of the art}
 
 \section{React}
@@ -115,4 +121,13 @@ Don't forget Notes
 	\subsection{Subset Frontends}
 	\subsection{Issue report: Mathhub and content}
 
+\section{Sources}
+Drupal Attack:
+\begin{itemize}
+\item \url{https://nvd.nist.gov/view/vuln/search-results?cpe=cpe%3A%2Fa%3Adrupal%3Adrupal%3A7.38&page_num=0&cid=3}
+\item \url{https://www.theregister.co.uk/2018/03/28/drupal_urgent_security_software_patch/}
+\item \url{https://www.zdnet.com/article/update-drupal-asap-over-a-million-sites-can-be-easily-hacked-by-any-visitor/}
+\item \url{https://thehackernews.com/2018/04/drupal-cryptocurrency-hacking.html}
+\item \url{https://thehackernews.com/2018/04/drupal-site-vulnerability.html}
+\end{itemize}
 \end{document}
