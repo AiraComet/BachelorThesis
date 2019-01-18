@@ -28,6 +28,8 @@ Since this was not the first detected flaw in Drupal the decision to stop using 
 
 \section{React}
 	\subsection{Core concept}
+	React is an open source JavaScript library owned and maintained by Facebook.	It was created to build interactive user interfaces (UI). For example it is used for Facebook and Instagram. What makes React unique is its use of a virtual Document Object Model (DOM). The concept of the virtual DOM is that when updating a website not everything is rendered again. React computes the differences between the last and the next page and only changes the necessary parts. On top of that it has conditional rendering which means that an item will only be rendered if it is shown. The advantage of virtual and conditional rendering is that this makes updating a website fast, but it comes with high RAM costs. The actual interface is made up of many different elements and components. Since a website that uses React can have many different features it is helpful to build new components.
+	
 	\begin{itemize}
 	\item React is a JavaScript Library owned and used by Facebook and Instagram
 	\item open source
@@ -40,13 +42,7 @@ Since this was not the first detected flaw in Drupal the decision to stop using 
 \end{itemize}		
 	
 	\subsection{Building new components}
-	\begin{itemize}
-	\item component accepts input (props <- read only) and return react element
-	\item many components already given
-	\item use JS function or class
-	\item components in components
-	\item private state controlled by c. (top down; only affect lower components) - optional
-	\end{itemize}
+	React already has a large library with a lot of different components, but it is often necessary to make new ones that have the desired functionality. In JavaScript new components can be implemented by creating either a function or a class. Their input variables are called props and can only be read. Components return React elements that are ready to be rendered. Naturally a component can grow big rather quickly. Luckily it is possible to use components inside other components. This comes with the advantage that they can be reused in many different locations. The difference between creating a new component as a function and as a class is that a class can have a private internal state, which can be updated an any time. Since props are read-only, updating the state can only affect lower components. If it is necessary to also change something in a higher component it is possible to "lift up" the state. This means adding the state that causes the change to the state of the component on a higher level and giving it back to the lower levels as a prop. If the update should affect a component on the same level creating a new component with that state that consist of all the one that are affected will  make this possible.
 
 \section{The Architecture of Mathhub}
 
@@ -148,4 +144,7 @@ Drupal Attack:
 \item \url{https://thehackernews.com/2018/04/drupal-cryptocurrency-hacking.html}
 \item \url{https://thehackernews.com/2018/04/drupal-site-vulnerability.html}
 \end{itemize}
+
+React: 
+\url{https://reactjs.org/docs/getting-started.html}
 \end{document}
