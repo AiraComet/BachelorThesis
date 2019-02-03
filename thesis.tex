@@ -30,16 +30,6 @@ Since this was not the first detected flaw in Drupal the decision to stop using 
 	\subsection{Core concept}
 	React is an open source JavaScript library owned and maintained by Facebook.	It was created to build interactive user interfaces (UI). For example it is used for Facebook and Instagram. What makes React unique is its use of a virtual Document Object Model (DOM). The concept of the virtual DOM is that when updating a website not everything is rendered again. React computes the differences between the last and the next page and only changes the necessary parts. On top of that it has conditional rendering which means that an item will only be rendered if it is shown. The advantage of virtual and conditional rendering is that this makes updating a website fast, but it comes with high RAM costs. The actual interface is made up of many different elements and components. Since a website that uses React can have many different features it is helpful to build new components.
 	
-	\begin{itemize}
-	\item React is a JavaScript Library owned and used by Facebook and Instagram
-	\item open source
-	\item build the frontend (UIs)
-	\item on change: compute and only render changes (virtual DOM - Document Object Model)
-	\item conditional rendering
-	\item UI is made up of multiple elements / components	
-	\item make own components
-	\item (We use JSX)
-\end{itemize}		
 	
 	\subsection{Building new components}
 	React already has a large library with a lot of different components, but it is often necessary to make new ones that have the desired functionality. In JavaScript new components can be implemented by creating either a function or a class. Their input variables are called props and can only be read. Components return React elements that are ready to be rendered. Naturally a component can grow big rather quickly. Luckily it is possible to use components inside other components. This comes with the advantage that they can be reused in many different locations. The difference between creating a new component as a function and as a class is that a class can have a private internal state, which can be updated an any time. Since props are read-only, updating the state can only affect lower components. If it is necessary to also change something in a higher component it is possible to "lift up" the state. This means adding the state that causes the change to the state of the component on a higher level and giving it back to the lower levels as a prop. If the update should affect a component on the same level creating a new component with that state that consist of all the one that are affected will  make this possible.
@@ -109,9 +99,10 @@ Routes are used to navigate through the many different uses of Mathhub. Every ap
 
 At the bottom of the frontend the routes to the Imprint, Privacy Policy and Licenses can be found.
 
-The most interesting part are the library routes. Every step in the library hierarchy is its own route. Starting with the different groups to their archives with their modules, which can be either theories or views. 
+The most interesting part are the library routes. Every step in the library hierarchy is its own route. Starting with the different groups to their archives with their modules, which can be either theories or views.
+
 \subsection{Mathhub Library API}
-The library is build with IApiObjectItems. An IApiObjectItem consists of an ID, a name, a parent if one exists and statistics if available. Further attributes are dependent on its kind. The possible kinds are group, archive, document, opaque, module, declaration, component and tag. \ednote{What's up with Theory and View?} Since most objects have many children it would be unnecessary to load every information for every child at once. To reduce the cost for loading a page there exists a smaller version of every object called a reference. These reference objects only have the necessary information like ID, name, parent, statistics and in some cases a short teaser of the content. For example when a group is opened it only loads a list of references to the archives contained in this group instead of the complete archives.
+The library is build with IApiObjectItems. An IApiObjectItem consists of an ID, a name, a parent if one exists and statistics if available. Further attributes are dependent on its kind. The possible kinds are group, archive, document, opaque, module, declaration, component and tag. \ednote{What's up with Theory and View?} Since most objects have many children it would be unnecessary to load every information for every child at once. To reduce the cost for loading a page there exists a smaller version of every object called a reference. These reference objects only have the necessary information like ID, name, parent, statistics and in some cases a short teaser of the content. For example when a group is opened it only loads a list of references to the archives contained in this group instead of the whole archives.
 
 \section{Mathhub Components}
 	\subsection{Libraries}
@@ -121,7 +112,14 @@ The library is build with IApiObjectItems. An IApiObjectItem consists of an ID, 
 
 \section{The Applications of Mathhub}
 	\subsection{Glossary}
-	\subsection{Math Dictionary}
+With that many mathematical libraries and theories there are a lot of technical terms. The glossary is a collection of these expressions. There wouldn't be much value in to just having a collection without any additional features. So the glossary also provides a definition for each term. Many different authors have contributed to the libraries, so it can happen that there are different terms that share a meaning. These synonyms can also be found in the glossary. Since the libraries themselves are multilingual it makes sense to have a glossary available for the used languages. Currently the biggest collection of terms are in the English glossary, followed by German and French. Smaller collections for Turkish and Romanian are also available.\ednote{What the hell even is zhs and zht?}
+
+In the frontend it is possible to change languages by either changing the language tab or clicking on a language button inside an entry. If there is a button with a different language available, this means this particular entry also exists in this language. The definition of a term is not immediately shown to create a better overview. To makes the definition visible the user can click on the entry. 
+
+ 	\subsection{Math Dictionary}
+Most of the times a user does not want to browse through the gigantic glossary to just find a single term. This is the reason why the Math Dictionary is a useful extension of the glossary.
+The main purpose of the Math Dictionary is to translate a term into another language. To do so the user has to select the language in which the term currently is and also the language to which it should be translated to. Pressing the "translate" - button sends a translation request to the server. Until the servers responds the message "translating" is shown and the button is disabled to prevent sending to many translation requests. If a translation exists then the translated term, its definition and potential synonyms are shown.
+By selecting the same language for "from" and "to" the Math Dictionary can also be used to get the definition for an expression without searching the glossary.
 
 \section{Communication with the backend}
 
