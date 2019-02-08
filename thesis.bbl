@@ -1,0 +1,160 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{anyt/global//global/global}
+  \entry{reactjs}{online}{}
+    \name{author}{1}{}{%
+      {{hash=IF}{%
+         family={Inc},
+         familyi={I\bibinitperiod},
+         given={Facebook},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{IF1}
+    \strng{fullhash}{IF1}
+    \field{labelnamesource}{author}
+    \field{labelalpha}{Inc}
+    \field{extraalpha}{1}
+    \field{sortinit}{I}
+    \field{sortinithash}{I}
+    \verb{url}
+    \verb https://reactjs.org/
+    \endverb
+  \endentry
+
+  \entry{reactjsGS}{online}{}
+    \name{author}{1}{}{%
+      {{hash=IF}{%
+         family={Inc},
+         familyi={I\bibinitperiod},
+         given={Facebook},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{IF1}
+    \strng{fullhash}{IF1}
+    \field{labelnamesource}{author}
+    \field{labelalpha}{Inc}
+    \field{extraalpha}{2}
+    \field{sortinit}{I}
+    \field{sortinithash}{I}
+    \verb{url}
+    \verb https://reactjs.org/docs/getting-started.html
+    \endverb
+  \endentry
+
+  \entry{hacker}{article}{}
+    \name{author}{1}{}{%
+      {{hash=KM}{%
+         family={Kumar},
+         familyi={K\bibinitperiod},
+         given={Mohit},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KM1}
+    \strng{fullhash}{KM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Kum18}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{title}{Hackers Exploiting Drupal Vulnerability to Inject
+  Cryptocurrency Miners}
+    \verb{url}
+    \verb https://thehackernews.com/2018/04/drupal-cryptocurrency-hacking.html
+    \endverb
+    \field{journaltitle}{https://thehackernews.com/}
+    \field{year}{2018}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+
+  \entry{register}{article}{}
+    \name{author}{1}{}{%
+      {{hash=MK}{%
+         family={McCarthy},
+         familyi={M\bibinitperiod},
+         given={Kieren},
+         giveni={K\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MK1}
+    \strng{fullhash}{MK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{McC18}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{title}{Running Drupal? You need to patch, patch, patch right now!}
+    \verb{url}
+    \verb https://www.theregister.co.uk/2018/03/28/drupal_urgent_security_softw
+    \verb are_patch/
+    \endverb
+    \field{journaltitle}{https://www.theregister.co.uk/}
+    \field{year}{2018}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+
+  \entry{nist}{online}{}
+    \name{author}{1}{}{%
+      {{hash=N}{%
+         family={NIST},
+         familyi={N\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{N1}
+    \strng{fullhash}{N1}
+    \field{labelnamesource}{author}
+    \field{labelalpha}{NIS}
+    \field{sortinit}{N}
+    \field{sortinithash}{N}
+    \verb{url}
+    \verb https://nvd.nist.gov/view/vuln/search-results?cpe=cpe%3A%2Fa%3Adrupal
+    \verb %3Adrupal%3A7.38&page_num=0&cid=3
+    \endverb
+  \endentry
+
+  \entry{zdnet}{article}{}
+    \name{author}{1}{}{%
+      {{hash=TL}{%
+         family={Tung},
+         familyi={T\bibinitperiod},
+         given={Liam},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{TL1}
+    \strng{fullhash}{TL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Tun18}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{title}{Update Drupal ASAP: Over a million sites can be easily hacked
+  by any visitor}
+    \verb{url}
+    \verb https://www.zdnet.com/article/update-drupal-asap-over-a-million-sites
+    \verb -can-be-easily-hacked-by-any-visitor/
+    \endverb
+    \field{journaltitle}{www.zdnet.com}
+    \field{year}{2018}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+\enddatalist
+\endinput

@@ -2,13 +2,13 @@
 \usepackage[show]{ed}
 \usepackage{tikz}
 \usepackage{hyperref}
-\usepackage{cite}
+\usepackage[style=alphabetic, backend=bibtex]{biblatex}
 
 \title{Building Mathhub using React\\ \vspace{2 mm} Bachelor Thesis}
 \author{Johannes-Sebastian See\\Supervisor: Michael Kohlhase\\Co-supervisor: Tom Wiesing\\Friedrich-Alexander University, Erlangen Nürnberg, Germany}
 
 \date{\today}
-
+\addbibresource{local.bib}
 
 \begin{document}
 
@@ -26,7 +26,11 @@ Abstract will be added at the end
 	\subsection{Previous Implementation}
 	\ednote{a short introduction to mathhub with drupal -> see thesis}
 	Up until April 2018 Mathhub was build with Drupal. Drupal is an open source content-management framework used by millions of different websites.
-	But in April 2018 a critical security flaw in the versions 6 to 8 went public. The problem was that the Drupal core in these versions accepts request parameters without any validation. This means the core processes any input from anybody. To exploit this weakness an attacker doesn't even need to log in or have any other privileges on a vulnerable website. With this flaw it is possible to inject malicious code and compromise a website in multiple ways. This can be used to access, change and delete private data and create backdoors to make future attacks possible. The Drupal community called this weakness "Drupalgeddon2" while its official name was "CVE-2018-7600". Some code that was injected installed the program XMRig Monero miner, which is a cryptocurrency mining program, as well as deleting other mining programs on the compromised system. The National Institute of Standards (NIST) and Technology gave Drupal a "Highly Critical" Rating because of this vulnerability. After this flaw was discovered a patch was published and a warning to update every website that used a vulnerable version was given.
+	But in April 2018 a critical security flaw in the versions 6 to 8 went public. The problem was that the Drupal core in these versions accepts request parameters without any validation .This means the core processes any input from anybody \cite{zdnet}.
+To exploit this weakness an attacker doesn't even need to log in or have any other privileges on a vulnerable website \cite{register}.
+With this flaw it is possible to inject malicious code and compromise a website in multiple ways. This can be used to access, change and delete private data and create backdoors to make future attacks possible. The Drupal community called this weakness "Drupalgeddon2" while its official name was "CVE-2018-7600". Some code that was injected installed the program XMRig Monero miner, which is a cryptocurrency mining program, as well as deleting other mining programs on the compromised system \cite{hacker}.
+The National Institute of Standards (NIST) and Technology gave Drupal a "Highly Critical" Rating because of this vulnerability \cite{nist}.
+ After this flaw was discovered a patch was published and a warning to update every website that used a vulnerable version was given.
 	
 Since this was not the first detected flaw in Drupal the decision to stop using it and rebuild Mathhub from the ground up to not be affected by future attacks was made.
 
@@ -40,11 +44,13 @@ Since this was not the first detected flaw in Drupal the decision to stop using 
 
 \section{Preliminaries}
 	\subsection{The core concept of React} 
-	React is an open source JavaScript library owned and maintained by Facebook.	It was created to build interactive user interfaces (UI). For example it is used for Facebook and Instagram. What makes React unique is its use of a virtual Document Object Model (DOM). The concept of the virtual DOM is that when updating a website not everything is rendered again. React computes the differences between the last and the next page and only changes the necessary parts. On top of that it has conditional rendering which means that an item will only be rendered if it is shown. The advantage of virtual and conditional rendering is that this makes updating a website fast, but it comes with high RAM costs. The actual interface is made up of many different elements and components. Since a website that uses React can have many different features it is helpful to build new components.
+	React is an open source JavaScript library owned and maintained by Facebook.	It was created to build interactive user interfaces (UI). For example it is used for Facebook and Instagram. What makes React unique is its use of a virtual Document Object Model (DOM). The concept of the virtual DOM is that when updating a website not everything is rendered again. React computes the differences between the last and the next page and only changes the necessary parts. On top of that it has conditional rendering which means that an item will only be rendered if it is shown. The advantage of virtual and conditional rendering is that this makes updating a website fast, but it comes with high RAM costs. The actual interface is made up of many different elements and components. Since a website that uses React can have many different features it is helpful to build new components. 
+\cite{reactjs}
 	
 	
 	\subsection{Building new components in React}
 	React already has a large library with a lot of different components, but it is often necessary to make new ones that have the desired functionality. In JavaScript new components can be implemented by creating either a function or a class. Their input variables are called props and can only be read. Components return React elements that are ready to be rendered. Naturally a component can grow big rather quickly. Luckily it is possible to use components inside other components. This comes with the advantage that they can be reused in many different locations. The difference between creating a new component as a function and as a class is that a class can have a private internal state, which can be updated an any time. Since props are read-only, updating the state can only affect lower components. If it is necessary to also change something in a higher component it is possible to "lift up" the state. This means adding the state that causes the change to the state of the component on a higher level and giving it back to the lower levels as a prop. If the update should affect a component on the same level creating a new component with that state that consist of all the one that are affected will  make this possible.
+\cite{reactjsGS}
 
 \subsection{MMT and OmDoc}
 \ednote{explain the MMT structure (Library, archives etc) and a few things about OmDoc}
@@ -79,6 +85,14 @@ Since this was not the first detected flaw in Drupal the decision to stop using 
 \end{tikzpicture}
 \ednote{look for author and user pictures}
 \ednote{go through the entire diagram and explain every node and arrow}
+\begin{itemize}
+\item React for building pages and interaction with the backend/MMT
+\item Semantic UI React for theming
+\item In the web-based system, semantic services (notation-based, presentation, definition lookup, relational navigation, dependency management, etc.) are provided by MMT and are made available to the user, primarily by dedicated React components.
+\item Gitlab used for versioned storage of the content documents, and organizes them into repositories
+\item conversion to OmDoc
+\item OmDoc functionalities and semantics for presentation
+\end{itemize}
 
 \subsection{Mathhub Routes}
 \begin{tikzpicture}[xscale=\myxscale, yscale=\myyscale]
@@ -158,18 +172,5 @@ By selecting the same language for "from" and "to" the Math Dictionary can also 
 	\subsection{Subset Frontends}
 	\subsection{Issue report: Mathhub and content}
 
-\section{Sources}
-Drupal Attack:
-\begin{itemize}
-\item \url{https://nvd.nist.gov/view/vuln/search-results?cpe=cpe%3A%2Fa%3Adrupal%3Adrupal%3A7.38&page_num=0&cid=3}
-\item \url{https://www.theregister.co.uk/2018/03/28/drupal_urgent_security_software_patch/}
-\item \url{https://www.zdnet.com/article/update-drupal-asap-over-a-million-sites-can-be-easily-hacked-by-any-visitor/}
-\item \url{https://thehackernews.com/2018/04/drupal-cryptocurrency-hacking.html}
-\item \url{https://thehackernews.com/2018/04/drupal-site-vulnerability.html}
-\end{itemize}
-
-React: 
-\url{https://reactjs.org/docs/getting-started.html}
-
-
+\printbibliography
 \end{document}
