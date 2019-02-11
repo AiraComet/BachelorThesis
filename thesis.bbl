@@ -85,6 +85,36 @@
     \warn{\item Invalid format of field 'month'}
   \endentry
 
+  \entry{comp}{report}{}
+    \name{author}{2}{}{%
+      {{hash=KM}{%
+         family={Kohlhase},
+         familyi={K\bibinitperiod},
+         given={MIchael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=WT}{%
+         family={Wiesing},
+         familyi={W\bibinitperiod},
+         given={Tom},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KMWT1}
+    \strng{fullhash}{KMWT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{KW14}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{title}{In-place computation in active documents}
+    \list{institution}{1}{%
+      {Jacobs University Bremen}%
+    }
+    \field{year}{2014}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+
   \entry{register}{article}{}
     \name{author}{1}{}{%
       {{hash=MK}{%
@@ -127,6 +157,28 @@
     \verb{url}
     \verb https://nvd.nist.gov/view/vuln/search-results?cpe=cpe%3A%2Fa%3Adrupal
     \verb %3Adrupal%3A7.38&page_num=0&cid=3
+    \endverb
+  \endentry
+
+  \entry{mmt}{online}{}
+    \name{author}{1}{}{%
+      {{hash=RF}{%
+         family={Rabe},
+         familyi={R\bibinitperiod},
+         given={Florian},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RF1}
+    \strng{fullhash}{RF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Rab}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{title}{The MMT Language and System}
+    \verb{url}
+    \verb https://uniformal.github.io/doc/
     \endverb
   \endentry
 

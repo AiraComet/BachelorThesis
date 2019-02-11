@@ -14,38 +14,40 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.2}Building new components in React}{3}{subsection.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3}MMT and OmDoc}{3}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.3}MMT and OMDoc}{3}{subsection.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}The Architecture of Mathhub}{3}{section.3}
+\contentsline {section}{\numberline {3}The Architecture of Mathhub}{4}{section.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}Mathhub Routes}{4}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.1}Mathhub Routes}{5}{subsection.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Mathhub Library API}{5}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.2}Layout}{6}{subsection.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Mathhub Components}{5}{section.4}
+\contentsline {subsection}{\numberline {3.3}Communication with the Backend}{6}{subsection.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Libraries}{5}{subsection.4.1}
+\contentsline {section}{\numberline {4}Mathhub Components}{6}{section.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Archives}{5}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.1}Groups}{6}{subsection.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3}Modules: Theories and Views}{5}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.2}Archives}{7}{subsection.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4}Statistics}{5}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.3}Documents}{7}{subsection.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}The Applications of Mathhub}{5}{section.5}
+\contentsline {subsection}{\numberline {4.4}Statistics}{7}{subsection.4.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Glossary}{6}{subsection.5.1}
+\contentsline {section}{\numberline {5}The Applications of Mathhub}{7}{section.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}Math Dictionary}{6}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.1}Glossary}{7}{subsection.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Conclusion}{7}{section.6}
+\contentsline {subsection}{\numberline {5.2}Math Dictionary}{7}{subsection.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}Future Work}{7}{section.7}
+\contentsline {section}{\numberline {6}Conclusion}{8}{section.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.1}TGView}{7}{subsection.7.1}
+\contentsline {section}{\numberline {7}Future Work}{8}{section.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.2}MathWebSearch}{7}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.1}TGView}{8}{subsection.7.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.3}Subset Frontends}{7}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.2}MathWebSearch}{8}{subsection.7.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.4}Issue report: Mathhub and content}{7}{subsection.7.4}
+\contentsline {subsection}{\numberline {7.3}Subset Frontends}{8}{subsection.7.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {7.4}Issue report: Mathhub and content}{8}{subsection.7.4}
