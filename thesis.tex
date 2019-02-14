@@ -1,6 +1,7 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage[show]{ed}
 \usepackage{tikz}
+\usepackage{float}
 \usepackage{hyperref}
 \usepackage[style=alphabetic, backend=bibtex]{biblatex}
 
@@ -22,18 +23,22 @@ Abstract will be added at the end
 
 \tableofcontents
 \section{Introduction}
-	\subsection{Mathhub}
-	\subsection{Previous Implementation}
-	Up until April 2018 the Mathhub fronend was realized with Drupal. Drupal is an open source content-management framework used by millions of different websites.
+\subsection{Math Information Systems}
+\ednote{why are those special and different}
+\subsection{Mathhub}
+\subsection{Previous Implementation}
+	Up until April 2018 the Mathhub frontend was realized with Drupal. Drupal is an open source content-management framework used by millions of different websites.
 Dealing with user interactions were handled by JavaScript modules in the JOBAD framework \cite{comp}.
 	
-But in April 2018 a critical security flaw in the versions 6 to 8 went public. The problem was that the Drupal core in these versions accepts request parameters witht any validation .This means the core processes any input from anybody \cite{zdnet}.
+But in April 2018 a critical security flaw in the versions 6 to 8 went public. The problem was that the Drupal core in these versions accepts request parameters without any validation.
+This means the core processes any input from anybody \cite{zdnet}.
 To exploit this weakness an attacker doesn't even need to log in or have any other privileges on a vulnerable website \cite{register}.
 With this flaw it is possible to inject malicious code and compromise a website in multiple ways. This can be used to access, change and delete private data and create backdoors to make future attacks possible. The Drupal community called this weakness "Drupalgeddon2" while its official name was "CVE-2018-7600". Some code that was injected installed the program XMRig Monero miner, which is a cryptocurrency mining program, as well as deleting other mining programs on the compromised system \cite{hacker}.
 The National Institute of Standards (NIST) and Technology gave Drupal a "Highly Critical" Rating because of this vulnerability \cite{nist}.
  After this flaw was discovered a patch was published and a warning to update every website that used a vulnerable version was given.
 	
 Since this was not the first detected flaw in Drupal the decision to stop using it and rebuild Mathhub from the ground up to not be affected by future attacks was made.
+\ednote{Mathhub was compromised multiple times}
 
 	\subsection{Building an interactive Frontend - State of the art}
 	\begin{itemize}
@@ -42,6 +47,14 @@ Since this was not the first detected flaw in Drupal the decision to stop using 
 	\item Vue.js
 	\item React
 	\end{itemize}
+
+\subsection{Math Information Systems -  State of the art}
+\begin{itemize}
+\item MathNet
+\item mathoverflow
+\item Wikidata
+\item Wikipedia
+\end{itemize}
 
 \section{Preliminaries}
 	\subsection{The core concept of React} 
@@ -70,11 +83,12 @@ Since this was not the first detected flaw in Drupal the decision to stop using 
 \item modules and declarations are actual content
 \cite{mmt}
 \end{itemize}
-
+ 
 \section{The Architecture of Mathhub}
 
 \providecommand\myxscale{.95}
 \providecommand\myyscale{1}
+\begin{figure}[h]
 \begin{tikzpicture}[xscale=\myxscale,yscale=\myyscale]
   \tikzstyle{system} = [rectangle, draw, fill=blue!20, text width=1cm, text centered,
                                     rounded corners, minimum height=.8cm,shade, 
@@ -100,6 +114,8 @@ Since this was not the first detected flaw in Drupal the decision to stop using 
 \draw[->,dotted] (author) -- node[above]{local} node[below]{edit} (gl);
 \draw[->,dotted] (lib) -- node[below]{import} (gl);
 \end{tikzpicture}
+\caption{Mathhub architecture}
+\end{figure}
 \ednote{look for author and user pictures}
 \begin{itemize}
 \item React for building pages and interaction with the backend/MMT
@@ -111,6 +127,7 @@ Since this was not the first detected flaw in Drupal the decision to stop using 
 \end{itemize}
 
 \subsection{Mathhub Routes}
+\begin{figure}[h]
 \begin{tikzpicture}[xscale=\myxscale, yscale=\myyscale]
   \tikzstyle{component} = [rectangle, draw, fill=blue!20, text width=2cm, text centered,
                                     rounded corners, minimum height=.8cm,shade, 
@@ -141,6 +158,8 @@ Since this was not the first detected flaw in Drupal the decision to stop using 
 \draw[->,thick] (apps) -- node[above]{} (glos);
 \draw[->,thick] (apps) -- node[above]{} (dict);
 \end{tikzpicture}
+\caption{Mathhub components}
+\end{figure}
 
 \begin{itemize}
 \item Routes to every step in the MMT Library
@@ -150,7 +169,7 @@ Since this was not the first detected flaw in Drupal the decision to stop using 
 \item some Legal stuff (Licenses and Privacy Policy)
 \item Log
 \end{itemize}
-With the huge mathematical library of theories there are a lot of technical terms. The glossary is a collection of these expressions. There wouldn't be much value in to just having a collection without any additional features. So the glossary also provides a definition for each term. Many different authors have contributed to the theories, so it can happen that there are different terms that share a meaning. These synonyms can also be found in the glossary. Since many theories exist in multiple languages it makes sense to have a glossary available for the used languages. Currently the biggest collection of terms are in the English glossary, followed by German and French. Smaller collections for Turkish and Romanian are also available.\ednote{What the hell even is zhs and zht?}
+With the huge mathematical library of theories there are a lot of technical terms. The glossary is a collection of these expressions. There wouldn't be much value in to just having a collection without any additional features. So the glossary also provides a definition for each term. Many different authors have contributed to the theories, so it can happen that there are different terms that share a meaning. These synonyms can also be found in the glossary. Since many theories exist in multiple languages it makes sense to have a glossary available for the used languages. Currently the biggest collection of terms are in the English glossary, followed by German and French. Smaller collections for Turkish and Romanian are also available as well as simplified and traditional Chinese.
 
 
 Most of the times a user does not want to browse through the gigantic glossary to just find a single term. This is the reason why the Math Dictionary is a useful extension of the glossary.
@@ -174,7 +193,7 @@ The main purpose of the Math Dictionary is to translate a term into another lang
 \section{Mathhub Components}
 \ednote{what exactly have I done in the Frontend with these}
 \ednote{don't go into to much detail about the implementation; eg entry has own react component is okay but don't talk about cards and stuff}
-\ednote{get some nice screenshots}
+\ednote{get some nice screen shots}
 \subsection{Groups}
 \begin{itemize}
 \item link to source on gl.mathhub.info
@@ -213,7 +232,7 @@ The main purpose of the Math Dictionary is to translate a term into another lang
 In the frontend it is possible to change languages by either changing the language tab or clicking on a language button inside an entry. If there is a button with a different language available, this means this particular entry also exists in this language. The definition of a term is not immediately shown to create a better overview. To makes the definition visible the user can click on the entry. 
 
  	\subsection{Math Dictionary}
-To translate a term with the help of the Math Dictionary so the user has to select the language in which the term currently is and also the language to whichs should be translated into. Pressing the "translate" - button sends a translation request to the server. Until the servers responds the message "translating" is shown and the button is disabled to prevent sending to many translation requests. If a translation exists then the translated term, its definition and potential synonyms are shown.
+To translate a term with the help of the Math Dictionary so the user has to select the language in which the term currently is and also the language to which should be translated into. Pressing the "translate" - button sends a translation request to the server. Until the servers responds the message "translating" is shown and the button is disabled to prevent sending to many translation requests. If a translation exists then the translated term, its definition and potential synonyms are shown.
 By selecting the same language for "from" and "to" the Math Dictionary can also be used to get the definition for an expression without searching the glossary.
 
 \section{Conclusion}
@@ -225,4 +244,5 @@ By selecting the same language for "from" and "to" the Math Dictionary can also 
 	\subsection{Issue report: Mathhub and content}
 
 \printbibliography
+\ednote{use this: github.com/KWARC/bibs/kwarc.bib}
 \end{document}
