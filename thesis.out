@@ -10,20 +10,21 @@
 \BOOKMARK [2][-]{subsection.3.2}{Building new components in React}{section.3}% 10
 \BOOKMARK [2][-]{subsection.3.3}{MMT and OMDoc}{section.3}% 11
 \BOOKMARK [1][-]{section.4}{The Architecture of Mathhub}{}% 12
-\BOOKMARK [2][-]{subsection.4.1}{Mathhub Routes}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.1}{Mathhub.info Routes}{section.4}% 13
 \BOOKMARK [2][-]{subsection.4.2}{Layout}{section.4}% 14
-\BOOKMARK [2][-]{subsection.4.3}{Communication with the Backend}{section.4}% 15
-\BOOKMARK [1][-]{section.5}{Mathhub Components}{}% 16
-\BOOKMARK [2][-]{subsection.5.1}{Groups}{section.5}% 17
-\BOOKMARK [2][-]{subsection.5.2}{Archives}{section.5}% 18
-\BOOKMARK [2][-]{subsection.5.3}{Documents}{section.5}% 19
-\BOOKMARK [2][-]{subsection.5.4}{Statistics}{section.5}% 20
-\BOOKMARK [1][-]{section.6}{The Applications of Mathhub}{}% 21
-\BOOKMARK [2][-]{subsection.6.1}{Glossary}{section.6}% 22
-\BOOKMARK [2][-]{subsection.6.2}{Math Dictionary}{section.6}% 23
-\BOOKMARK [1][-]{section.7}{Conclusion}{}% 24
-\BOOKMARK [1][-]{section.8}{Future Work}{}% 25
-\BOOKMARK [2][-]{subsection.8.1}{TGView}{section.8}% 26
-\BOOKMARK [2][-]{subsection.8.2}{MathWebSearch}{section.8}% 27
-\BOOKMARK [2][-]{subsection.8.3}{Subset Frontends}{section.8}% 28
-\BOOKMARK [2][-]{subsection.8.4}{Issue report: Mathhub and content}{section.8}% 29
+\BOOKMARK [2][-]{subsection.4.3}{Realization}{section.4}% 15
+\BOOKMARK [2][-]{subsection.4.4}{Communication with the Backend}{section.4}% 16
+\BOOKMARK [1][-]{section.5}{Mathhub Components}{}% 17
+\BOOKMARK [2][-]{subsection.5.1}{Groups}{section.5}% 18
+\BOOKMARK [2][-]{subsection.5.2}{Archives}{section.5}% 19
+\BOOKMARK [2][-]{subsection.5.3}{Documents}{section.5}% 20
+\BOOKMARK [2][-]{subsection.5.4}{Statistics}{section.5}% 21
+\BOOKMARK [1][-]{section.6}{The Applications of Mathhub}{}% 22
+\BOOKMARK [2][-]{subsection.6.1}{Glossary}{section.6}% 23
+\BOOKMARK [2][-]{subsection.6.2}{Math Dictionary}{section.6}% 24
+\BOOKMARK [1][-]{section.7}{Conclusion}{}% 25
+\BOOKMARK [1][-]{section.8}{Future Work}{}% 26
+\BOOKMARK [2][-]{subsection.8.1}{TGView}{section.8}% 27
+\BOOKMARK [2][-]{subsection.8.2}{MathWebSearch}{section.8}% 28
+\BOOKMARK [2][-]{subsection.8.3}{Subset Frontends}{section.8}% 29
+\BOOKMARK [2][-]{subsection.8.4}{Issue report: Mathhub and content}{section.8}% 30
