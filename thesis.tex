@@ -37,18 +37,27 @@ With this flaw it is possible to inject malicious code and compromise a website 
 The National Institute of Standards (NIST) and Technology gave Drupal a "Highly Critical" Rating because of this vulnerability \cite{nist}.
  After this flaw was discovered a patch was published and a warning to update every website that used a vulnerable version was given.
 	
-Since this was not the first detected flaw in Drupal the decision to stop using it and rebuild Mathhub from the ground up to not be affected by future attacks was made.
-\ednote{Mathhub was compromised multiple times}
+Since there have been multiple flaws in Drupal before that compromised Mathhub, the decision to stop using it and rebuild Mathhub from the ground up to not be affected by future attacks, was made.
 
-	\subsection{Building an interactive Frontend - State of the art}
-	\begin{itemize}
-	\item Polymer
-	\item Angular
-	\item Vue.js
-	\item React
-	\end{itemize}
+\section{State of the art}
+\subsection{Building an interactive Frontend}
+Before starting to build a completely new Mathhub fronten a different web framework had to be chosen.
 
-\subsection{Math Information Systems -  State of the art}
+\textbf{Polymer} is an open source JavaScript library developed and maintained by Google.
+It provides a set of features that make creating custom elements, that work like standard web components, easy. 
+It is used for several Google services for example Youtube, Google Earth, Google Play Music etc. as well as Netflix, Electronic Arts and many other companies. \cite{polymer}
+
+Another open source web framework from Google is \textbf{Angular}.
+This TypeScript library has framework architectures that simplifies the development of new web applications.
+It also has Angular Material. A collection of UI components that work in browsers, on mobile and desktop. \cite{angular}
+
+After using Angular on several Google projects, Evan You decided to create his own JavaScript framework called \textbf{Vue.js} \cite{vuewiki}
+Depending on the project it can be scaled between a framework and a library.
+Vue.js separates its view layer library from its support libraries for complex applications, to create an easy approach to the framework. \cite{vuegit}
+
+In the end the decision was made to use \textbf{React} developed by Facebook. Further details about React and how it is used can be found in section \ref{preliminaries}.
+
+\subsection{Math Information Systems}
 \begin{itemize}
 \item MathNet
 \item mathoverflow
@@ -56,14 +65,14 @@ Since this was not the first detected flaw in Drupal the decision to stop using 
 \item Wikipedia
 \end{itemize}
 
-\section{Preliminaries}
-	\subsection{The core concept of React} 
-	React is an open source JavaScript library owned and maintained by Facebook.	It was created to build interactive user interfaces (UI). For example it is used for Facebook and Instagram. What makes React unique is its use of a virtual Document Object Model (DOM). The concept of the virtual DOM is that when updating a website not everything is rendered again. React computes the differences between the last and the next page and only changes the necessary parts. On top of that it has conditional rendering which means that an item will only be rendered if it is shown. The advantage of virtual and conditional rendering is that this makes updating a website fast, but it comes with high RAM costs. The actual interface is made up of many different elements and components. Since a website that uses React can have many different features it is helpful to build new components. 
+\section{Preliminaries} \label{preliminaries}
+\subsection{The core concept of React} 
+React is an open source JavaScript library owned and maintained by Facebook.	It was created to build interactive user interfaces (UI). For example it is used for Facebook and Instagram. What makes React unique is its use of a virtual Document Object Model (DOM). The concept of the virtual DOM is that when updating a website not everything is rendered again. React computes the differences between the last and the next page and only changes the necessary parts. On top of that it has conditional rendering which means that an item will only be rendered if it is shown. The advantage of virtual and conditional rendering is that this makes updating a website fast, but it comes with high RAM costs. The actual interface is made up of many different elements and components. Since a website that uses React can have many different features it is helpful to build new components. 
 \cite{reactjs}
 	
 	
-	\subsection{Building new components in React}
-	React already has a large library with a lot of different components, but it is often necessary to make new ones that have the desired functionality. In JavaScript new components can be implemented by creating either a function or a class. Their input variables are called props and can only be read. Components return React elements that are ready to be rendered. Naturally a component can grow big rather quickly. Luckily it is possible to use components inside other components. This comes with the advantage that they can be reused in many different locations. The difference between creating a new component as a function and as a class is that a class can have a private internal state, which can be updated an any time. Since props are read-only, updating the state can only affect lower components. If it is necessary to also change something in a higher component it is possible to "lift up" the state. This means adding the state that causes the change to the state of the component on a higher level and giving it back to the lower levels as a prop. If the update should affect a component on the same level creating a new component with that state that consist of all the one that are affected will  make this possible.
+\subsection{Building new components in React}
+React already has a large library with a lot of different components, but it is often necessary to make new ones that have the desired functionality. In JavaScript new components can be implemented by creating either a function or a class. Their input variables are called props and can only be read. Components return React elements that are ready to be rendered. Naturally a component can grow big rather quickly. Luckily it is possible to use components inside other components. This comes with the advantage that they can be reused in many different locations. The difference between creating a new component as a function and as a class is that a class can have a private internal state, which can be updated an any time. Since props are read-only, updating the state can only affect lower components. If it is necessary to also change something in a higher component it is possible to "lift up" the state. This means adding the state that causes the change to the state of the component on a higher level and giving it back to the lower levels as a prop. If the update should affect a component on the same level creating a new component with that state that consist of all the one that are affected will  make this possible.
 \cite{reactjsGS}
 
 \subsection{MMT and OMDoc}

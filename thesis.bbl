@@ -17,6 +17,33 @@
 \endgroup
 
 \datalist[entry]{anyt/global//global/global}
+  \entry{angular}{online}{}
+    \field{labelalpha}{Ang}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \verb{url}
+    \verb https://en.wikipedia.org/wiki/Angular_(web_framework)
+    \endverb
+  \endentry
+
+  \entry{vuegit}{online}{}
+    \name{author}{1}{}{%
+      {{hash=G}{%
+         family={Github},
+         familyi={G\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{G1}
+    \strng{fullhash}{G1}
+    \field{labelnamesource}{author}
+    \field{labelalpha}{Git}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \verb{url}
+    \verb https://github.com/vuejs/vue
+    \endverb
+  \endentry
+
   \entry{reactjs}{online}{}
     \name{author}{1}{}{%
       {{hash=IF}{%
@@ -207,6 +234,44 @@
     \field{journaltitle}{www.zdnet.com}
     \field{year}{2018}
     \warn{\item Invalid format of field 'month'}
+  \endentry
+
+  \entry{polymer}{online}{}
+    \name{author}{1}{}{%
+      {{hash=W}{%
+         family={Wikipedia},
+         familyi={W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{W1}
+    \strng{fullhash}{W1}
+    \field{labelnamesource}{author}
+    \field{labelalpha}{Wik}
+    \field{extraalpha}{1}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \verb{url}
+    \verb https://en.wikipedia.org/wiki/Polymer_(library)
+    \endverb
+  \endentry
+
+  \entry{vuewiki}{online}{}
+    \name{author}{1}{}{%
+      {{hash=W}{%
+         family={Wikipedia},
+         familyi={W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{W1}
+    \strng{fullhash}{W1}
+    \field{labelnamesource}{author}
+    \field{labelalpha}{Wik}
+    \field{extraalpha}{2}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \verb{url}
+    \verb https://en.wikipedia.org/wiki/Vue.js
+    \endverb
   \endentry
 \enddatalist
 \endinput

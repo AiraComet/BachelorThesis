@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.24)  14 FEB 2019 13:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.24)  17 FEB 2019 01:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -817,77 +817,82 @@ been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.32 	
-       [1] EdNote!
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 45.
+       [1] [2]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 62.
  (d:/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 45.
-
-[2] [3]
-Overfull \hbox (3.54565pt too wide) in paragraph at lines 104--104
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 62.
+ [3]
+Overfull \hbox (3.54565pt too wide) in paragraph at lines 113--113
  [][][][]\OT1/cmr/m/n/10.95 library 
  []
 
 
-Overfull \hbox (65.1751pt too wide) in paragraph at lines 116--117
+Overfull \hbox (65.1751pt too wide) in paragraph at lines 125--126
 [][] 
  []
 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 EdNote! [4]
-Overfull \hbox (2.6504pt too wide) in paragraph at lines 142--142
+Overfull \hbox (2.6504pt too wide) in paragraph at lines 151--151
  [][][][]\OT1/cmr/m/n/10.95 Declarations 
  []
 
 
-Overfull \hbox (3.07625pt too wide) in paragraph at lines 143--143
+Overfull \hbox (3.07625pt too wide) in paragraph at lines 152--152
  [][][][]\OT1/cmr/m/n/10.95 Applications 
  []
 
 
-Overfull \hbox (6.80743pt too wide) in paragraph at lines 160--161
+Overfull \hbox (6.80743pt too wide) in paragraph at lines 169--170
 [][] 
  []
 
-[5] EdNote! EdNote! EdNote! EdNote!
 
-LaTeX Warning: Marginpar on page 6 moved.
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[5] EdNote! [6] EdNote! EdNote! EdNote!
+
+LaTeX Warning: Marginpar on page 7 moved.
 
 
-LaTeX Warning: Marginpar on page 6 moved.
+LaTeX Warning: Marginpar on page 7 moved.
 
-[6] [7]
-Overfull \hbox (39.04724pt too wide) in paragraph at lines 247--247
+[7] [8]
+Overfull \hbox (39.04724pt too wide) in paragraph at lines 256--256
 \OT1/cmr/m/sc/10.95 url\OT1/cmr/m/n/10.95 : []$\OT1/cmtt/m/n/10.95 https : / / 
 thehackernews . com / 2018 / 04 / drupal -[] cryptocurrency -[]
  []
 
-[8] EdNote!
+EdNote!
 
-There are still 8 EdNotes, New/Oldparts, and Issues to resolve!
+There are still 7 EdNotes, New/Oldparts, and Issues to resolve!
 
 [9]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 248.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 248.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 257.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 257.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 248.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 248.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 257.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 257.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 72D0975659CDB6FEDC8196F4DE985F97;1803.
+(rerunfilecheck)             Checksum: 9DDC304426AA8DBC49792FA8FE084084;1817.
 Package logreq Info: Writing requests to 'thesis.run.xml'.
 \openout1 = `thesis.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 248.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 257.
  ) 
 Here is how much of TeX's memory you used:
- 22192 strings out of 492639
- 417899 string characters out of 6133087
- 681818 words of memory out of 5000000
- 25728 multiletter control sequences out of 15000+600000
+ 22207 strings out of 492639
+ 418307 string characters out of 6133087
+ 687817 words of memory out of 5000000
+ 25738 multiletter control sequences out of 15000+600000
  11453 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,11n,54p,1245b,1235s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,11n,54p,1244b,1281s stack positions out of 5000i,500n,10000p,200000b,80000s
 <d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><d:/tex
 live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><d:/texlive/2018
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><d:/texlive/2018/texmf-d
@@ -900,10 +905,10 @@ ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb><d:/texlive/2018/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/texlive/2018/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmti10.pfb><d:/texlive/2018/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmtt10.pfb>
-Output written on thesis.pdf (10 pages, 191915 bytes).
+Output written on thesis.pdf (10 pages, 195265 bytes).
 PDF statistics:
- 296 PDF objects out of 1000 (max. 8388607)
- 267 compressed objects within 3 object streams
- 50 named destinations out of 1000 (max. 500000)
- 243 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 317 PDF objects out of 1000 (max. 8388607)
+ 288 compressed objects within 3 object streams
+ 55 named destinations out of 1000 (max. 500000)
+ 251 words of extra memory for PDF output out of 10000 (max. 10000000)
 
