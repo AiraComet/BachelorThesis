@@ -4,6 +4,7 @@
 \usepackage{float}
 \usepackage{hyperref}
 \usepackage[style=alphabetic, backend=bibtex]{biblatex}
+\usepackage{graphicx}
 
 \title{Building Mathhub using React\\ \vspace{2 mm} Bachelor Thesis}
 \author{Johannes-Sebastian See\\Supervisor: Michael Kohlhase\\Co-supervisor: Tom Wiesing\\Friedrich-Alexander University, Erlangen Nürnberg, Germany}
@@ -194,6 +195,7 @@ At last there is a Log with the most recent messages from the backend. \ednote{i
 Every page consists of three parts: A header, a footer and the actual content in between.
 
 The header is a menu with the routes to Home, the news, the glossary and the Math Dictionary as well some external links.
+Under the menu there are breadcrumbs for an easier navigation.
 In the footer the logos of the institutions that are involved in Mathhub can be found.
 There also are the routes to the Log, the licenses, the imprint and the privacy policy.
 The body itself depends on the page the user is currently on.
@@ -261,56 +263,83 @@ The data objects in JSON consist of attribute-value pairs and arrays.
 The frontend then uses these objects to build React components.
 
 
-\section{Mathhub Components}
-\ednote{what exactly have I done in the Frontend with these}
-\ednote{don't go into to much detail about the implementation; eg entry has own react component is okay but don't talk about cards and stuff}
-\ednote{get some nice screen shots}
+\section{Mathhub Library Components}
+This chapter is about the implementation of the different components of the Mathhub library.
+The first page of the library is a list of all the groups of Mathhub.
+Every group is rendered in its own React component that has the name of the group, a short teaser and links to the corresponding group-page.
+
 \subsection{Groups}
-\begin{itemize}
-\item link to source on gl.mathhub.info
-\item description text of the group
-\item list of archives in the group with short teaser
-\item every archive is a React component
-\end{itemize}	 
-	
+Above the numerous archives the group page starts with a header that has the same structure for every group.
+It begins with a button that links to its source files on GitLab.
+After that follows a description that gives an overview of the groups content.
+The header ends with a list of e-mail addresses of the people that maintain the group.
+
+Beneath that there is a list of all the corresponding archives.
+Every archive is its own React component that consists of a name and a short teaser that summarizes its content for the user.
+By clicking on an entry the user is taken to the corresponding archive-page.
+\begin{figure}[H]
+\includegraphics[width=1\textwidth]{group.png}
+\caption{a group in the frontend}
+\end{figure}
+
 \subsection{Archives}
-\begin{itemize}
-\item link to source on gl.mathhub.info
-\item description text of the group
-\item list of the documents in the archive
-\end{itemize}	 
+The structure of the archive-page is very similar to the group-page.
+It also starts with a header that consists of a button that links to the source files, a description of the archive and the e-mail addresses of the responsible people.
+
+After the header follows a list of the documents in that archive.
+There is the main difference between the group-page and the archive page.
+The document entries do not have a teaser text so they just link to the document-page.
+\begin{figure}[H]
+\includegraphics[width=1\textwidth]{archive.png}
+\caption{ an archive in the frontend}
+\end{figure}
 
 \subsection{Documents}
-\begin{itemize}
-\item extendable modules
-\item extension shows declarations like structure and constants
-\item opaque elements: text for humans
-\end{itemize}
+Depending on the document the document-page can be either a list of OMDocs or the different modules of an OMDoc. \ednote{can i write it like this?}
+If the document is in the OMDoc format there is also a button that links to its source file on GItLab.
+The modules of a document are expandable React components that consist of a name, a type, either theory or view and a button to show further details.
+Clicking on the button shows all the declarations and nested theories inside of a module.
+These declarations (structure elements or constants) and theories can be further extended to show their own content.
+
+In between the modules there can be opaque elements.
+These are just text that help the user to understand the content of the document and do not serve any contribution to the actual theories
+\begin{figure}[H]
+\includegraphics[width=1\textwidth]{document.png}
+\caption{a document in the frontend}
+\end{figure}
 
 \subsection{Statistics}
-\begin{itemize}
-\item groups, archives and documents can have statistics
-\item visible by button
-\item popup for explanation of keywords
-\end{itemize}
+On every group-, archive- and document-page there also is a statistics button that shows some available statistics about that particular group, archive or document.
+When the cursor hovers over a keyword of a statistic that keyword is explained in a pop-up.
+\begin{figure}[H]
+\centerline{\includegraphics[width=0.6\textwidth]{statistics.png}}
+\caption{statistics in the frontend}
+\end{figure}
 
 \section{The Applications of Mathhub}
-	\subsection{Glossary}
-\begin{itemize}
-\item Different language tabs
-\item only language relevant terms are rendered
-\end{itemize}
-In the frontend it is possible to change languages by either changing the language tab or clicking on a language button inside an entry.
-If there is a button with a different language available, this means this particular entry also exists in this language.
-The definition of a term is not immediately shown to create a better overview.
-To makes the definition visible the user can click on the entry.
 
- 	\subsection{Math Dictionary}
-To translate a term with the help of the Math Dictionary so the user has to select the language in which the term currently is and also the language to which should be translated into
+\subsection{Glossary}
+The glossary-page has a tab for every available glossary.
+At any given time only the terms are rendered that have an entry in the currently selected language.
+Thus it is possible to change languages by either changing the language tab or clicking on a language-button inside an entry.
+If there is a button with a different language available, this means this particular entry also exists in that language.
+To create a better overview the definition of a term is not immediately shown.
+By clicking on an entry the definition becomes visible.
+\begin{figure}[H]
+\includegraphics[width=1\textwidth]{glossary.png}
+\caption{the glossary in the frontend}
+\end{figure}
+
+\subsection{Math Dictionary}
+To translate a term with the help of the Math Dictionary the user has to select the language from a dropdown menu in which the term currently is and also the language to which it should be translated into
 Pressing the "translate" - button sends a translation request to the server.
-Until the servers responds the message "translating" is shown and the button is disabled to prevent sending to many translation requests.
+Until the servers responds, the message "translating" is shown and the button is disabled to prevent sending to many translation requests.
 If a translation exists then the translated term, its definition and potential synonyms are shown.
 By selecting the same language for "from" and "to" the Math Dictionary can also be used to get the definition for an expression without searching the glossary.
+\begin{figure}[H]
+\includegraphics[width=1\textwidth]{dictionary.png}
+\caption{the Math Dictionary in the frontend}
+\end{figure}
 
 \section{Conclusion}
 
