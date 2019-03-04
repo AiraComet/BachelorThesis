@@ -12,6 +12,9 @@
 \date{\today}
 \addbibresource{local.bib}
 
+\providecommand\myxscale{.95}
+\providecommand\myyscale{1}
+
 \begin{document}
 
 \begin{titlepage}
@@ -103,34 +106,60 @@ If the update should affect a component on the same level creating a new compone
 \cite{reactjsGS}
 
 \subsection{MMT and OMDoc}
-\begin{itemize}
-\item OMDoc: XML format of how a uniform language for knowledge should be designed
-\item MMT is a scalable Module System for Mathematical theories
-\item MMT is a framework for knowledge representation using formal languages
-\item individual features are defined as reusable modules -> create individual languages
-\item high degree of abstraction of advanced algorithms
-\item archives: correspond to software projects; work flows for languages in MMT
-\item groups / libraries: collection of archives
-\item module: theory or view
-\item view: relations between theories
-\item theory: defined by declarations
-\item declaration: constants and rules
-\item groups and archives just for narration
-\item modules and declarations are actual content
+The abbreviation MMT is short for either \underline{m}eta-\underline{m}eta-\underline{t}heory or \underline{m}eta-\underline{m}eta-\underline{t}ool.
+Whereby meta-meta-theory represents the theoretical and meta-meta-tool the practical part of MMT.
+Basically it is a knowledge representation framework that uses formal languages to create a scalable module system for mathematical theories.
+That means that in MMT the features of the syntax and the semantics of a language are defined as individual, reusable modules.
+This way of building individual languages leads to a high degree of abstraction of advanced algorithms.
+
+MMT integrates the OMDoc format, which is a XML format that describes a design for an uniform language for knowledge.
+
+\begin{figure}[H]
+\begin{tikzpicture}[xscale=\myxscale, yscale=\myyscale]
+  \tikzstyle{component} = [rectangle, draw, fill=orange!20, text width=2cm, text centered,
+                                    rounded corners, minimum height=.8cm,shade, 
+                                    top color=white, bottom color=orange!40]
+  \tikzstyle{back} = [rectangle, draw, fill=gray!10, text width=2cm,
+                                    rounded corners, minimum height=4.3cm]
+\node[back, text width = 5.5cm,  label ={[shift={(0ex,-4ex)}]north:Narration}] (nar) {};
+\node[back, right of =nar, xshift=3.5cm, text width = 2.9cm,  label ={[shift={(0ex,-4ex)}]north:Modules}] (mod) {};
+\node[back, right of =mod, xshift=2.2cm, text width = 2.9cm,  label ={[shift={(0ex,-4ex)}]north:Declarations}] (dec) {};
+\node[component, left of =nar, xshift=-0.5cm, yshift=-0.2cm] (groups) {Groups};
+\node[component, right of =groups, xshift=2cm] (archives) {Archives};
+\node[component, right of =archives, xshift=2cm, yshift=-1cm] (theo) {Theories};
+\node[component, right of =archives, xshift=2cm, yshift=1cm] (views) {Views};
+\node[component, right of=theo, xshift=2cm, yshift=2cm] (con) {Constants};
+\node[component, right of=theo, xshift=2cm] (rul) {Rules};
+\draw[->, thick] (groups) -- node[above]{} (archives);
+\draw[->,thick] (archives) -- node[above]{} (theo);
+\draw[->,thick] (archives) -- node[above]{} (views);
+\draw[->,thick] (theo) -- node[above]{} (rul);
+\draw[->,thick] (theo) -- node[above]{} (con);
+\draw[->,dotted] (views) -- node[above]{} (theo);
+\end{tikzpicture}
+\caption{The MMT structure}
+\end{figure}
+
+
+To create a frontend that displays MMT it is important to understand its structure.
+First up on the highest level are the individual groups.
+Each group contains several archives.
+An archive can be described as a software project that provides a work flow for a language in MMT. \ednote{is this to close to the source?}
+Groups and archives are just used for navigation and narration purposes.
+The modules that can be found in an archive, make up the actual content.
+These are either a theory or a view that shows the relation between different theories.
+A theory is defined by its rules and constants, the so called declarations.
 \cite{mmt}
-\end{itemize}
  
 \section{The Architecture of Mathhub}
-
-\providecommand\myxscale{.95}
-\providecommand\myyscale{1}
 
 \subsection{Mathhub.info Routes}
 \begin{figure}[h]
 \begin{tikzpicture}[xscale=\myxscale, yscale=\myyscale]
-  \tikzstyle{component} = [rectangle, draw, fill=blue!20, text width=2cm, text centered,
+  \tikzstyle{component} = [rectangle, draw, fill=orange!20, text width=2cm, text centered,
                                     rounded corners, minimum height=.8cm,shade, 
-                                    top color=white, bottom color=blue!20]
+                                    top color=white, bottom color=orange!40]
+                                   
 \node[component] (MH) {Mathhub};
 \node[component, below of =MH, xshift=-1.2cm, yshift=-0.7cm] (lib) {Library};
 \node[component, below of =lib, yshift=-0.7cm] (groups) {Groups};
@@ -205,10 +234,10 @@ The body itself depends on the page the user is currently on.
 \ednote{name pending}
 \begin{figure}[H] \label{architecture}
 \begin{tikzpicture}[xscale=\myxscale,yscale=\myyscale]
-  \tikzstyle{system} = [rectangle, draw, fill=blue!20, text width=1cm, text centered,
+  \tikzstyle{system} = [rectangle, draw, fill=orange!20, text width=1cm, text centered,
                                     rounded corners, minimum height=.8cm,shade, 
-                                    top color=white, bottom color=blue!20]
-   \tikzstyle{database} = [rectangle, draw, fill=blue!20, text width=1cm, text centered,
+                                    top color=white, bottom color=orange!20]
+   \tikzstyle{database} = [rectangle, draw, fill=blue!20, text width=1.3cm, text centered,
                                     rounded corners, minimum height=.8cm,shade, 
                                     top color=white, bottom color=blue!20]
 \node (user) {user}; 

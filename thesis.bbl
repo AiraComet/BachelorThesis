@@ -17,15 +17,6 @@
 \endgroup
 
 \datalist[entry]{anyt/global//global/global}
-  \entry{angular}{online}{}
-    \field{labelalpha}{Ang}
-    \field{sortinit}{A}
-    \field{sortinithash}{A}
-    \verb{url}
-    \verb https://en.wikipedia.org/wiki/Angular_(web_framework)
-    \endverb
-  \endentry
-
   \entry{vuegit}{online}{}
     \name{author}{1}{}{%
       {{hash=G}{%
@@ -255,7 +246,7 @@
     \endverb
   \endentry
 
-  \entry{vuewiki}{online}{}
+  \entry{angular}{online}{}
     \name{author}{1}{}{%
       {{hash=W}{%
          family={Wikipedia},
@@ -267,6 +258,25 @@
     \field{labelnamesource}{author}
     \field{labelalpha}{Wik}
     \field{extraalpha}{2}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \verb{url}
+    \verb https://en.wikipedia.org/wiki/Angular_(web_framework)
+    \endverb
+  \endentry
+
+  \entry{vuewiki}{online}{}
+    \name{author}{1}{}{%
+      {{hash=W}{%
+         family={Wikipedia},
+         familyi={W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{W1}
+    \strng{fullhash}{W1}
+    \field{labelnamesource}{author}
+    \field{labelalpha}{Wik}
+    \field{extraalpha}{3}
     \field{sortinit}{W}
     \field{sortinithash}{W}
     \verb{url}
