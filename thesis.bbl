@@ -133,6 +133,24 @@
     \warn{\item Invalid format of field 'month'}
   \endentry
 
+  \entry{mathnet}{online}{}
+    \name{author}{1}{}{%
+      {{hash=M}{%
+         family={Math.Net},
+         familyi={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{M1}
+    \strng{fullhash}{M1}
+    \field{labelnamesource}{author}
+    \field{labelalpha}{Mat}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \verb{url}
+    \verb https://www.mathdotnet.com/
+    \endverb
+  \endentry
+
   \entry{register}{article}{}
     \name{author}{1}{}{%
       {{hash=MK}{%
@@ -197,6 +215,40 @@
     \field{title}{The MMT Language and System}
     \verb{url}
     \verb https://uniformal.github.io/doc/
+    \endverb
+  \endentry
+
+  \entry{tgview}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=RM}{%
+         family={Rupprecht},
+         familyi={R\bibinitperiod},
+         given={Marcel},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=KM}{%
+         family={Kohlhase},
+         familyi={K\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=MD}{%
+         family={M{\"u}ller},
+         familyi={M\bibinitperiod},
+         given={Dennis},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RMKMMD1}
+    \strng{fullhash}{RMKMMD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{RKM}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{title}{A Flexible, Interactive Theory-Graph Viewer}
+    \verb{url}
+    \verb http://kwarc.info/kohlhase/papers/mathui17-tgview.pdf
     \endverb
   \endentry
 
