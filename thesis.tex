@@ -379,16 +379,26 @@ By selecting the same language for "from" and "to" the Math Dictionary can also 
 \section{Conclusion}
 
 \section{Future Work}
+Obviously the work on a project like Mathhub.info is never completely finished.
+There are still many features left that would be a great addition to the frontend to improve the practicality and the overall user experience.
+The biggest expansions that will be added to Mathhub.info in the near future are TGView and MathWebSearch.
+
 	\subsection{TGView} 
+	TGView is a graph viewer with the task to visualize the relations between multiple theories to give a better overview over a system like Mathhub. \ednote{system? project? or what else like Mathhub?}
+	 The distinctive feature of TGView is that it is entirely browser based.
+	 That means that its graphical interface is build on the client side to avoid sending a server request every time the user interacts with the interface, eg move or hide nodes.
+	 Otherwise it would be required to refresh the page on every single change to the graph. 	\cite{tgview}
+	 
+	 To successfully integrate TGView into Mathhub.info it is necessary to build a new React component from the existing JavaScript code.
+	 
 	\begin{itemize}
 	\item did the old mathhub.info have tgview?
 	\item browser based Graph viewer
-	\item client side building to avoid page refresh when user changes the graph (eg hides notes)
+	\item client side building to avoid page refresh when user changes the graph (eg hides nodes)
 	\item has a graphical interface for actions with mouse without server requests
 	\item javascript
 	\item visualize theory relations for better understanding
 	\item need to be build as a react component to be integrated into mathhub.info
-	\cite{tgview}
 	\end{itemize}
 	\subsection{MathWebSearch}
 	Explanation needed!
