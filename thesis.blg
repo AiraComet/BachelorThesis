@@ -24,45 +24,45 @@ Warning--I didn't find a database entry for "MathUI17"
 Biblatex version: 3.8
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-You've used 15 entries,
+You've used 14 entries,
             6268 wiz_defined-function locations,
-            1233 strings with 9967 characters,
-and the built_in function-call counts, 53275 in all, are:
-= -- 2687
-> -- 1373
-< -- 521
-+ -- 890
-- -- 488
-* -- 3579
-:= -- 4408
+            1230 strings with 9925 characters,
+and the built_in function-call counts, 50197 in all, are:
+= -- 2552
+> -- 1291
+< -- 489
++ -- 855
+- -- 460
+* -- 3385
+:= -- 4190
 add.period$ -- 0
-call.type$ -- 15
-change.case$ -- 165
+call.type$ -- 14
+change.case$ -- 156
 chr.to.int$ -- 36
-cite$ -- 28
-duplicate$ -- 6200
-empty$ -- 5496
-format.name$ -- 788
-if$ -- 11528
+cite$ -- 26
+duplicate$ -- 5832
+empty$ -- 5152
+format.name$ -- 738
+if$ -- 10842
 int.to.chr$ -- 0
-int.to.str$ -- 38
+int.to.str$ -- 36
 missing$ -- 0
-newline$ -- 337
-num.names$ -- 675
-pop$ -- 4784
+newline$ -- 319
+num.names$ -- 630
+pop$ -- 4446
 preamble$ -- 1
-purify$ -- 174
+purify$ -- 165
 quote$ -- 0
-skip$ -- 2341
+skip$ -- 2191
 stack$ -- 0
-substring$ -- 3115
-swap$ -- 1684
-text.length$ -- 481
-text.prefix$ -- 26
+substring$ -- 2991
+swap$ -- 1587
+text.length$ -- 451
+text.prefix$ -- 24
 top$ -- 1
-type$ -- 498
+type$ -- 464
 warning$ -- 0
-while$ -- 595
+while$ -- 567
 width$ -- 0
-write$ -- 323
+write$ -- 306
 (There was 1 error message)

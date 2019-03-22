@@ -133,24 +133,6 @@
     \warn{\item Invalid format of field 'month'}
   \endentry
 
-  \entry{mathnet}{online}{}
-    \name{author}{1}{}{%
-      {{hash=M}{%
-         family={Math.Net},
-         familyi={M\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{M1}
-    \strng{fullhash}{M1}
-    \field{labelnamesource}{author}
-    \field{labelalpha}{Mat}
-    \field{sortinit}{M}
-    \field{sortinithash}{M}
-    \verb{url}
-    \verb https://www.mathdotnet.com/
-    \endverb
-  \endentry
-
   \entry{register}{article}{}
     \name{author}{1}{}{%
       {{hash=MK}{%
