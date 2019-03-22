@@ -18,51 +18,47 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: thesis-blx.bib
 Database file #2: local.bib
-A bad cross reference---entry "tgview"
-refers to entry "MathUI17", which doesn't exist
-Warning--I didn't find a database entry for "MathUI17"
 Biblatex version: 3.8
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-You've used 14 entries,
+You've used 15 entries,
             6268 wiz_defined-function locations,
-            1230 strings with 9925 characters,
-and the built_in function-call counts, 50197 in all, are:
-= -- 2552
-> -- 1291
-< -- 489
-+ -- 855
-- -- 460
-* -- 3385
-:= -- 4190
+            1232 strings with 10236 characters,
+and the built_in function-call counts, 62987 in all, are:
+= -- 3619
+> -- 1445
+< -- 521
++ -- 1315
+- -- 533
+* -- 4379
+:= -- 5828
 add.period$ -- 0
-call.type$ -- 14
-change.case$ -- 156
+call.type$ -- 15
+change.case$ -- 166
 chr.to.int$ -- 36
-cite$ -- 26
-duplicate$ -- 5832
-empty$ -- 5152
-format.name$ -- 738
-if$ -- 10842
+cite$ -- 28
+duplicate$ -- 7334
+empty$ -- 6179
+format.name$ -- 888
+if$ -- 13213
 int.to.chr$ -- 0
-int.to.str$ -- 36
+int.to.str$ -- 38
 missing$ -- 0
-newline$ -- 319
-num.names$ -- 630
-pop$ -- 4446
+newline$ -- 396
+num.names$ -- 675
+pop$ -- 4895
 preamble$ -- 1
-purify$ -- 165
+purify$ -- 193
 quote$ -- 0
-skip$ -- 2191
+skip$ -- 2371
 stack$ -- 0
-substring$ -- 2991
-swap$ -- 1587
-text.length$ -- 451
-text.prefix$ -- 24
+substring$ -- 4907
+swap$ -- 1830
+text.length$ -- 490
+text.prefix$ -- 26
 top$ -- 1
-type$ -- 464
+type$ -- 498
 warning$ -- 0
-while$ -- 567
+while$ -- 785
 width$ -- 0
-write$ -- 306
-(There was 1 error message)
+write$ -- 382

@@ -17,6 +17,84 @@
 \endgroup
 
 \datalist[entry]{anyt/global//global/global}
+  \entry{smglom}{misc}{}
+    \name{author}{10}{}{%
+      {{hash=GD}{%
+         family={Ginev},
+         familyi={G\bibinitperiod},
+         given={Deyan},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=IM}{%
+         family={Iancu},
+         familyi={I\bibinitperiod},
+         given={Mihnea},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=JC}{%
+         family={Jucovshi},
+         familyi={J\bibinitperiod},
+         given={Constantin},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=KA}{%
+         family={Kohlhase},
+         familyi={K\bibinitperiod},
+         given={Andrea},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=KM}{%
+         family={Kohlhase},
+         familyi={K\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=OA}{%
+         family={Oripov},
+         familyi={O\bibinitperiod},
+         given={Akbar},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Schefter},
+         familyi={S\bibinitperiod},
+         given={J{\"u}rgen},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=SW}{%
+         family={Sperber},
+         familyi={S\bibinitperiod},
+         given={Wolfram},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=TO}{%
+         family={Teschke},
+         familyi={T\bibinitperiod},
+         given={Olaf},
+         giveni={O\bibinitperiod},
+      }}%
+      {{hash=WT}{%
+         family={Wiesing},
+         familyi={W\bibinitperiod},
+         given={Tom},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \keyw{conference}
+    \strng{namehash}{GD+1}
+    \strng{fullhash}{GDIMJCKAKMOASJSWTOWT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Gin+}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{title}{The {SMGloM} Project and System. Towards a Terminology and
+  Ontology for Mathematics}
+    \verb{url}
+    \verb http://kwarc.info/kohlhase/papers/icms16-smglom.pdf
+    \endverb
+  \endentry
+
   \entry{vuegit}{online}{}
     \name{author}{1}{}{%
       {{hash=G}{%
@@ -200,7 +278,7 @@
     \endverb
   \endentry
 
-  \entry{tgview}{inproceedings}{}
+  \entry{tgview}{report}{}
     \name{author}{3}{}{%
       {{hash=RM}{%
          family={Rupprecht},

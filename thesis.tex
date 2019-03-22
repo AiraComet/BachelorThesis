@@ -167,13 +167,13 @@ A theory is defined by its rules and constants, the so called declarations. \edn
 \section{The Architecture of MathHub}
 
 \subsection{MathHub.info Routes}
-\begin{figure}[h]
+\begin{figure}[H]
 \begin{tikzpicture}[xscale=\myxscale, yscale=\myyscale]
   \tikzstyle{component} = [rectangle, draw, fill=orange!20, text width=2cm, text centered,
                                     rounded corners, minimum height=.8cm,shade, 
                                     top color=white, bottom color=orange!40]
                                    
-\node[component] (MH) {MathHub};
+\node[component, text width=2.3cm] (MH) {MathHub.info};
 \node[component, below of =MH, xshift=-1.2cm, yshift=-0.7cm] (lib) {Library};
 \node[component, below of =lib, yshift=-0.7cm] (groups) {Groups};
 \node[component, below of =groups, yshift=-0.7cm] (archives) {Archives};
@@ -181,7 +181,7 @@ A theory is defined by its rules and constants, the so called declarations. \edn
 \node[component, below left of =mod, xshift=-0.5cm, yshift=0.5cm] (theo) {Theories};
 \node[component, below right of =mod, text width=1.5cm, xshift=0.5cm, yshift=0.5cm] (views) {Views};
 \node[component, below of=mod, yshift=-1.2cm] (decl) {Declarations};
-\node[component, below left of =MH, xshift = -4.3cm, yshift=-0.7cm] (apps) {Applications};
+\node[component, below left of =MH, xshift = -4.3cm, yshift=-0.7cm, text width=2.1cm] (apps) {Applications};
 \node[component, below left of =apps, xshift=-0.5cm, yshift=-0.7cm] (glos) {Glossary};
 \node[component, below right of =apps, xshift=0.5cm, yshift=-0.7cm] (dict) {Math Dictionary};
 \node[component, below of=MH, xshift=1.6cm, yshift=-2.4cm] (news) {News};
@@ -199,21 +199,23 @@ A theory is defined by its rules and constants, the so called declarations. \edn
 \draw[->,thick] (apps) -- node[above]{} (glos);
 \draw[->,thick] (apps) -- node[above]{} (dict);
 \end{tikzpicture}
-\caption{MathHub components}
+\caption{MathHub routes}
+\label{fig:routes}
 \end{figure}
 
-To create a logical navigation system MathHub.info is divided into numerous pages, that can be accessed from the Home-page. \ednote{structured using routes}
 
-\ednote{can be seen in figure ...} First of is the main content of MathHub, the MMT library.
+To create a logical navigation system MathHub.info uses routes to divide its content into numerous pages, that can be accessed from the Homepage.
+The structure of these routes can be seen in figure \ref{fig:routes}.
+
+First of is the main content of MathHub, the MMT library.
 It starts with the different groups.
 The next page displays the archives that belong to a specific group.
 Groups and archives exist only for narration and navigation purposes.
 So they don't have any actual content only meta information like names and descriptions.
 The actual content can be found in documents.
-These document consist of several theories and views. \ednote{module + opaque}
+These document consist of multiple modules (i.e. theories and views) as well as opaque elements that give the user additional information about the theories.
 So the archive-page has a list of all the documents in an archive.
 On the document-page the modules are displayed with all their declarations.
-
 
 With the huge mathematical library of theories there are a lot of technical terms.
 The glossary is a collection of these expressions.
@@ -223,32 +225,34 @@ Over the time many different authors have contributed to the theories, so it can
 These synonyms can also be found in the glossary.
 Since many theories exist in multiple languages it makes sense to have a glossary available for every used language.
 Currently the biggest collection of terms are in the English glossary, followed by German and French.
-Smaller collections for Turkish and Romanian are also available as well as simplified and traditional Chinese. \ednote{cite smglom}
+Smaller collections for Turkish and Romanian are also available as well as simplified and traditional Chinese.\cite{smglom}
 
 Most of the times a user does not want to browse through the gigantic glossary to just find a single term.
 This is the reason why the Math Dictionary is a useful extension of the glossary.
 The main purpose of the Math Dictionary is to translate a term into another language and look up a definition of a specific expression.
 
-
-There is also a page with all the latest news regarding MathHub, as well as pages for licenses and the privacy policy. \ednote{couple of static pages}
+There is also a page with all the latest news regarding MathHub, as well as a couple of static pages like licenses and privacy policy.
 At last there is a Log with the most recent messages from the backend.
-\ednote{mention JSON (REST)}
+
 \subsection{Layout}
 Every page consists of three parts: A header, a footer and the actual content in between.
+This is illustrated with the Homepage as an example in figure \ref{fig:home}.
+
+\begin{figure}[H]
+\includegraphics[width=1\textwidth]{home2.png}
+\caption{The Homepage}
+\label{fig:home}
+\end{figure}
 
 The header is a menu with the routes to Home, the news, the glossary and the Math Dictionary as well some external links.
 Under the menu there are breadcrumbs for an easier navigation.
 In the footer the logos of the institutions that are involved in MathHub can be found.
 There also are the routes to the Log, the licenses, the imprint and the privacy policy.
-The body itself depends on the page the user is currently on. \ednote{picture ref}
-\begin{figure}[H]
-\includegraphics[width=1\textwidth]{home.png}
-\caption{The Homepage}
-\end{figure}
+The body itself depends on the page the user is currently on.
 
 \subsection{Realization}
 \ednote{name pending}
-\begin{figure}[H] \label{architecture}
+\begin{figure}[H]
 \begin{tikzpicture}[xscale=\myxscale,yscale=\myyscale]
   \tikzstyle{system} = [rectangle, draw, fill=orange!20, text width=1cm, text centered,
                                     rounded corners, minimum height=.8cm,shade, 
@@ -257,30 +261,31 @@ The body itself depends on the page the user is currently on. \ednote{picture re
                                     rounded corners, minimum height=.8cm,shade, 
                                     top color=white, bottom color=blue!20]
 \node (user) {user}; 
-\node[system,right of =user,text width=2cm, xshift=3cm] (browser) {Browser}; 
-\node[system,right of= browser,text width=2.3cm, xshift=2.6cm] (drupal) {React};
-\node[system,above right of =drupal, xshift = 2.8cm] (mmt) {MMT};
-\node[system,below right of =drupal, xshift = 2.8cm, text width=1.2cm] (gl) {GitLab};
+\node[system,right of =user,text width=1.7cm, xshift=2.7cm] (react) {React}; 
+\node[system,right of= react,text width=2.6cm, xshift=2.6cm] (plugin) {MMT MathHub Plugin};
+\node[system,above right of =plugin, xshift = 2.8cm] (mmt) {MMT};
+\node[system,below right of =plugin, xshift = 2.8cm, text width=1.2cm] (gl) {GitLab};
 \node[database,below left of =gl, yshift = -0.6cm, xshift = -3cm] (lib) {library};
 \node[below right of =gl, yshift = -0.6cm, xshift = 1.6cm] (author) {author}; 
 \node[below right of =mmt, yshift =0.7cm,  xshift = 1.6cm] (conv) {\begin{tabular}{l}\footnotesize convert to\\ OMDoc\\/MMT\end{tabular}};
 \draw[<-,thick] (mmt) -- node[left]{load} (gl);
-\draw[<->,dotted] (user) -- node[above]{read} node[below]{interact} (browser);
-\draw[->,thick] (browser) -- node[above]{REST} (drupal);
+\draw[<->,dotted] (user) -- node[above]{read} node[below]{interact} (react);
+\draw[<->,thick] (react) -- node[above]{REST} (plugin);
 \draw[->,thick] (gl) to[loop left,out=20,in=45,looseness=11] (gl); 
 \draw[<->,dashed] (conv) -- (mmt);
-\draw[<-,thick] (drupal) -- node[above]{present}(mmt); 
-\draw[->,thick] (drupal) -- node[above]{edit}(gl); 
+\draw[<-,thick] (plugin) -- node[above]{present}(mmt); 
+\draw[->,thick] (plugin) -- node[above]{edit}(gl); 
 \draw[->,dotted] (author) -- node[above]{local} node[below]{edit} (gl);
 \draw[->,dotted] (lib) -- node[below]{import} (gl);
 \end{tikzpicture}
 \caption{MathHub architecture}
+\label{fig:architecture}
 \end{figure}
 \ednote{look for author and user pictures}
 
 The React based frontend that is displayed in the browser is written in TypeScript.
 The use of Semantic UI React achieves an informal theme throughout MathHub.info.
-The React frontend is in constant communication with an MMT server \ednote{MMT MathHub Plugin} that provides the user with the actual content as well as several semantic services.
+As it can be seen in figure \ref{fig:architecture} the React frontend is in constant communication with the MMT MathHub plugin of an MMT server that provides the user with the actual content as well as several semantic services.
 
 
 Whereas React is used for the presentation of the content documents, GitLab is used for their versioned storage.
