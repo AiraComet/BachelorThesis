@@ -134,7 +134,7 @@
     \endverb
   \endentry
 
-  \entry{reactjsGS}{online}{}
+  \entry{flux}{online}{}
     \name{author}{1}{}{%
       {{hash=IF}{%
          family={Inc},
@@ -148,6 +148,27 @@
     \field{labelnamesource}{author}
     \field{labelalpha}{Inc}
     \field{extraalpha}{2}
+    \field{sortinit}{I}
+    \field{sortinithash}{I}
+    \verb{url}
+    \verb https://github.com/facebook/flux
+    \endverb
+  \endentry
+
+  \entry{reactjsGS}{online}{}
+    \name{author}{1}{}{%
+      {{hash=IF}{%
+         family={Inc},
+         familyi={I\bibinitperiod},
+         given={Facebook},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{IF1}
+    \strng{fullhash}{IF1}
+    \field{labelnamesource}{author}
+    \field{labelalpha}{Inc}
+    \field{extraalpha}{3}
     \field{sortinit}{I}
     \field{sortinithash}{I}
     \verb{url}

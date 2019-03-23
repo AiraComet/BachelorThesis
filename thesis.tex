@@ -85,33 +85,37 @@ Depending on the project it can be scaled between a framework and a library.
 Vue.js separates its view layer library from its support libraries for complex applications, to create an easy approach to the framework. \cite{vuegit}
 
 In the end the decision was made to use \textbf{React} developed by Facebook. \ednote{why?}
-Further details about React and how it is used can be found in section \ref{preliminaries}. \ednote{short indtroduction before ref}
+React is a component based framework that uses a virtual DOM to avoid unnecessary rerendering.
+Further details about React and how it is used can be found in section \ref{preliminaries}.
 
 
 \section{Preliminaries} \label{preliminaries}
 \subsection{The core concept of React} 
 React is an open source JavaScript library owned and maintained by Facebook.	It was created to build interactive user interfaces (UI).
 For example it is used for Facebook and Instagram.
-What makes React unique is its use of a virtual Document Object Model (DOM). \ednote{Reference model view controller}
+What makes React unique is its use of a virtual Document Object Model (DOM).
 The concept of the virtual DOM is that when updating a website not everything is rendered again.
 React computes the differences between the last and the next page and only changes the necessary parts.
 On top of that it has conditional rendering which means that an item will only be rendered if it is shown.
 The advantage of virtual and conditional rendering is that this makes updating a website fast, but it comes with high RAM costs.
 The actual interface is made up of many different elements and components.
-Since a website that uses React can have many different features it is helpful to build new components.
-\cite{reactjs}
-React does not have a styling system so it integrates \ednote{React does not intigrate this} Semantic UI to provide a consistent theme for the frontend.
-\ednote{react does not force any styling system. We just use semantic-ui-react bindings}
+Since a website that uses React can have many different features it is helpful to build new components.\cite{reactjs}
+
+Since React was designed by Facebook, there was a need for a design pattern that handles a large code base better than MVC (Model View Controller).
+That is why they created Flux.
+The idea behind Flux is that data flows only in one direction to create unidirectional cycles. \cite{flux}
+
+React does not have a styling system so its community created the Semantic UI React library to provide an easy way to maintain a consistent theme throughout the frontend.
+Of course it is still possible to use a different library or create new styling components but MathHub.info mostly uses Semantic UI React.
 
 \subsection{Building new components in React}
-React already has a large library \ednote{external} with a lot of different components \ednote{clarify that components are node blocks of the virtual dom}, but it is often necessary to make new ones that have the desired functionality.
+React already has a large external library with a lot of different components \ednote{clarify that components are node blocks of the virtual dom}, but it is often necessary to make new ones that have a desired functionality.
 In JavaScript new components can be implemented by creating either a function or a class.
 Their input variables are called props and can only be read.
 Components return React elements that are ready to be rendered. \ednote{In: props; state; out: children of the tree => real leves:DOM}
 Naturally a component can grow big rather quickly.
 Luckily it is possible to use components inside other components.
 This comes with the advantage that they can be reused in many different locations.
-The difference between creating a new component as a function and as a class is that a class can have a private internal state, which can be updated an any time. \ednote{not relevant}
 Since props are read-only, updating the state can only affect lower components.
 If it is necessary to also change something in a higher component it is possible to "lift up" the state.
 This means adding the state that causes the change to the state of the component on a higher level and giving it back to the lower levels as a prop.
@@ -121,7 +125,7 @@ If the update should affect a component on the same level creating a new compone
 \subsection{MMT and OMDoc}
 The abbreviation MMT is short for either \underline{m}eta-\underline{m}eta-\underline{t}heory or \underline{m}eta-\underline{m}eta-\underline{t}ool.
 Whereby meta-meta-theory represents the theoretical and meta-meta-tool the practical part of MMT.
-It is a knowledge representation framework that uses formal \ednote{ + informal, language independent} languages to create a scalable module system for mathematical theories.
+It is a knowledge representation framework that uses a combination of formal and informal languages to create a scalable module system for mathematical theories.
 That means that in MMT the features of the syntax and the semantics of a language are defined as individual, reusable modules.
 This way of building individual languages leads to a high degree of abstraction of advanced algorithms.
 
@@ -285,7 +289,8 @@ The body itself depends on the page the user is currently on.
 
 The React based frontend that is displayed in the browser is written in TypeScript.
 The use of Semantic UI React achieves an informal theme throughout MathHub.info.
-As it can be seen in figure \ref{fig:architecture} the React frontend is in constant communication with the MMT MathHub plugin of an MMT server that provides the user with the actual content as well as several semantic services.
+As shown in figure \ref{fig:architecture}, the React frontend is in constant communication with the MMT MathHub plugin of an MMT server that provides the user with the actual content as well as several semantic services.
+The plugin responses follow the constraints set by REST (Representational State Transfer) and use the JavaScript Object Notation (JSON).
 
 
 Whereas React is used for the presentation of the content documents, GitLab is used for their versioned storage.
@@ -307,7 +312,7 @@ The different clients are:
 \item a Log Client
 \end{itemize}
 
-The answers that are received from the backend use the JavaScript Object Notation (JSON).
+The answers that are received from the backend use the JSON format.
 The data objects in JSON consist of attribute-value pairs and arrays.
 The frontend then uses these objects as props for React components.
 
@@ -318,77 +323,89 @@ The first page of the library is a list of all the groups of MathHub.
 Every group is rendered in its own React component that has the name of the group, a short teaser and links to the corresponding group-page.
 
 \subsection{Groups}
+\begin{figure}[H]
+\includegraphics[width=1\textwidth]{group.png}
+\caption{a group in the frontend}
+\label{fig:group}
+\end{figure}
+As an example figure \ref{fig:group} shows a screenshot of the MitM group as it is currently depicted on MathHub.info.
 Above the numerous archives the group page starts with a header that has the same structure for every group.
 It begins with a button that links to its source files on GitLab.
 After that follows a description that gives an overview of the groups content.
-The header ends with a list of e-mail addresses of the people that maintain the group. \ednote{can be seen in figure ...}
+The header ends with a list of e-mail addresses of the people that maintain the group.
 
 Beneath that there is a list of all the corresponding archives.
 Every archive is its own React component that consists of a name and a short teaser that summarizes its content for the user.
 By clicking on an entry the user is taken to the corresponding archive-page.
-\begin{figure}[H]
-\includegraphics[width=1\textwidth]{group.png}
-\caption{a group in the frontend}
-\end{figure}
 
 \subsection{Archives}
-The structure of the archive-page is very similar to the group-page.
-It also starts with a header that consists of a button that links to the source files, a description of the archive and the e-mail addresses of the responsible people. \ednote{can be seen in figure ...}
+\begin{figure}[H]
+\includegraphics[width=1\textwidth]{archive.png}
+\caption{ an archive in the frontend}
+\label{fig:archive}
+\end{figure}
+Figure \ref{fig:archive} shows that the structure of the archive-page is very similar to the group-page.
+It also starts with a header that consists of a button that links to the source files, a description of the archive and the e-mail addresses of the responsible people. 
 
 After the header follows a list of the documents in that archive.
 There is the main difference between the group-page and the archive page.
 The document entries do not have a teaser text so they just link to the document-page.
-\begin{figure}[H]
-\includegraphics[width=1\textwidth]{archive.png}
-\caption{ an archive in the frontend}
-\end{figure}
 
 \subsection{Documents}
-Depending on the document the document-page can be either a list of OMDocs or the different modules of an OMDoc. \ednote{mix of document and module links}
-If the document is in the OMDoc format there is also a button that links to its source file on GitLab. \ednote{+ jupyter}
-The modules of a document are expandable React components that consist of a name, a type, either theory or view and a button to show further details.
-Clicking on the button shows all the declarations and nested theories inside of a module.
-These declarations (structure elements or constants) and theories can be further extended to show their own content. \ednote{can be seen in figure ...}
-
-In between the modules there can be opaque elements.
-These are just text that help the user to understand the content of the document and do not serve any contribution to the actual theories. \ednote{they are the informal part of MMT}
 \begin{figure}[H]
 \includegraphics[width=1\textwidth]{document.png}
 \caption{a document in the frontend}
+\label{fig:doc}
 \end{figure}
+Depending on the document, the its page can be a combination of modules and opaque elements as well as links to further documents.
+Figure \ref{fig:doc} displays a document in the OMDoc format.
+There is also a button that links to a documents source file on GitLab\ednote{+ jupyter} if it is in the OMDoc format.
+
+The modules are expandable React components that consist of a name, a type, either theory or view and a button to show further details.
+Clicking on the button shows all the declarations and nested theories inside of that module.
+These declarations (structure elements, constants, rule constants etc.) and theories can be further extended to show their own content.
+
+In between the modules there can be opaque elements.
+These are just text that help the user to understand the content of the document.
+So opaque elements make up the informal part of theories in MMT.
 
 \subsection{Statistics}
-On every group-, archive- and document-page there also is a statistics button that shows some available statistics about that particular group, archive or document.
-When the cursor hovers over a keyword of a statistic that keyword is explained in a pop-up. \ednote{can be seen in figure ...}
 \begin{figure}[H]
 \centerline{\includegraphics[width=0.6\textwidth]{statistics.png}}
 \caption{statistics in the frontend}
+\label{fig:stats}
 \end{figure}
+On every group-, archive- and document-page there also is a statistics button that shows some available statistics about that particular group, archive or document.
+When the cursor hovers over a keyword of a statistic that keyword is explained in a pop-up as can be seen in figure \ref{fig:stats}.
 
 \section{The Applications of MathHub}
-
 \subsection{Glossary}
-The glossary-page has a tab for every available glossary.
-At any given time only the terms are rendered that have an entry in the currently selected language.
-Thus it is possible to change languages by either changing the language tab or clicking on a language-button inside an entry.
-If there is a button with a different language available, this means this particular entry also exists in that language.
-To create a better overview the definition of a term is not immediately shown.
-By clicking on an entry the definition becomes visible. \ednote{can be seen in figure ...}
 \begin{figure}[H]
 \includegraphics[width=1\textwidth]{glossary.png}
 \caption{the glossary in the frontend}
+\label{fig:glossary}
 \end{figure}
+As shown in \ref{fig:glossary}, the glossary-page has a tab for every available glossary.
+At any given time only the terms are rendered that have an entry in the currently selected language.
+Thus there are two possible ways to change languages.
+First by changing the language tab of the glossary or second by clicking on a language-button inside an entry.
+If such a button with a different language is available, this means this particular entry also exists in that language.
+
+To create a better overview the definition of a term is not immediately shown.
+By clicking on an entry its definition becomes visible.
 
 \subsection{Math Dictionary}
-To translate a term with the help of the Math Dictionary the user has to select the language from a dropdown menu in which the term currently is and also the language to which it should be translated into
-Pressing the "translate" - button sends a translation request to the server.
-Until the servers responds, the message "translating" is shown and the button is disabled to prevent sending to many translation requests.
-If a translation exists then the translated term, its definition and potential synonyms are shown.
-By selecting the same language for "from" and "to" the Math Dictionary can also be used to get the definition for an expression without searching the glossary. \ednote{can be seen in figure ...}
 \begin{figure}[H]
 \includegraphics[width=1\textwidth]{dictionary.png}
 \caption{the Math Dictionary in the frontend}
+\label{fig:dict}
 \end{figure}
+Figure \ref{fig:dict} displays the Math Dictionary of MathHub.info.
+To translate a term with the help of the Math Dictionary the user has to select the language from a dropdown menu in which the term currently is and also the language to which it should be translated into
+Pressing the "translate" - button sends a translation request to the server.
+Until the servers responds, the message "translating" is shown and the button is disabled to prevent sending to many translation requests at once.
+If a translation exists then the translated term, its definition and potential synonyms are shown and the button is enabled again.
+By selecting the same language for "from" and "to" the Math Dictionary can also be used to get the definition for an expression without searching the glossary.
 
 \section{Conclusion}
  \ednote{re-iterate everything}
