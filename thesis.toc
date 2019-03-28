@@ -20,44 +20,44 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2}Building new components in React}{4}{subsection.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}MMT and OMDoc}{5}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.3}MMT and OMDoc}{6}{subsection.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}The Architecture of MathHub}{6}{section.4}
+\contentsline {section}{\numberline {4}The Architecture of MathHub}{7}{section.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}MathHub.info Routes}{6}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.1}MathHub.info Routes}{7}{subsection.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Layout}{7}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.2}Layout}{8}{subsection.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3}Realization}{8}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.3}Realization}{9}{subsection.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4}Communication with the Backend}{8}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.4}Communication with the Backend}{9}{subsection.4.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}MathHub Library Components}{9}{section.5}
+\contentsline {section}{\numberline {5}MathHub Library Components}{10}{section.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Groups}{9}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.1}Groups}{10}{subsection.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}Archives}{10}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.2}Archives}{11}{subsection.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3}Documents}{11}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.3}Documents}{12}{subsection.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4}Statistics}{12}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.4}Statistics}{13}{subsection.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}The Applications of MathHub}{12}{section.6}
+\contentsline {section}{\numberline {6}The Applications of MathHub}{13}{section.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1}Glossary}{12}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.1}Glossary}{13}{subsection.6.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2}Math Dictionary}{13}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.2}Math Dictionary}{14}{subsection.6.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}Conclusion}{13}{section.7}
+\contentsline {section}{\numberline {7}Conclusion}{14}{section.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}Future Work}{13}{section.8}
+\contentsline {section}{\numberline {8}Future Work}{14}{section.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.1}TGView}{14}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.1}TGView}{15}{subsection.8.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.2}MathWebSearch}{14}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.2}MathWebSearch}{15}{subsection.8.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.3}Subset Frontends}{14}{subsection.8.3}
+\contentsline {subsection}{\numberline {8.3}Subset Frontends}{15}{subsection.8.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.4}Issue report: MathHub and content}{14}{subsection.8.4}
+\contentsline {subsection}{\numberline {8.4}Issue report: MathHub and content}{15}{subsection.8.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.5}Jupyter Integration}{14}{subsection.8.5}
+\contentsline {subsection}{\numberline {8.5}Jupyter Integration}{15}{subsection.8.5}

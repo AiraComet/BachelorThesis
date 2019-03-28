@@ -91,36 +91,104 @@ Further details about React and how it is used can be found in section \ref{prel
 
 \section{Preliminaries} \label{preliminaries}
 \subsection{The core concept of React} 
-React is an open source JavaScript library owned and maintained by Facebook.	It was created to build interactive user interfaces (UI).
-For example it is used for Facebook and Instagram.
+React is an open source JavaScript library owned and maintained by Facebook.
+It was created to build interactive user interfaces (UI), for example Facebook and Instagram.
 What makes React unique is its use of a virtual Document Object Model (DOM).
-The concept of the virtual DOM is that when updating a website not everything is rendered again.
+The concept of the virtual DOM is that updating a website does not rerender everything.
 React computes the differences between the last and the next page and only changes the necessary parts.
-On top of that it has conditional rendering which means that an item will only be rendered if it is shown.
-The advantage of virtual and conditional rendering is that this makes updating a website fast, but it comes with high RAM costs.
+On top of that it also has conditional rendering which means that an item will only be rendered if it is shown.
+The advantage of the virtual DOM and conditional rendering is that this makes updating a website fast, but it comes with high RAM costs.
 The actual interface is made up of many different elements and components.
-Since a website that uses React can have many different features it is helpful to build new components.\cite{reactjs}
+A website that uses React can have multiple unique features so it is helpful to build new components to realize these features.\cite{reactjs}
+Further detail are discussed in section \ref{components}.
 
 Since React was designed by Facebook, there was a need for a design pattern that handles a large code base better than MVC (Model View Controller).
-That is why they created Flux.
-The idea behind Flux is that data flows only in one direction to create unidirectional cycles. \cite{flux}
+That is why Flux was created.
+The philosophy of the Flux design is that data flows only in one direction to create unidirectional cycles. \cite{flux}
 
 React does not have a styling system so its community created the Semantic UI React library to provide an easy way to maintain a consistent theme throughout the frontend.
 Of course it is still possible to use a different library or create new styling components but MathHub.info mostly uses Semantic UI React.
 
-\subsection{Building new components in React}
-React already has a large external library with a lot of different components \ednote{clarify that components are node blocks of the virtual dom}, but it is often necessary to make new ones that have a desired functionality.
-In JavaScript new components can be implemented by creating either a function or a class.
-Their input variables are called props and can only be read.
-Components return React elements that are ready to be rendered. \ednote{In: props; state; out: children of the tree => real leves:DOM}
+\subsection{Building new components in React} \label{components}
+The actual interface that can be seen in a browser is the combination of many individual components.
+This way, on an update, the virtual DOM can check each component for differences, so only the affected ones have to be rendered again.
+
+React already has a large external library with a lot of different components, but it is often necessary to make new ones that have a desired functionality.
+In JavaScript new components can either be implemented as a function or as a class.
+Their inputs are called props.
+To ensure the unidirectional design of React props are read-only.
+In addition to props components can have an internal state.
+They return React elements that are ready to be rendered.
 Naturally a component can grow big rather quickly.
 Luckily it is possible to use components inside other components.
-This comes with the advantage that they can be reused in many different locations.
-Since props are read-only, updating the state can only affect lower components.
-If it is necessary to also change something in a higher component it is possible to "lift up" the state.
-This means adding the state that causes the change to the state of the component on a higher level and giving it back to the lower levels as a prop.
-If the update should affect a component on the same level creating a new component with that state that consist of all the one that are affected will  make this possible.
+As a consequence, the actual output often has a tree structure with several levels.
+Where the nodes of the tree are the individual components and the leaves are the elements that are rendered by the DOM.
+One possible tree with four levels can be seen in figure \ref{fig:tree}.
+This design comes with the advantage that the small components can be reused in many different locations with various purposes.
+
+\begin{figure}[H]
+\centerline{\begin{tikzpicture}[xscale=\myxscale, yscale=\myyscale]
+  \tikzstyle{node} = [rectangle, draw, fill=orange!20, text width=2cm, yshift=-1.2cm, text centered,
+                                    minimum height=.8cm,shade, 
+                                    top color=white, bottom color=orange!40]
+  \tikzstyle{leave} = [rectangle, draw, fill=green!20, text width=2cm, text centered, yshift=-1.2cm,
+                                    rounded corners, minimum height=.8cm,shade, 
+                                    top color=white, bottom color=green!40]
+\node[node](root){Root Component};
+\node[node, below of=root, xshift=-2.7cm](com1){Component};
+\node[leave, below of=root](elem1){Element};
+\node[node, below of=root, xshift=3.5cm](com2){Component};
+\node[leave, below of=com1](elem2){Element};
+\node[node, below of=com2, xshift=-2cm](com3){Component};
+\node[node, below of=com2, xshift=2cm](com4){Component};
+\node[leave, below of=com3, xshift=-1.4cm](elem3){Element};
+\node[leave, below of=com3, xshift=1.4cm](elem4){Element};
+\node[leave, below of=com4](elem5){Element};
+\draw[->, thick] (root) -- node[above, rotate=41]{props} (com1);
+\draw[->, thick] (root) -- node[right, xshift=0.2cm, yshift=0.6cm, rotate=270]{props} (elem1);
+\draw[->, thick] (root) -- node[above, rotate=326]{props} (com2);
+\draw[->, thick] (com1) -- node[right, xshift=0.2cm, yshift=0.6cm, rotate=270]{props} (elem2);
+\draw[->, thick] (com2) -- node[above, rotate=48]{props} (com3);
+\draw[->, thick] (com2) -- node[above, rotate=312]{props} (com4);
+\draw[->, thick] (com3) -- node[above, rotate=56]{props} (elem3);
+\draw[->, thick] (com3) -- node[above, rotate=302]{props} (elem4);
+\draw[->, thick] (com4) -- node[right, xshift=0.2cm, yshift=0.6cm, rotate=270]{props} (elem5);
+\end{tikzpicture}}
+\caption{A React component tree}
+\label{fig:tree}
+\end{figure}
+                            
+Since props are read-only, updating the internal state of a component can only affect its children.
+If it is necessary to change something in a component on a higher level in the tree, it is possible to "lift up" the state.
+This means adding the change to the state of the higher node. 
+This node then has to give it back to its child as a prop.
+
+Sometimes an update of a state should affect other components on the same level.
+As shown in figure \ref{fig:lift}, this can be done by lifting up the state to a new node in the tree that has all the components as children, that are affected by the update.
 \cite{reactjsGS}
+ 
+\begin{figure}[H]
+\begin{tikzpicture}[xscale=\myxscale, yscale=\myyscale]
+  \tikzstyle{node} = [rectangle, draw, fill=orange!20, text width=2cm, text centered,
+                                    minimum height=.8cm,shade, 
+                                    top color=white, bottom color=orange!40]
+                                    top color=white, bottom color=green!40]
+  \tikzstyle{back} = [rectangle, draw, fill=gray!10, text width=5cm,
+                                    rounded corners, minimum height=4.3cm]
+\node[back, label ={[shift={(0ex,-4ex)}]north:before}](oldb){};
+\node[node, below of=oldb, xshift=-1.3cm, yshift=-0.4cm](com1){Component};
+\node[node, right of=com1, xshift=1.6cm](com2){Component};
+\node[back, right of=oldb, xshift=6cm, label ={[shift={(0ex,-4ex)}]north:after}](newb){};
+\node[node, below of=newb, yshift=1.8cm](new){New Component};
+\node[node, below of=new, xshift=-1.4cm, yshift=-1.2cm](com3){Component};
+\node[node, below of=new, xshift=1.4cm, yshift=-1.2cm](com4){Component};
+\draw[->, thick] (new) -- node[above, rotate=56]{props} (com3);
+\draw[->, thick] (new) -- node[above, rotate=302]{props} (com4);
+\draw[->, dotted] (oldb) -- node[above]{lift up} (newb);
+\end{tikzpicture}
+\caption{Lift up the state to a new component}
+\label{fig:lift}
+\end{figure}
 
 \subsection{MMT and OMDoc}
 The abbreviation MMT is short for either \underline{m}eta-\underline{m}eta-\underline{t}heory or \underline{m}eta-\underline{m}eta-\underline{t}ool.
