@@ -68,24 +68,31 @@ Since there have been multiple flaws in Drupal before that compromised MathHub, 
 \item what can they do? what is their goal? what can we do different/better?
 \end{itemize}
 
-\subsection{Building an interactive Frontend} \ednote{list some differences between the frameworks}
-Before starting to build a completely new MathHub frontend a different web framework had to be chosen.
+\subsection{Building an interactive Frontend}
+Before starting to build a completely new MathHub frontend a new web framework had to be chosen.
 
 \textbf{Polymer} \cite{polymer} is an open source JavaScript library developed and maintained by Google.
-It provides a set of features that make creating custom elements, that work like standard web components, easy.
+It uses the native technologies of a browser instead of large custom JavaScript libraries.
+This makes Polymer remarkably fast on Chrome and Safari.
+It also provides a set of features that makes it easy to create custom elements, that work like standard web components.
 It is used for several Google services for example Youtube, Google Earth, Google Play Music etc. as well as Netflix, Electronic Arts and many other companies. \ednote{native support in Chrome}
 
 Another open source web framework from Google is \textbf{Angular}. \cite{angular}
 This TypeScript library has framework architectures that simplifies the development of new web applications.
+Angular transfers all content of a website at once and leaves the task of building the page to the browser.
+This significantly speeds up the loading process and search optimization while keeping the communication with the server at a minimum. 
 It also has Angular Material.
 A collection of UI components that work in browsers, on mobile and desktop.
 
 After using Angular on several Google projects, Evan You decided to create his own JavaScript framework called \textbf{Vue.js} \cite{vuewiki}
 Depending on the project it can be scaled between a framework and a library.
-Vue.js separates its view layer library from its support libraries for complex applications, to create an easy approach to the framework. \cite{vuegit}
+Vue.js separates its view layer library from its support libraries for complex applications, to create an easy approach to the framework.
+It also automatically keeps track of the dependencies between components.
+So the system knows what exactly has to be rerendered when the page changed.\cite{vuegit}
 
-In the end the decision was made to use \textbf{React} developed by Facebook. \ednote{why?}
+In the end the decision was made to use \textbf{React} developed by Facebook.
 React is a component based framework that uses a virtual DOM to avoid unnecessary rerendering.
+It was chosen because the focus on reusable components makes it perfect for a large and still growing system like MathHub.\ednote{@Tom: Is this why we chose it???}
 Further details about React and how it is used can be found in section \ref{preliminaries}.
 
 
@@ -123,7 +130,7 @@ Naturally a component can grow big rather quickly.
 Luckily it is possible to use components inside other components.
 As a consequence, the actual output often has a tree structure with several levels.
 Where the nodes of the tree are the individual components and the leaves are the elements that are rendered by the DOM.
-One possible tree with four levels can be seen in figure \ref{fig:tree}.
+Figure \ref{fig:tree} displays one possible tree with four levels.
 This design comes with the advantage that the small components can be reused in many different locations with various purposes.
 
 \begin{figure}[H]
@@ -195,9 +202,10 @@ The abbreviation MMT is short for either \underline{m}eta-\underline{m}eta-\unde
 Whereby meta-meta-theory represents the theoretical and meta-meta-tool the practical part of MMT.
 It is a knowledge representation framework that uses a combination of formal and informal languages to create a scalable module system for mathematical theories.
 That means that in MMT the features of the syntax and the semantics of a language are defined as individual, reusable modules.
-This way of building individual languages leads to a high degree of abstraction of advanced algorithms.
+This way of building individual languages leads to a high degree of abstraction of advanced algorithms.\cite{mmtsys}
 
-MMT integrates \ednote{it uses OMDoc representation} the OMDoc format, which is a XML format \ednote{general format for which we use XML} that describes a design for an uniform language for knowledge.
+MMT builds on the OMDoc representation, which is a philosophy about the design of an uniform language for knowledge.
+More specifically MMT uses an XML fomat which follows this philosophy.
 
 \begin{figure}[H]
 \begin{tikzpicture}[xscale=\myxscale, yscale=\myyscale]
@@ -223,17 +231,19 @@ MMT integrates \ednote{it uses OMDoc representation} the OMDoc format, which is 
 \draw[->,dotted] (views) -- node[above]{} (theo);
 \end{tikzpicture}
 \caption{The MMT structure}
+\label{fig:mmt}
 \end{figure}
 
 
-To create a frontend that displays MMT it is important to understand its structure.
+To create a frontend that displays MMT it is important to understand its structure, that can be seen in figure \ref{fig:mmt}.
 First up on the highest level are the individual groups.
 Each group contains several archives.
-An archive can be described as a software project that provides a work flow for a language in MMT. \ednote{group of document that typically are equivalent to a project}
-Groups and archives are just used for navigation and narration purposes.
+An archive can be described as a collection of documents that typically are equivalent to a software project.
+So it provides a work flow for a language in MMT.
+Groups and archives only exist for navigation and narration purposes.
 The modules that can be found in an archive, make up the actual content.
 These are either a theory or a view that shows the relation between different theories.
-A theory is defined by its rules and constants, the so called declarations. \ednote{can be seen in figure ...}
+A theory is defined by its rules and constants, the so called declarations.
 \cite{mmt}
  
 \section{The Architecture of MathHub}
@@ -331,14 +341,14 @@ The body itself depends on the page the user is currently on.
                                     top color=white, bottom color=orange!20]
    \tikzstyle{database} = [rectangle, draw, fill=blue!20, text width=1.3cm, text centered,
                                     rounded corners, minimum height=.8cm,shade, 
-                                    top color=white, bottom color=blue!20]
-\node (user) {user}; 
+                                    top color=white, bottom color=blue!20] 
+\node[inner sep=0pt] (user) at (0,0){\includegraphics[width=.1\textwidth]{user.png}};
 \node[system,right of =user,text width=1.7cm, xshift=2.7cm] (react) {React}; 
 \node[system,right of= react,text width=2.6cm, xshift=2.6cm] (plugin) {MMT MathHub Plugin};
 \node[system,above right of =plugin, xshift = 2.8cm] (mmt) {MMT};
 \node[system,below right of =plugin, xshift = 2.8cm, text width=1.2cm] (gl) {GitLab};
 \node[database,below left of =gl, yshift = -0.6cm, xshift = -3cm] (lib) {library};
-\node[below right of =gl, yshift = -0.6cm, xshift = 1.6cm] (author) {author}; 
+\node[inner sep=0pt, below right of =gl, yshift = -0.6cm, xshift = 1.6cm] (author) {\includegraphics[width=.1\textwidth]{author.jpg}}; 
 \node[below right of =mmt, yshift =0.7cm,  xshift = 1.6cm] (conv) {\begin{tabular}{l}\footnotesize convert to\\ OMDoc\\/MMT\end{tabular}};
 \draw[<-,thick] (mmt) -- node[left]{load} (gl);
 \draw[<->,dotted] (user) -- node[above]{read} node[below]{interact} (react);
@@ -353,7 +363,6 @@ The body itself depends on the page the user is currently on.
 \caption{MathHub architecture}
 \label{fig:architecture}
 \end{figure}
-\ednote{look for author and user pictures}
 
 The React based frontend that is displayed in the browser is written in TypeScript.
 The use of Semantic UI React achieves an informal theme throughout MathHub.info.

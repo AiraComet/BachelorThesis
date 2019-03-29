@@ -299,6 +299,30 @@
     \endverb
   \endentry
 
+  \entry{mmtsys}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=RF}{%
+         family={Rabe},
+         familyi={R\bibinitperiod},
+         given={Florian},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RF1}
+    \strng{fullhash}{RF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Rab18}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{title}{MMT: A Foundation-Independent Logical Framework}
+    \verb{url}
+    \verb https://kwarc.info/people/frabe/Research/rabe_mmtsys_18.pdf
+    \endverb
+    \field{type}{Online Documentation}
+    \field{year}{2018}
+  \endentry
+
   \entry{tgview}{report}{}
     \name{author}{3}{}{%
       {{hash=RM}{%

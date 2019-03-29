@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.24)  28 MAR 2019 02:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.24)  29 MAR 2019 01:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -829,7 +829,7 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 53.
  [2] EdNote!
-EdNote! EdNote! [3] [4]
+EdNote! [3] [4]
 Missing character: There is no t in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no p in font nullfont!
@@ -866,99 +866,108 @@ Missing character: There is no ! in font nullfont!
 Missing character: There is no 4 in font nullfont!
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no ] in font nullfont!
- [5] EdNote! EdNote!
-
-LaTeX Warning: Marginpar on page 6 moved.
-
-EdNote! EdNote!
-Overfull \hbox (1.77953pt too wide) in paragraph at lines 248--248
+ [5] [6]
+Overfull \hbox (1.77953pt too wide) in paragraph at lines 258--258
  [][][][]\OT1/cmr/m/n/10.95 MathHub.info 
  []
 
 
-Overfull \hbox (2.6504pt too wide) in paragraph at lines 255--255
+Overfull \hbox (2.6504pt too wide) in paragraph at lines 265--265
  [][][][]\OT1/cmr/m/n/10.95 Declarations 
  []
 
 
-Overfull \hbox (6.80743pt too wide) in paragraph at lines 273--274
+Overfull \hbox (6.80743pt too wide) in paragraph at lines 283--284
 [][] 
  []
 
-[6] [7]
-<home2.png, id=248, 315.579pt x 168.3891pt>
+[7]
+<home2.png, id=251, 315.579pt x 168.3891pt>
 File: home2.png Graphic file (type png)
 <use home2.png>
-Package pdftex.def Info: home2.png  used on input line 314.
+Package pdftex.def Info: home2.png  used on input line 324.
 (pdftex.def)             Requested size: 360.0pt x 192.09915pt.
- [8 <./home2.png>] EdNote!
-Overfull \hbox (56.63971pt too wide) in paragraph at lines 352--353
+ [8] EdNote!
+<user.png, id=259, 192.72pt x 192.72pt>
+File: user.png Graphic file (type png)
+<use user.png>
+Package pdftex.def Info: user.png  used on input line 345.
+(pdftex.def)             Requested size: 36.0022pt x 35.99963pt.
+<author.jpg, id=264, 256.96pt x 256.96pt>
+File: author.jpg Graphic file (type jpg)
+<use author.jpg>
+Package pdftex.def Info: author.jpg  used on input line 351.
+(pdftex.def)             Requested size: 36.0022pt x 36.00159pt.
+
+Overfull \hbox (61.21223pt too wide) in paragraph at lines 362--363
 [][] 
  []
 
-EdNote! [9]
-<group.png, id=268, 1008.76875pt x 526.21594pt>
+EdNote! [9 <./home2.png> <./user.png> <./author.jpg>]
+<group.png, id=275, 1008.76875pt x 526.21594pt>
 File: group.png Graphic file (type png)
 <use group.png>
-Package pdftex.def Info: group.png  used on input line 395.
+Package pdftex.def Info: group.png  used on input line 405.
 (pdftex.def)             Requested size: 360.0pt x 187.79156pt.
- [10 <./group.png>]
-<archive.png, id=276, 1001.24063pt x 480.29437pt>
+ [10]
+<archive.png, id=281, 1001.24063pt x 480.29437pt>
 File: archive.png Graphic file (type png)
 <use archive.png>
-Package pdftex.def Info: archive.png  used on input line 411.
+Package pdftex.def Info: archive.png  used on input line 421.
 (pdftex.def)             Requested size: 360.0pt x 172.6933pt.
-<document.png, id=278, 1010.27437pt x 527.72156pt>
+ [11 <./group.png>]
+<document.png, id=289, 1010.27437pt x 527.72156pt>
 File: document.png Graphic file (type png)
 <use document.png>
-Package pdftex.def Info: document.png  used on input line 424.
+Package pdftex.def Info: document.png  used on input line 434.
 (pdftex.def)             Requested size: 360.0pt x 188.04704pt.
- [11 <./archive.png>] EdNote!
-<statistics.png, id=286, 383.18156pt x 301.125pt>
+
+[12 <./archive.png>] EdNote!
+<statistics.png, id=298, 383.18156pt x 301.125pt>
 File: statistics.png Graphic file (type png)
 <use statistics.png>
-Package pdftex.def Info: statistics.png  used on input line 442.
+Package pdftex.def Info: statistics.png  used on input line 452.
 (pdftex.def)             Requested size: 216.0022pt x 169.74997pt.
- [12 <./document.png>]
-<glossary.png, id=295, 1009.52156pt x 335.75438pt>
+ [13 <./document.png>]
+<glossary.png, id=306, 1009.52156pt x 335.75438pt>
 File: glossary.png Graphic file (type png)
 <use glossary.png>
-Package pdftex.def Info: glossary.png  used on input line 452.
+Package pdftex.def Info: glossary.png  used on input line 462.
 (pdftex.def)             Requested size: 360.0pt x 119.729pt.
- [13 <./statistics.png> <./Glossary.png>]
-<dictionary.png, id=305, 1023.07219pt x 269.50688pt>
+ [14 <./statistics.png> <./Glossary.png>]
+<dictionary.png, id=316, 1023.07219pt x 269.50688pt>
 File: dictionary.png Graphic file (type png)
 <use dictionary.png>
-Package pdftex.def Info: dictionary.png  used on input line 467.
+Package pdftex.def Info: dictionary.png  used on input line 477.
 (pdftex.def)             Requested size: 360.0pt x 94.83463pt.
- EdNote! EdNote! EdNote! [14 <./Dictionary.png>] [15]
-Overfull \hbox (39.04724pt too wide) in paragraph at lines 509--509
+ EdNote! EdNote! EdNote! [15 <./Dictionary.png>] [16]
+Overfull \hbox (39.04724pt too wide) in paragraph at lines 519--519
 \OT1/cmr/m/sc/10.95 url\OT1/cmr/m/n/10.95 : []$\OT1/cmtt/m/n/10.95 https : / / 
 thehackernews . com / 2018 / 04 / drupal -[] cryptocurrency -[]
  []
 
 EdNote!
 
-There are still 17 EdNotes, New/Oldparts, and Issues to resolve!
+There are still 12 EdNotes, New/Oldparts, and Issues to resolve!
 
-[16]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 510.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 510.
+[17]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 520.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 520.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 510.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 510.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 520.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 520.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: F2FA6BD5FE7EF37324D9DE7AFA33D95C;1960.
 Package logreq Info: Writing requests to 'thesis.run.xml'.
 \openout1 = `thesis.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 510.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 520.
  ) 
 Here is how much of TeX's memory you used:
- 22415 strings out of 492639
- 421545 string characters out of 6133087
- 689801 words of memory out of 5000000
- 25918 multiletter control sequences out of 15000+600000
+ 22429 strings out of 492639
+ 421774 string characters out of 6133087
+ 681801 words of memory out of 5000000
+ 25929 multiletter control sequences out of 15000+600000
  11453 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,54p,932b,1281s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -974,10 +983,10 @@ ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb><d:/texlive/2018/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/texlive/2018/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmti10.pfb><d:/texlive/2018/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmtt10.pfb>
-Output written on thesis.pdf (17 pages, 493916 bytes).
+Output written on thesis.pdf (18 pages, 576011 bytes).
 PDF statistics:
- 414 PDF objects out of 1000 (max. 8388607)
- 361 compressed objects within 4 object streams
- 77 named destinations out of 1000 (max. 500000)
- 320 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 428 PDF objects out of 1000 (max. 8388607)
+ 370 compressed objects within 4 object streams
+ 79 named destinations out of 1000 (max. 500000)
+ 330 words of extra memory for PDF output out of 10000 (max. 10000000)
 
