@@ -1,18 +1,14 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.1}Math Information Systems}{2}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.1}Math Information Systems}{1}{subsection.1.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.2}MathHub}{2}{subsection.1.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.3}Previous Implementation}{2}{subsection.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}State of the art}{3}{section.2}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1}Math Information Systems}{3}{subsection.2.1}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2}Building an interactive Frontend}{3}{subsection.2.2}
+\contentsline {section}{\numberline {2}State of the art - Building an interactive Frontend}{3}{section.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3}Preliminaries}{4}{section.3}
 \defcounter {refsection}{0}\relax 
@@ -30,34 +26,34 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.3}Realization}{9}{subsection.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4}Communication with the Backend}{10}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.4}Communication with the Backend}{9}{subsection.4.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5}MathHub Library Components}{10}{section.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Groups}{11}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.1}Groups}{10}{subsection.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}Archives}{12}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.2}Archives}{11}{subsection.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3}Documents}{13}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.3}Documents}{12}{subsection.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4}Statistics}{14}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.4}Statistics}{13}{subsection.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}The Applications of MathHub}{14}{section.6}
+\contentsline {section}{\numberline {6}The Applications of MathHub}{13}{section.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1}Glossary}{14}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.1}Glossary}{13}{subsection.6.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2}Math Dictionary}{15}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.2}Math Dictionary}{14}{subsection.6.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}Conclusion}{15}{section.7}
+\contentsline {section}{\numberline {7}Conclusion}{14}{section.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}Future Work}{15}{section.8}
+\contentsline {section}{\numberline {8}Future Work}{14}{section.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.1}TGView}{16}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.1}TGView}{15}{subsection.8.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.2}MathWebSearch}{16}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.2}MathWebSearch}{15}{subsection.8.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.3}Subset Frontends}{16}{subsection.8.3}
+\contentsline {subsection}{\numberline {8.3}Subset Frontends}{15}{subsection.8.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.4}Issue report: MathHub and content}{16}{subsection.8.4}
+\contentsline {subsection}{\numberline {8.4}Issue report: MathHub.info and content}{15}{subsection.8.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {8.5}Jupyter Integration}{16}{subsection.8.5}
