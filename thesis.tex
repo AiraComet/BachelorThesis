@@ -26,21 +26,30 @@ Abstract will be added at the end
 \end{titlepage}
 
 \tableofcontents
+\pagebreak
 \section{Introduction}
-\subsection{Math Information Systems}
-\ednote{why are those special and different}
-\ednote{System to impart mathematical knowledge to people}
-\begin{itemize}
-\item Zentral Blatt Math
-\item mlfdb
-\item Wolfram alpha
-\item isu-afp.org
-\item mathoverflow: Q{\&}A site for mathematicians to discuss unsolved math problems
-\item Wikidata: central storage for Wikimedia
-\item Wikipedia: part of Wikimedia
-\item what can they do? what is their goal? what can we do different/better?
-\end{itemize}
-\subsection{MathHub}
+For many years, the internet has been a crucial part of mathematical education and research.
+With time people created more and more websites with a common goal: spreading mathematical knowledge.
+Every one of these sites has its own unique approach of imparting this complex subject.
+For example \textbf{Wolfram$|$Alpha} \cite{wolfram} is one of the most popular tools today.
+It has a large and still growing database of algorithms and methods to compute and represent the result of countless mathematical problems.
+Furthermore, the \textbf{Stack Exchange Network} has two very active Q$\&$A websites where mathematicians try to help each other.
+While \textbf{Math.stackexchange} has its focus set on education, the community of \textbf{MathOverflow} deals with more advanced questions that come up during research.
+Even the universally known encyclopedia \textbf{Wikipedia} plays an important rule, since its often the first place people look up formulas, algorithms etc.. 
+\ednote{more: Zentral Blatt Math; mlfdb; isu-afp.org; Wikidata}
+
+cicm14 here 
+
+\vspace{2cm} \noindent
+This thesis describes the individual parts of building the new MathHub.info.
+It starts with a description of the MathHub system and its previous realization in section \ref{mathhub}.
+Then section \ref{SoA} presents some frameworks that can be used to create a frontend.
+Following up on this, section \ref{react} and \ref{components} takes a closer look at React while \ref{mmt} gives a short introduction to the content of MathHub.
+In section \ref{architecture} the inner workings of the frontend are discussed.
+Afterwards in section \ref{library} and \ref{apps} the design of the individual pages are discussed.
+At the end of this thesis the conclusion can be found in section \ref{conclusion} and some plans for the future in section \ref{future}.
+
+\section{MathHub} \label{mathhub}
 \subsection{Previous Implementation}
 Up until April 2018 the MathHub frontend was realized with Drupal.
 Drupal is an open source content-management framework used by millions of different websites.
@@ -58,14 +67,6 @@ The National Institute of Standards (NIST) and Technology gave Drupal a "Highly 
  After this flaw was discovered a patch was published and a warning to update every website that used a vulnerable version was given.
 	
 Since there have been multiple flaws in Drupal before that compromised MathHub.info, the decision to stop using it and rebuild MathHub.info from the ground up to not be affected by future attacks, was made. \ednote{This is too much detail. Shorten this}
-
-\vspace{4cm} \noindent
-This thesis describes the individual parts of building the new MathHub.info.
-It starts with some frameworks that can be used to create a frontend in section \ref{SoA}.
-Following up on this, section \ref{react} and \ref{components} takes a closer look at React while \ref{mmt} gives a short introduction to the content of MathHub.
-Then section \ref{architecture} is about the inner workings of the frontend.
-Afterwards in section \ref{library} and \ref{apps} the design of the individual pages are discussed.
-At the end of this thesis the conclusion can be found in section \ref{conclusion} and some plans for the future in section \ref{future}.
 
 \section{State of the art - Building an interactive Frontend} \label{SoA}
 Before starting to build a completely new MathHub frontend a new web framework had to be chosen.

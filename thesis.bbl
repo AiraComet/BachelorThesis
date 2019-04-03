@@ -440,5 +440,26 @@
     \verb https://en.wikipedia.org/wiki/Vue.js
     \endverb
   \endentry
+
+  \entry{wolfram}{online}{}
+    \name{author}{1}{}{%
+      {{hash=W}{%
+         family={WolframAlpha},
+         familyi={W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{W2}
+    \strng{fullhash}{W2}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Wol}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \field{title}{About Wolfram|Alpha Making the world’s knowledge
+  computable}
+    \verb{url}
+    \verb https://www.wolframalpha.com/about/
+    \endverb
+  \endentry
 \enddatalist
 \endinput
