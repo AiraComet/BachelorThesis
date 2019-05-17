@@ -28,35 +28,40 @@ Abstract will be added at the end
 \tableofcontents
 \pagebreak
 \section{Introduction}
-For many years, the internet has been a crucial part of mathematical education and research.
+Think of a story and a research question. Something like "Finding a suitable interface for a formal and informal mathematical information system" or "Building an easy to ues user interface for ...". Say why wikipedia and co aren't the right answer. Is react suited for this?
+
+For many years, the internet has been a crucial part of mathematical education, research and application. 
 With time people created more and more websites with a common goal: spreading mathematical knowledge.
 Every one of these sites has its own unique approach of imparting this complex subject.
 For example \textbf{Wolfram$|$Alpha} \cite{wolfram} is one of the most popular tools today.
 It has a large and still growing database of algorithms and methods to compute and represent the result of countless mathematical problems.
 Furthermore, the \textbf{Stack Exchange Network} has two very active Q$\&$A websites where mathematicians try to help each other.
 While \textbf{Math.stackexchange} has its focus set on education, the community of \textbf{MathOverflow} deals with more advanced questions that come up during research.
-Even the universally known encyclopedia \textbf{Wikipedia} plays an important rule, since its often the first place people look up formulas, algorithms etc.. 
+Even the universally known encyclopedia \textbf{Wikipedia} plays an important role, since its often the first place people look up formulas, algorithms etc.. 
 \ednote{more: Zentral Blatt Math; mlfdb; isu-afp.org; Wikidata}
 
-cicm14 here 
-
+short mathhub intro 
 
 \vspace{2cm} \noindent
 This thesis describes the individual parts of building the new MathHub.info.
-It starts with a description of the MathHub system and its previous realization in section \ref{mathhub}.
-Then section \ref{SoA} presents some frameworks that can be used to create a frontend.
-Following up on this, section \ref{react} and \ref{components} takes a closer look at React while \ref{mmt} gives a short introduction to the content of MathHub.
+It starts with a description of the MathHub system and its previous realization in Section \ref{mathhub}.
+Then Section \ref{SoA} presents some frameworks that can be used to create a frontend.
+Following up on this, Section \ref{react} and \ref{components} take a closer look at React while \ref{mmt} gives a short introduction to the content of MathHub.
 In section \ref{architecture} the inner workings of the frontend are discussed.
 Afterwards in section \ref{library} and \ref{apps} the design of the individual pages are discussed.
-At the end of this thesis the conclusion can be found in section \ref{conclusion} and some plans for the future in section \ref{future}.
+Section \ref{conclusion} concludes this thesis, while Section \ref{future} takes a loos at some plans for the future.
 
 \section{MathHub} \label{mathhub}
 \subsection{Previous Implementation}
-Up until April 2018 the MathHub frontend was realized with Drupal.
+Up until April 2018 the MathHub frontend was realized with Drupal\cite{comp}, while user interactions were handled by the JavaScript modules in the JOBAD framework.
 Drupal is an open source content-management framework used by millions of different websites.
-User interactions were handled by JavaScript modules in the JOBAD framework \cite{comp}.
-	
-But in April 2018 a critical security flaw in the versions 6 to 8 went public.
+One of Drupals features is that it has the ability to control the rights a user owns.
+Initially it sounded like a good idea to have the rights-management handled directly by the frontend.
+But with time it showed that it is easier to move that part to GitLab.
+So Mathhub.info still had to deal with the huge overhead that is necessary to use Drupal without benefiting from its features.
+This created a lot of unnecessary and tedious extra work.	
+
+Additionally a critical security flaw in the versions 6 to 8 went public in April 2018.
 The problem was that Drupal in these versions accepts request parameters without any validation.
 This means it processes any input from anybody \cite{zdnet}.
 To exploit this weakness an attacker doesn't even need to log in or have any other privileges on a vulnerable website \cite{register}.
@@ -67,7 +72,7 @@ Some code that was injected installed the program XMRig Monero miner, which is a
 The National Institute of Standards (NIST) and Technology gave Drupal a "Highly Critical" Rating because of this vulnerability \cite{nist}.
  After this flaw was discovered a patch was published and a warning to update every website that used a vulnerable version was given.
 	
-Since there have been multiple flaws in Drupal before that compromised MathHub.info, the decision to stop using it and rebuild MathHub.info from the ground up to not be affected by future attacks, was made. \ednote{This is too much detail. Shorten this}
+Since there have been multiple flaws in Drupal before that compromised MathHub.info, the decision to stop using it and rebuild the frontend from ground up with a lighter and easier to use framework to not be affected by future attacks, was made.
 
 \section{State of the art - Building an interactive Frontend} \label{SoA}
 Before starting to build a completely new MathHub frontend a new web framework had to be chosen.
@@ -78,26 +83,26 @@ This makes Polymer remarkably fast on Chrome and Safari.
 It also provides a set of features that makes it easy to create custom elements, that work like standard web components.
 It is used for several Google services for example Youtube, Google Earth, Google Play Music etc. as well as Netflix, Electronic Arts and many other companies. 
 
-Another open source web framework from Google is \textbf{Angular}. \cite{angular}
+Another open source web framework from Google is \textbf{Angular}\cite{angular}.
 This TypeScript library has framework architectures that simplifies the development of new web applications.
 Angular transfers all content of a website at once and leaves the task of building the page to the browser.
 This significantly speeds up the loading process and search optimization while keeping the communication with the server at a minimum. 
-It also has Angular Material.
-A collection of UI components that work in browsers, on mobile and desktop.
+It also has Angular Material, a collection of UI components that work in browsers, on mobile and desktop.
 
-After using Angular on several Google projects, Evan You decided to create his own JavaScript framework called \textbf{Vue.js} \cite{vuewiki}
+After using Angular on several Google projects, Evan You decided to create his own JavaScript framework called \textbf{Vue.js} \cite{vuewiki}.
 Depending on the project it can be scaled between a framework and a library.
 Vue.js separates its view layer library from its support libraries for complex applications, to create an easy approach to the framework.
 It also automatically keeps track of the dependencies between components.
-So the system knows what exactly has to be rerendered when the page changed.\cite{vuegit}
+So the system knows what exactly has to be rerendered when the page changed\cite{vuegit}.
 
 In the end the decision was made to use \textbf{React} developed by Facebook.
 React is a component based framework that uses a virtual DOM to avoid unnecessary rerendering.
-It was chosen because the focus on reusable components makes it perfect for a large and still growing system like MathHub.\ednote{@Tom: Is this why we chose it???}
+It was chosen because the focus on reusable components makes it perfect for a large and still growing system like MathHub.
 Further details about React and how it is used can be found in section \ref{preliminaries}.
 
 
 \section{Preliminaries} \label{preliminaries}
+MathHub first then MMT as a component
 \subsection{The core concept of React} \label{react}
 React is an open source JavaScript library owned and maintained by Facebook.
 It was created to build interactive user interfaces (UI), for example Facebook and Instagram.
@@ -107,8 +112,8 @@ React computes the differences between the last and the next page and only chang
 On top of that it also has conditional rendering which means that an item will only be rendered if it is shown.
 The advantage of the virtual DOM and conditional rendering is that this makes updating a website fast, but it comes with high RAM costs.
 The actual interface is made up of many different elements and components.
-A website that uses React can have multiple unique features so it is helpful to build new components to realize these features.\cite{reactjs}
-Further detail are discussed in section \ref{components}.
+A website that uses React can have multiple unique features so it is helpful to build new components to realize these features\cite{reactjs}.
+Further detail are discussed in Section \ref{components}.
 
 Since React was designed by Facebook, there was a need for a design pattern that handles a large code base better than MVC (Model View Controller).
 That is why Flux was created.
@@ -165,7 +170,8 @@ This design comes with the advantage that the small components can be reused in 
 \caption{A React component tree}
 \label{fig:tree}
 \end{figure}
-                            
+\ednote{Is this figure necessary? Maybe exchange it with an example}
+
 Since props are read-only, updating the internal state of a component can only affect its children.
 If it is necessary to change something in a component on a higher level in the tree, it is possible to "lift up" the state.
 This means adding the change to the state of the higher node. 
@@ -199,7 +205,7 @@ As shown in figure \ref{fig:lift}, this can be done by lifting up the state to a
 \end{figure}
 
 \subsection{MMT and OMDoc} \label{mmt}
-The abbreviation MMT is short for either \underline{m}eta-\underline{m}eta-\underline{t}heory or \underline{m}eta-\underline{m}eta-\underline{t}ool.
+The abbreviation MMT is short for either \underline{M}eta-\underline{M}eta-\underline{T}heory or \underline{M}eta-\underline{M}eta-\underline{T}ool.
 Whereby meta-meta-theory represents the theoretical and meta-meta-tool the practical part of MMT.
 It is a knowledge representation framework that uses a combination of formal and informal languages to create a scalable module system for mathematical theories.
 That means that in MMT the features of the syntax and the semantics of a language are defined as individual, reusable modules.
@@ -489,19 +495,23 @@ By selecting the same language for "from" and "to" the Math Dictionary can also 
  \ednote{re-iterate everything}
 \section{Future Work} \label{future}
 Obviously the work on a project like MathHub.info is never completely finished.
-There are still many features left that would be a great addition to the frontend to improve the practicality and the overall user experience. \ednote{sounds to trivial?}
 The biggest expansions that will be added to MathHub.info in the near future are TGView and MathWebSearch.
 
 \subsection{TGView} 
 TGView is a graph viewer with the task to visualize the relations between multiple theories to give a better overview over a system like MathHub.
 The distinctive feature of TGView is that its backend sends all necessary data at once so every interaction can be handled by the frontend.
 That means that its graphical interface is build on the client side to avoid sending a server request every time the user interacts with the interface, eg move or hide nodes.
-Otherwise it would be required to refresh the page on every single change to the graph. 	\cite{tgview}
+Otherwise it would be required to refresh the page on every single change to the graph\cite{tgview}.
  
 Even though the old MathHub frontend did have static graphs to show the relations between theories, it never integrated TGView.
  
 \subsection{MathWebSearch}
-Explanation needed!
+Since MMT is a combination of formal and informal languages there is a need for a special search engine that can deal with this library.
+The search engine that will be used within MathHub.info is called MathWebSearch\cite{HamKoh:fsfm15}.
+It is able to search documents that have formulae of a certain shape.
+For example searching the formula "?x+1" would return documents with formulae like "1+1", "x+1" etc. with that shape.
+For Mathhub.info a combination of MathWebSearch and normal text search is needed.
+This combination is called Themasearch and the goal is to make it possible to use it via the User Interface.
 
 \subsection{Subset Frontends}
 Currently MathHub.info is a place to showcase every MMT group.
