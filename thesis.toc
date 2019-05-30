@@ -16,17 +16,17 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.3}MMT and OMDoc}{6}{subsection.4.3}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}The Architecture of MathHub}{8}{section.5}% 
+\contentsline {section}{\numberline {5}The Architecture of MathHub}{7}{section.5}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}MathHub.info Routes}{8}{subsection.5.1}% 
+\contentsline {subsection}{\numberline {5.1}MathHub.info Routes}{7}{subsection.5.1}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}Layout}{9}{subsection.5.2}% 
+\contentsline {subsection}{\numberline {5.2}Layout}{8}{subsection.5.2}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3}Realization}{10}{subsection.5.3}% 
+\contentsline {subsection}{\numberline {5.3}Realization}{9}{subsection.5.3}% 
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {5.4}Communication with the Backend}{10}{subsection.5.4}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}MathHub Library Components}{11}{section.6}% 
+\contentsline {section}{\numberline {6}MathHub Library Components}{10}{section.6}% 
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {6.1}Groups}{11}{subsection.6.1}% 
 \defcounter {refsection}{0}\relax 

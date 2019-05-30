@@ -204,6 +204,28 @@
     \endverb
   \endentry
 
+  \entry{MathHub}{online}{}
+    \name{author}{1}{}{%
+      {{hash=KM}{%
+         family={Kohlhase},
+         familyi={K\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KM1}
+    \strng{fullhash}{KM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Koh}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{title}{MathHub Documentation}
+    \verb{url}
+    \verb https://github.com/MathHubInfo/Documentation/wiki
+    \endverb
+  \endentry
+
   \entry{hacker}{article}{}
     \name{author}{1}{}{%
       {{hash=KM}{%
@@ -213,8 +235,8 @@
          giveni={M\bibinitperiod},
       }}%
     }
-    \strng{namehash}{KM1}
-    \strng{fullhash}{KM1}
+    \strng{namehash}{KM2}
+    \strng{fullhash}{KM2}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
     \field{labelalpha}{Kum18}
