@@ -39,7 +39,7 @@ Even the universally known encyclopedia \textbf{Wikipedia} plays an important ro
 \ednote{more: Zentral Blatt Math; mlfdb; isu-afp.org; Wikidata}
 
 Wikipedia and Stack Exchange have an informal approach in representing knowledge while Wolfram$|$Alpha lays its focus on formal math.
-But none of those are really suited for mathematical documents that combine formal and informal into one.
+But none of those are really suited for mathematical documents that combine formal and informal knowledge.
 \textbf{MathHub}\cite{MathHub} was created to collect documents with varying degrees of formality.
 To make MathHub a valuable contribution to mathematics it needs an User Interface called MathHub.info.
 So this thesis describes the individual parts of building an easy and intuitive to use UI that can handle the different levels of formality while being able to adept to changes in the MathHub library.
@@ -49,9 +49,12 @@ Then Section \ref{SoA} presents some frameworks that can be used to create a fro
 Following up on this, Section \ref{react} and \ref{components} take a closer look at React while \ref{mmt} gives a short introduction to the content of MathHub.
 In section \ref{architecture} the inner workings of the frontend are discussed.
 Afterwards in section \ref{library} and \ref{apps} the design of the individual pages are discussed.
-Section \ref{conclusion} concludes this thesis, while Section \ref{future} takes a loos at some plans for the future.
+Section \ref{conclusion} concludes this thesis, while Section \ref{future} takes a look at some plans for the future.
 
 \section{MathHub} \label{mathhub}
+Show the old graphic here and explain it. Shorten the version of the phd thesis.
+Maybe put the MMT section here?
+Then later on (after the preliminaries) show the updated graphic from section 5.3 and explain the differences and similarities.
 \subsection{Previous Implementation}
 Up until April 2018 the MathHub frontend was realized with Drupal\cite{comp}, while user interactions were handled by the JavaScript modules in the JOBAD framework.
 Drupal is an open source content-management framework used by millions of different websites.
@@ -212,7 +215,7 @@ That means that in MMT the features of the syntax and the semantics of a languag
 This way of building individual languages leads to a high degree of abstraction of advanced algorithms.\cite{mmtsys}
 
 MMT builds on the OMDoc representation, which is a philosophy about the design of an uniform language for knowledge.
-More specifically MMT uses an XML fomat which follows this philosophy.
+More specifically MMT uses an XML format which follows this philosophy.
 
 \begin{figure}[H]
 \begin{tikzpicture}[xscale=\myxscale, yscale=\myyscale]
@@ -513,7 +516,7 @@ For example searching the formula "?x+1" would return documents with formulae li
 For Mathhub.info a combination of MathWebSearch and normal text search is needed.
 This combination is called Themasearch and the goal is to make it possible to use it via the User Interface.
 
-\subsection{Subset Frontends}
+\subsection{Subset Frontend}
 Currently MathHub.info is a place to showcase every MMT group.
 But some of these groups could benefit from specialized additional features or a slightly different structure.
 So it makes sense to create subset frontends based on MathHub.info.
