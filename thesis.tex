@@ -6,7 +6,7 @@
 \usepackage[style=alphabetic, backend=bibtex]{biblatex}
 \usepackage{graphicx}
 
-\title{Building MathHub using React\\ \vspace{2 mm} Bachelor Thesis}
+\title{Creating an active Interface for MathHub.info\\ \vspace{2 mm} Bachelor Thesis}
 \author{Johannes-Sebastian See\\Supervisor: Michael Kohlhase\\Co-supervisor: Tom Wiesing\\Friedrich-Alexander University, Erlangen Nürnberg, Germany}
 
 \date{\today}
@@ -51,19 +51,106 @@ In section \ref{architecture} the inner workings of the frontend are discussed.
 Afterwards in section \ref{library} and \ref{apps} the design of the individual pages are discussed.
 Section \ref{conclusion} concludes this thesis, while Section \ref{future} takes a look at some plans for the future.
 
+\section{Preliminaries - MMT and OMDoc} \label{preliminaries}
+The abbreviation MMT is short for either \underline{M}eta-\underline{M}eta-\underline{T}heory or \underline{M}eta-\underline{M}eta-\underline{T}ool.
+Whereby meta-meta-theory represents the theoretical and meta-meta-tool the practical part of MMT.
+It is a knowledge representation framework that uses a combination of formal and informal languages to create a scalable module system for mathematical theories.
+That means that in MMT the features of the syntax and the semantics of a language are defined as individual, reusable modules.
+This way of building individual languages leads to a high degree of abstraction of advanced algorithms.\cite{mmtsys}
+
+MMT builds on the OMDoc representation, which is a philosophy about the design of an uniform language for knowledge.
+More specifically MMT uses an XML format which follows this philosophy.
+
+\begin{figure}[H]
+\begin{tikzpicture}[xscale=\myxscale, yscale=\myyscale]
+  \tikzstyle{component} = [rectangle, draw, fill=orange!20, text width=2cm, text centered,
+                                    rounded corners, minimum height=.8cm,shade, 
+                                    top color=white, bottom color=orange!40]
+  \tikzstyle{back} = [rectangle, draw, fill=gray!10, text width=2cm,
+                                    rounded corners, minimum height=4.3cm]
+\node[back, text width = 5.5cm,  label ={[shift={(0ex,-4ex)}]north:Narration}] (nar) {};
+\node[back, right of =nar, xshift=3.5cm, text width = 2.9cm,  label ={[shift={(0ex,-4ex)}]north:Modules}] (mod) {};
+\node[back, right of =mod, xshift=2.2cm, text width = 2.9cm,  label ={[shift={(0ex,-4ex)}]north:Declarations}] (dec) {};
+\node[component, left of =nar, xshift=-0.5cm, yshift=-0.2cm] (groups) {Groups};
+\node[component, right of =groups, xshift=2cm] (archives) {Archives};
+\node[component, right of =archives, xshift=2cm, yshift=-1cm] (theo) {Theories};
+\node[component, right of =archives, xshift=2cm, yshift=1cm] (views) {Views};
+\node[component, right of=theo, xshift=2cm, yshift=2cm] (con) {Constants};
+\node[component, right of=theo, xshift=2cm] (rul) {Rules};
+\draw[->, thick] (groups) -- node[above]{} (archives);
+\draw[->,thick] (archives) -- node[above]{} (theo);
+\draw[->,thick] (archives) -- node[above]{} (views);
+\draw[->,thick] (theo) -- node[above]{} (rul);
+\draw[->,thick] (theo) -- node[above]{} (con);
+\draw[->,dotted] (views) -- node[above]{} (theo);
+\end{tikzpicture}
+\caption{The MMT structure}
+\label{fig:mmt}
+\end{figure}
+
+
+To create a frontend that displays MMT it is important to get familiar with its structure, that can be seen in figure \ref{fig:mmt}.
+First up on the highest level are the individual groups.
+Each group contains several archives.
+An archive can be described as a collection of documents that typically are equivalent to a software project.
+So it provides a work flow for a language in MMT.
+Groups and archives only exist for navigation and narration purposes.
+The modules that can be found in an archive, make up the actual content.
+These are either a theory or a view that shows the relation between different theories.
+A theory is defined by its rules and constants, the so called declarations.
+\cite{mmt}
+
 \section{MathHub} \label{mathhub}
-Show the old graphic here and explain it. Shorten the version of the phd thesis.
-Maybe put the MMT section here?
-Then later on (after the preliminaries) show the updated graphic from section 5.3 and explain the differences and similarities.
-\subsection{Previous Implementation}
-Up until April 2018 the MathHub frontend was realized with Drupal\cite{comp}, while user interactions were handled by the JavaScript modules in the JOBAD framework.
-Drupal is an open source content-management framework used by millions of different websites.
-One of Drupals features is that it has the ability to control the rights a user owns.
-Initially it sounded like a good idea to have the rights-management handled directly by the frontend.
-But with time it showed that it is easier to move that part to GitLab.
+A few sentences on what Mathhub actually is.
+\subsection{Previous Implementation} \label{previous}
+Before figuring out how to create a new frontend, it is advantageous to understand the previous realization of MathHub which can be seen in Figure \ref{fig:old_architecture}.
+The source documents were stored, edited and converted on the GitLab repository manager.
+There the documents are organized into their proper repositories and converted from their source formats into OMDoc/MMT.
+These documents could be edited by their authors in a working copy of the GIT repository.
+From there the MMT API could load the documents and send them to the frontend.
+The frontend itself was implemented with Drupal\cite{comp}, while user interactions were handled by the JavaScript modules in the JOBAD framework.
+Drupal is an open source content-management framework that also supplies uniform theming and is currently used by millions of different websites.
+The reason Drupal was used for the User Interface up until April 2018 was that it has an integrated rights-management.
+
+\begin{figure}[H]
+  \begin{tikzpicture}[xscale=\myxscale,yscale=\myyscale]
+    \tikzstyle{system} = [rectangle, draw, fill=orange!20, text width=1cm, text centered,
+                                      rounded corners, minimum height=.8cm,shade, 
+                                      top color=white, bottom color=orange!20]
+     \tikzstyle{database} = [rectangle, draw, fill=blue!20, text width=1.3cm, text centered,
+                                      rounded corners, minimum height=.8cm,shade, 
+                                      top color=white, bottom color=blue!20] 
+  \node[inner sep=0pt] (user) at (0,0){\includegraphics[width=.1\textwidth]{user.png}};
+  \node[system,right of =user,text width=1.7cm, xshift=2.7cm] (browser) {Browser}; 
+  \node[system,right of= browser,text width=1.7cm, xshift=2.6cm] (drupal) {Drupal};
+  \node[system,above right of =drupal, xshift = 2.8cm] (mmt) {MMT};
+  \node[system,below right of =drupal, xshift = 2.8cm, text width=1.2cm] (gl) {GitLab};
+  \node[database,below left of =gl, yshift = -0.6cm, xshift = -3cm] (lib) {library};
+  \node[inner sep=0pt, below right of =gl, yshift = -0.6cm, xshift = 1.6cm] (author) {\includegraphics[width=.1\textwidth]{author.jpg}}; 
+  \node[below right of =mmt, yshift =0.7cm,  xshift = 1.6cm] (conv) {\begin{tabular}{l}\footnotesize convert to\\ OMDoc\\/MMT\end{tabular}};
+  \node[above of=browser, yshift=0.25cm] (jobad){JOBAD};
+  \draw[<-,thick] (mmt) -- node[left]{load} (gl);
+  \draw[<->,dotted] (user) -- node[above]{read} node[below]{interact} (browser);
+  \draw[<->,thick] (browser) -- node[above]{REST} (drupal);
+  \draw[->,thick] (gl) to[loop left,out=20,in=45,looseness=11] (gl); 
+  \draw[<->,dashed] (conv) -- (mmt);
+  \draw[<->, dotted] (jobad) -- (mmt);
+  \draw[<-,thick] (drupal) -- node[above]{present}(mmt); 
+  \draw[->,thick] (drupal) -- node[above]{edit}(gl); 
+  \draw[->,dotted] (author) -- node[above]{local} node[below]{edit} (gl);
+  \draw[->,dotted] (lib) -- node[below]{import} (gl);
+  \draw[->,thick] (browser) to [loop above] ();
+  \end{tikzpicture}
+  \caption{old MathHub architecture}
+  \label{fig:old_architecture}
+  \end{figure}
+
+Initially it sounded like a good idea to have rights handled directly by the frontend.
+But with time it showed that it is easier to use the rights-manager provided by GitLab.
 So Mathhub.info still had to deal with the huge overhead that is necessary to use Drupal without benefiting from its features.
 This created a lot of unnecessary and tedious extra work.	
 
+\subsection{Security Issues} \label{security}
 Additionally a critical security flaw in the versions 6 to 8 went public in April 2018.
 The problem was that Drupal in these versions accepts request parameters without any validation.
 This means it processes any input from anybody \cite{zdnet}.
@@ -78,7 +165,8 @@ The National Institute of Standards (NIST) and Technology gave Drupal a "Highly 
 Since there have been multiple flaws in Drupal before that compromised MathHub.info, the decision to stop using it and rebuild the frontend from ground up with a lighter and easier to use framework to not be affected by future attacks, was made.
 
 \section{State of the art - Building an interactive Frontend} \label{SoA}
-Before starting to build a completely new MathHub frontend a new web framework had to be chosen.
+Before starting to rebuild MathHub.info a new web framework has to be chosen.
+Lets take a look at some options.
 
 \textbf{Polymer} \cite{polymer} is an open source JavaScript library developed and maintained by Google.
 It uses the native technologies of a browser instead of large custom JavaScript libraries.
@@ -100,12 +188,11 @@ So the system knows what exactly has to be rerendered when the page changed\cite
 
 In the end the decision was made to use \textbf{React} developed by Facebook.
 React is a component based framework that uses a virtual DOM to avoid unnecessary rerendering.
-It was chosen because the focus on reusable components makes it perfect for a large and still growing system like MathHub.
-Further details about React and how it is used can be found in section \ref{preliminaries}.
+It was chosen because the focus on reusable components makes it perfect for a large and still growing system like MathHub. \ednote{Make reference to the question from the intro}
+Further details about React and how it is used can be found in section \ref{react}.
 
 
-\section{Preliminaries} \label{preliminaries}
-MathHub first then MMT as a component
+\section{React}
 \subsection{The core concept of React} \label{react}
 React is an open source JavaScript library owned and maintained by Facebook.
 It was created to build interactive user interfaces (UI), for example Facebook and Instagram.
@@ -116,7 +203,7 @@ On top of that it also has conditional rendering which means that an item will o
 The advantage of the virtual DOM and conditional rendering is that this makes updating a website fast, but it comes with high RAM costs.
 The actual interface is made up of many different elements and components.
 A website that uses React can have multiple unique features so it is helpful to build new components to realize these features\cite{reactjs}.
-Further detail are discussed in Section \ref{components}.
+Further details on how to create components are discussed in Section \ref{components}.
 
 Since React was designed by Facebook, there was a need for a design pattern that handles a large code base better than MVC (Model View Controller).
 That is why Flux was created.
@@ -125,7 +212,7 @@ The philosophy of the Flux design is that data flows only in one direction to cr
 React does not have a styling system so its community created the Semantic UI React library to provide an easy way to maintain a consistent theme throughout the frontend.
 Of course it is still possible to use a different library or create new styling components but MathHub.info mostly uses Semantic UI React.
 
-\subsection{Building new components in React} \label{components}
+\subsection{Building new components in React} \label{components} \ednote{Explain why this section exist - huge part of the actual work done but not too import to understand the rest of the paper. Reference the scalability}
 The actual interface that can be seen in a browser is the combination of many individual components.
 This way, on an update, the virtual DOM can check each component for differences, so only the affected ones have to be rendered again.
 
@@ -207,145 +294,18 @@ As shown in figure \ref{fig:lift}, this can be done by lifting up the state to a
 \label{fig:lift}
 \end{figure}
 
-\subsection{MMT and OMDoc} \label{mmt}
-The abbreviation MMT is short for either \underline{M}eta-\underline{M}eta-\underline{T}heory or \underline{M}eta-\underline{M}eta-\underline{T}ool.
-Whereby meta-meta-theory represents the theoretical and meta-meta-tool the practical part of MMT.
-It is a knowledge representation framework that uses a combination of formal and informal languages to create a scalable module system for mathematical theories.
-That means that in MMT the features of the syntax and the semantics of a language are defined as individual, reusable modules.
-This way of building individual languages leads to a high degree of abstraction of advanced algorithms.\cite{mmtsys}
-
-MMT builds on the OMDoc representation, which is a philosophy about the design of an uniform language for knowledge.
-More specifically MMT uses an XML format which follows this philosophy.
-
-\begin{figure}[H]
-\begin{tikzpicture}[xscale=\myxscale, yscale=\myyscale]
-  \tikzstyle{component} = [rectangle, draw, fill=orange!20, text width=2cm, text centered,
-                                    rounded corners, minimum height=.8cm,shade, 
-                                    top color=white, bottom color=orange!40]
-  \tikzstyle{back} = [rectangle, draw, fill=gray!10, text width=2cm,
-                                    rounded corners, minimum height=4.3cm]
-\node[back, text width = 5.5cm,  label ={[shift={(0ex,-4ex)}]north:Narration}] (nar) {};
-\node[back, right of =nar, xshift=3.5cm, text width = 2.9cm,  label ={[shift={(0ex,-4ex)}]north:Modules}] (mod) {};
-\node[back, right of =mod, xshift=2.2cm, text width = 2.9cm,  label ={[shift={(0ex,-4ex)}]north:Declarations}] (dec) {};
-\node[component, left of =nar, xshift=-0.5cm, yshift=-0.2cm] (groups) {Groups};
-\node[component, right of =groups, xshift=2cm] (archives) {Archives};
-\node[component, right of =archives, xshift=2cm, yshift=-1cm] (theo) {Theories};
-\node[component, right of =archives, xshift=2cm, yshift=1cm] (views) {Views};
-\node[component, right of=theo, xshift=2cm, yshift=2cm] (con) {Constants};
-\node[component, right of=theo, xshift=2cm] (rul) {Rules};
-\draw[->, thick] (groups) -- node[above]{} (archives);
-\draw[->,thick] (archives) -- node[above]{} (theo);
-\draw[->,thick] (archives) -- node[above]{} (views);
-\draw[->,thick] (theo) -- node[above]{} (rul);
-\draw[->,thick] (theo) -- node[above]{} (con);
-\draw[->,dotted] (views) -- node[above]{} (theo);
-\end{tikzpicture}
-\caption{The MMT structure}
-\label{fig:mmt}
-\end{figure}
-
-
-To create a frontend that displays MMT it is important to understand its structure, that can be seen in figure \ref{fig:mmt}.
-First up on the highest level are the individual groups.
-Each group contains several archives.
-An archive can be described as a collection of documents that typically are equivalent to a software project.
-So it provides a work flow for a language in MMT.
-Groups and archives only exist for navigation and narration purposes.
-The modules that can be found in an archive, make up the actual content.
-These are either a theory or a view that shows the relation between different theories.
-A theory is defined by its rules and constants, the so called declarations.
-\cite{mmt}
  
 \section{The Architecture of MathHub} \label{architecture}
-
-\subsection{MathHub.info Routes}
-\begin{figure}[H]
-\begin{tikzpicture}[xscale=\myxscale, yscale=\myyscale]
-  \tikzstyle{component} = [rectangle, draw, fill=orange!20, text width=2cm, text centered,
-                                    rounded corners, minimum height=.8cm,shade, 
-                                    top color=white, bottom color=orange!40]
-                                   
-\node[component, text width=2.3cm] (MH) {MathHub.info};
-\node[component, below of =MH, xshift=-1.2cm, yshift=-0.7cm] (lib) {Library};
-\node[component, below of =lib, yshift=-0.7cm] (groups) {Groups};
-\node[component, below of =groups, yshift=-0.7cm] (archives) {Archives};
-\node[component, below of =archives, text width=5cm, text height=1.8cm, yshift=-1.3cm, label ={[shift={(0ex,-4ex)}]north:Modules}] (mod) {};
-\node[component, below left of =mod, xshift=-0.5cm, yshift=0.5cm] (theo) {Theories};
-\node[component, below right of =mod, text width=1.5cm, xshift=0.5cm, yshift=0.5cm] (views) {Views};
-\node[component, below of=mod, yshift=-1.2cm] (decl) {Declarations};
-\node[component, below left of =MH, xshift = -4.3cm, yshift=-0.7cm, text width=2.1cm] (apps) {Applications};
-\node[component, below left of =apps, xshift=-0.5cm, yshift=-0.7cm] (glos) {Glossary};
-\node[component, below right of =apps, xshift=0.5cm, yshift=-0.7cm] (dict) {Math Dictionary};
-\node[component, below of=MH, xshift=1.6cm, yshift=-2.4cm] (news) {News};
-\node[component, below of=MH, xshift=2.8cm, yshift=-1.4cm] (log) {Log};
-\node[component, below right of=MH, xshift=3.7cm, yshift=-0.7cm] (legal) {Legal};
-\draw[->,dotted] (MH) -- node[above]{} (lib);
-\draw[->,dotted] (MH) -- node[above]{} (apps);
-\draw[->,dotted] (MH) -- node[above]{} (news);
-\draw[->,dotted] (MH) -- node[above]{} (log);
-\draw[->,dotted] (MH) -- node[above]{} (legal);
-\draw[->,thick] (lib) -- node[above]{} (groups);
-\draw[->, thick] (groups) -- node[above]{} (archives);
-\draw[->,thick] (archives) -- node[above]{} (mod);
-\draw [->,thick] (mod) -- node[above]{} (decl);
-\draw[->,thick] (apps) -- node[above]{} (glos);
-\draw[->,thick] (apps) -- node[above]{} (dict);
-\end{tikzpicture}
-\caption{MathHub routes}
-\label{fig:routes}
-\end{figure}
-
-
-To create a logical navigation system MathHub.info uses routes to divide its content into numerous pages, that can be accessed from the Homepage.
-The structure of these routes can be seen in figure \ref{fig:routes}.
-
-First of is the main content of MathHub, the MMT library.
-It starts with the different groups.
-The next page displays the archives that belong to a specific group.
-Groups and archives exist only for narration and navigation purposes.
-So they don't have any actual content only meta information like names and descriptions.
-The actual content can be found in documents.
-These document consist of multiple modules (i.e. theories and views) as well as opaque elements that give the user additional information about the theories.
-So the archive-page has a list of all the documents in an archive.
-On the document-page the modules are displayed with all their declarations.
-
-With the huge mathematical library of theories there are a lot of technical terms.
-The glossary is a collection of these expressions.
-There wouldn't be much value in to just having a collection without any additional features.
-So the glossary also provides a definition for each term.
-Over the time many different authors have contributed to the theories, so it can happen that there are different terms that share a meaning.
-These synonyms can also be found in the glossary.
-Since many theories exist in multiple languages it makes sense to have a glossary available for every used language.
-Currently the biggest collection of terms are in the English glossary, followed by German and French.
-Smaller collections for Turkish and Romanian are also available as well as simplified and traditional Chinese.\cite{smglom}
-
-Most of the times a user does not want to browse through the gigantic glossary to just find a single term.
-This is the reason why the Math Dictionary is a useful extension of the glossary.
-The main purpose of the Math Dictionary is to translate a term into another language and look up a definition of a specific expression.
-
-There is also a page with all the latest news regarding MathHub, as well as a couple of static pages like licenses and privacy policy.
-At last there is a Log with the most recent messages from the backend.
-
-\subsection{Layout}
-Every page consists of three parts: A header, a footer and the actual content in between.
-This is illustrated with the Homepage as an example in figure \ref{fig:home}.
-
-\begin{figure}[H]
-\includegraphics[width=1\textwidth]{home2.png}
-\caption{The Homepage}
-\label{fig:home}
-\end{figure}
-
-The header is a menu with the routes to Home, the news, the glossary and the Math Dictionary as well some external links.
-Under the menu there are breadcrumbs for an easier navigation.
-In the footer the logos of the institutions that are involved in MathHub can be found.
-There also are the routes to the Log, the licenses, the imprint and the privacy policy.
-The body itself depends on the page the user is currently on.
-
 \subsection{Realization}
-\ednote{name pending}
+Now that a new framework has been chosen lets see how this changes MathHubs architecture that was introduced in section \ref{previous}.
+The library is still stored and converted into OMDoc/MMT in GitLab.
+But now the documents are loaded by a new plugin of an MMT server that provides the user with several semantic services in addition to the actual content.
+The plugins responses to the requests of the React based frontend follow the constraints set by REST (Representational State Transfer) and use the JavaScript Object Notation (JSON).
+The use of the Semantic-UI-React TypeScript library provides an universal theme throughout MathHub.info.
+This results in the new architecture displayed in Figure \ref{fig:architecture}.
+
 \begin{figure}[H]
-\begin{tikzpicture}[xscale=\myxscale,yscale=\myyscale]
+  \begin{tikzpicture}[xscale=\myxscale,yscale=\myyscale]
   \tikzstyle{system} = [rectangle, draw, fill=orange!20, text width=1cm, text centered,
                                     rounded corners, minimum height=.8cm,shade, 
                                     top color=white, bottom color=orange!20]
@@ -374,16 +334,74 @@ The body itself depends on the page the user is currently on.
 \label{fig:architecture}
 \end{figure}
 
-The React based frontend that is displayed in the browser is written in TypeScript.
-The use of Semantic UI React achieves an informal theme throughout MathHub.info.
-As shown in figure \ref{fig:architecture}, the React frontend is in constant communication with the MMT MathHub plugin of an MMT server that provides the user with the actual content as well as several semantic services.
-The plugin responses follow the constraints set by REST (Representational State Transfer) and use the JavaScript Object Notation (JSON).
+\subsection{MathHub.info Routes}
+\begin{figure}[h]
+\begin{tikzpicture}[xscale=\myxscale, yscale=\myyscale]
+  \tikzstyle{component} = [rectangle, draw, fill=orange!20, text width=2cm, text centered,
+                                    rounded corners, minimum height=.8cm,shade, 
+                                    top color=white, bottom color=orange!40]
+                                   
+\node[component, text width=2.3cm] (MH) {MathHub.info};
+\node[component, below of =MH, xshift=-1.2cm, yshift=-0.7cm] (lib) {Library};
+\node[component, below of =lib, yshift=-0.7cm] (groups) {Groups};
+\node[component, below of =groups, yshift=-0.7cm] (archives) {Archives};
+\node[component, below of =archives, text width=5.4cm, text height=4.5cm, yshift=-2.8cm, label ={[shift={(0ex,-4ex)}]north:Documents}] (doc) {};
+\node[component, below of =doc, text width=4.9cm, text height=1.8cm, yshift=1.5cm, label ={[shift={(0ex,-4ex)}]north:Modules}, bottom color=blue!30] (mod) {};
+\node[component, below left of =mod, xshift=-0.5cm, yshift=0.5cm, bottom color=black!15] (theo) {Theories};
+\node[component, below right of =mod, text width=1.5cm, xshift=0.5cm, yshift=0.5cm, bottom color=black!15] (views) {Views};
+\node[component, below of=mod, yshift=-1.2cm, text width=2.2cm, bottom color=black!15] (decl) {Declarations};
+\node[component, below left of =MH, xshift = -4.3cm, yshift=-0.7cm, text width=2.1cm] (apps) {Applications};
+\node[component, below left of =apps, xshift=-0.5cm, yshift=-0.7cm] (glos) {Glossary};
+\node[component, below right of =apps, xshift=0.5cm, yshift=-0.7cm] (dict) {Math Dictionary};
+\node[component, below of=MH, xshift=1.6cm, yshift=-2.4cm] (news) {News};
+\node[component, below of=MH, xshift=2.8cm, yshift=-1.4cm] (log) {Log};
+\node[component, below right of=MH, xshift=3.7cm, yshift=-0.7cm] (legal) {Legal};
+\draw[->,dotted] (MH) -- node[above]{} (lib);
+\draw[->,dotted] (MH) -- node[above]{} (apps);
+\draw[->,dotted] (MH) -- node[above]{} (news);
+\draw[->,dotted] (MH) -- node[above]{} (log);
+\draw[->,dotted] (MH) -- node[above]{} (legal);
+\draw[->,thick] (lib) -- node[above]{} (groups);
+\draw[->, thick] (groups) -- node[above]{} (archives);
+\draw[->,thick] (archives) -- node[above]{} (doc);
+\draw [->,thick] (mod) -- node[above]{} (decl);
+\draw[->,thick] (apps) -- node[above]{} (glos);
+\draw[->,thick] (apps) -- node[above]{} (dict);
+\end{tikzpicture}
+\caption{MathHub routes}
+\label{fig:routes}
+\end{figure}
 
 
-Whereas React is used for the presentation of the content documents, GitLab is used for their versioned storage.
-There the documents are organized into their proper repositories and converted from their source formats into OMDoc/MMT.
-These documents can be edited in a working copy of the GIT repository.
-Afterwards the author can submit the changes.
+To create a logical navigation system MathHub.info uses routes to divide its content into numerous pages, that can be accessed from the \textbf{Homepage}.
+The structure of these routes can be seen in figure \ref{fig:routes}.
+
+First of is the main content of MathHub, the \textbf{MMT library}.
+It starts with the different \textbf{groups}.
+The next page displays the \textbf{archives} that belong to a specific group.
+Groups and archives exist only for narration and navigation purposes.
+So they don't have any actual content only meta information like names and descriptions.
+The actual content can be found in \textbf{documents}.
+These document consist of multiple modules (i.e. theories and views) as well as opaque elements that give the user additional information about the theories.
+So the archive-page has a list of all the documents in an archive.
+On the document-page the modules are displayed with all their declarations.
+
+With the huge mathematical library of theories there are a lot of technical terms.
+The \textbf{glossary} is a collection of these expressions.
+There wouldn't be much value in to just having a collection without any additional features.
+So the glossary also provides a definition for each term.
+Over the time many different authors have contributed to the theories, so it can happen that there are different terms that share a meaning.
+These synonyms can also be found in the glossary.
+Since many theories exist in multiple languages it makes sense to have a glossary available for every used language.
+Currently the biggest collection of terms are in the English glossary, followed by German and French.
+Smaller collections for Turkish and Romanian are also available as well as simplified and traditional Chinese.\cite{smglom}
+
+Most of the times a user does not want to browse through the gigantic glossary to just find a single term.
+This is the reason why the \textbf{Math Dictionary} is a useful extension of the glossary.
+The main purpose of the Math Dictionary is to translate a term into another language and look up a definition of a specific expression.
+
+There is also a page with all the latest \textbf{news} regarding MathHub, as well as a couple of static pages like \textbf{licenses} and the \textbf{privacy policy}.
+At last there is a \textbf{Log} with the most recent messages from the backend.
 
 \subsection{Communication with the Backend}
 
@@ -403,6 +421,21 @@ The answers that are received from the backend use the JSON format.
 The data objects in JSON consist of attribute-value pairs and arrays.
 The frontend then uses these objects as props for React components.
 
+\subsection{Layout}
+Every page consists of three parts: A header, a footer and the actual content in between.
+This is illustrated with the Homepage as an example in figure \ref{fig:home}.
+
+\begin{figure}[H]
+\includegraphics[width=1\textwidth]{home2.png}
+\caption{The Homepage}
+\label{fig:home}
+\end{figure}
+
+The header is a menu with the routes to Home, the news, the glossary and the Math Dictionary as well some external links.
+Under the menu there are breadcrumbs for an easier navigation.
+In the footer the logos of the institutions that are involved in MathHub can be found.
+There also are the routes to the Log, the licenses, the imprint and the privacy policy.
+The body itself depends on the page the user is currently on.
 
 \section{MathHub Library Components} \label{library}
 In this section the implementation of the different components of the MathHub library is discussed.
