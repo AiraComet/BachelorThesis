@@ -38,11 +38,11 @@ While \textbf{Math.stackexchange} has its focus set on education, the community 
 Even the universally known encyclopedia \textbf{Wikipedia} plays an important role, since its often the first place people look up formulas, algorithms etc..
 \ednote{more: Zentral Blatt Math; mlfdb; isu-afp.org; Wikidata}
 
-Wikipedia and Stack Exchange have an informal approach in representing knowledge while Wolfram$|$Alpha lays its focus on formal math.
+Wikipedia and Stack Exchange have a rather informal approach in representing knowledge while Wolfram$|$Alpha lays its focus on formal math.
 But none of those are really suited for mathematical documents that combine formal and informal knowledge.
 \textbf{MathHub}\cite{MathHub} was created to collect documents with varying degrees of formality.
 To make MathHub a valuable contribution to mathematics it needs an User Interface called MathHub.info.
-So this thesis describes the individual parts of building an easy and intuitive to use UI that can handle the different levels of formality while being able to adept to changes in the MathHub library.
+So this thesis describes the individual parts of building an easy and intuitive to use UI that can handle the different levels of formality while being able to adapt to changes in the MathHub library.
 
 It starts with a description of the MathHub system and its previous realization in Section \ref{mathhub}.
 Then Section \ref{SoA} presents some frameworks that can be used to create a frontend.
@@ -101,7 +101,11 @@ A theory is defined by its rules and constants, the so called declarations.
 \cite{mmt}
 
 \section{MathHub} \label{mathhub}
-A few sentences on what Mathhub actually is.
+MathHub.info is a portal for the active mathematical documents of MMT.
+As stated before each one of these documents has a different degree of formal and informal content.
+The representation of this data, knowledge and structure with varying degrees of formality is called \textbf{flexiformal}.
+But realizing machine support for this approach of representing knowledge comes with a high formalization cost.
+So it can be quiet challenging to find the right balance between costs and machine support.
 \subsection{Previous Implementation} \label{previous}
 Before figuring out how to create a new frontend, it is advantageous to understand the previous realization of MathHub which can be seen in Figure \ref{fig:old_architecture}.
 The source documents were stored, edited and converted on the GitLab repository manager.
@@ -206,69 +210,71 @@ A website that uses React can have multiple unique features so it is helpful to 
 Further details on how to create components are discussed in Section \ref{components}.
 
 Since React was designed by Facebook, there was a need for a design pattern that handles a large code base better than MVC (Model View Controller).
-That is why Flux was created.
-The philosophy of the Flux design is that data flows only in one direction to create unidirectional cycles. \cite{flux}
+So they created an updated and improved version of the MVC and called it Flux.
+The philosophy behind the Flux design is that data flows only in one direction to create unidirectional cycles. \cite{flux}
 
 React does not have a styling system so its community created the Semantic UI React library to provide an easy way to maintain a consistent theme throughout the frontend.
 Of course it is still possible to use a different library or create new styling components but MathHub.info mostly uses Semantic UI React.
 
-\subsection{Building new components in React} \label{components} \ednote{Explain why this section exist - huge part of the actual work done but not too import to understand the rest of the paper. Reference the scalability}
+\subsection{Building new components in React} \label{components} 
+This section provides insight into the work that takes up the majority of the time of creating, updating or amending to a part of the MathHub.info frontend. 
 The actual interface that can be seen in a browser is the combination of many individual components.
 This way, on an update, the virtual DOM can check each component for differences, so only the affected ones have to be rendered again.
 
 React already has a large external library with a lot of different components, but it is often necessary to make new ones that have a desired functionality.
 In JavaScript new components can either be implemented as a function or as a class.
 Their inputs are called props.
-To ensure the unidirectional design of React props are read-only.
-In addition to props components can have an internal state.
-They return React elements that are ready to be rendered.
+To ensure the unidirectional design of React and prevent unwanted side effects in other components, props are read-only.
+In addition to props each component can have an internal state.
+Whenever a value in this state changes the component is rendered again.
 Naturally a component can grow big rather quickly.
-Luckily it is possible to use components inside other components.
-As a consequence, the actual output often has a tree structure with several levels.
-Where the nodes of the tree are the individual components and the leaves are the elements that are rendered by the DOM.
-Figure \ref{fig:tree} displays one possible tree with four levels.
-This design comes with the advantage that the small components can be reused in many different locations with various purposes.
-
+As it is possible to use components inside other components it is smart to split a big component into multiple smaller ones.
+This has the advantage that components can be reused in many different locations with various purposes.
+The actual output often has a tree structure with several levels.
+In this tree the nodes are the individual components and the leaves are the elements that are directly rendered by the DOM.
+A good example for a tree with multiple levels is the Glossary Page of MathHub.info (more details about the glossary can be found in section \ref{routes} and \ref{gloss}), which can be seen in Figure \ref{fig:glossaryTree}.
+In this example the headline can be rendered directly while the Header and the Entries are the child components of the glossary.
+They both have their own elements and children and so forth resulting in this tree structure.
 \begin{figure}[H]
-\centerline{\begin{tikzpicture}[xscale=\myxscale, yscale=\myyscale]
-  \tikzstyle{node} = [rectangle, draw, fill=orange!20, text width=2cm, yshift=-1.2cm, text centered,
-                                    minimum height=.8cm,shade, 
-                                    top color=white, bottom color=orange!40]
-  \tikzstyle{leave} = [rectangle, draw, fill=green!20, text width=2cm, text centered, yshift=-1.2cm,
-                                    rounded corners, minimum height=.8cm,shade, 
-                                    top color=white, bottom color=green!40]
-\node[node](root){Root Component};
-\node[node, below of=root, xshift=-2.7cm](com1){Component};
-\node[leave, below of=root](elem1){Element};
-\node[node, below of=root, xshift=3.5cm](com2){Component};
-\node[leave, below of=com1](elem2){Element};
-\node[node, below of=com2, xshift=-2cm](com3){Component};
-\node[node, below of=com2, xshift=2cm](com4){Component};
-\node[leave, below of=com3, xshift=-1.4cm](elem3){Element};
-\node[leave, below of=com3, xshift=1.4cm](elem4){Element};
-\node[leave, below of=com4](elem5){Element};
-\draw[->, thick] (root) -- node[above, rotate=41]{props} (com1);
-\draw[->, thick] (root) -- node[right, xshift=0.2cm, yshift=0.6cm, rotate=270]{props} (elem1);
-\draw[->, thick] (root) -- node[above, rotate=326]{props} (com2);
-\draw[->, thick] (com1) -- node[right, xshift=0.2cm, yshift=0.6cm, rotate=270]{props} (elem2);
-\draw[->, thick] (com2) -- node[above, rotate=48]{props} (com3);
-\draw[->, thick] (com2) -- node[above, rotate=312]{props} (com4);
-\draw[->, thick] (com3) -- node[above, rotate=56]{props} (elem3);
-\draw[->, thick] (com3) -- node[above, rotate=302]{props} (elem4);
-\draw[->, thick] (com4) -- node[right, xshift=0.2cm, yshift=0.6cm, rotate=270]{props} (elem5);
-\end{tikzpicture}}
-\caption{A React component tree}
-\label{fig:tree}
-\end{figure}
-\ednote{Is this figure necessary? Maybe exchange it with an example}
+  \centerline{\begin{tikzpicture}[xscale=\myxscale, yscale=\myyscale]
+    \tikzstyle{node} = [rectangle, draw, fill=orange!20, text width=2cm, yshift=-1.2cm, text centered,
+                                      minimum height=.8cm,shade, 
+                                      top color=white, bottom color=orange!40]
+    \tikzstyle{leave} = [rectangle, draw, fill=green!20, text width=2cm, text centered, yshift=-1.2cm,
+                                      rounded corners, minimum height=.8cm,shade, 
+                                      top color=white, bottom color=green!40]
+  \node[node](root){Glossary Page};
+  \node[node, below of=root, xshift=-2cm](header){Header};
+  \node[leave, below of=root, xshift=-4.7cm](headline){Headline};
+  \node[node, below of=root, xshift=3.5cm](entry){Entry};
+  \node[rectangle, yshift=-1.2cm, xshift=-1cm, below of=header](dots1){...};
+  \node[rectangle, yshift=-1.2cm, xshift=1cm, below of=header](dots2){...};
+  \node[leave, below of= entry, xshift=-2.7cm](name){Name};
+  \node[node, below of=entry, text width=2.5cm](link){LanguageLink};
+  \node[leave, below of=entry, xshift=2.7cm](desc){Description};
+  \node[leave, below of=link](button){Button};
+  \draw[->, thick] (root) -- node[above, rotate=44]{props} (header);
+  \draw[->, thick] (root) -- (headline);
+  \draw[->, thick] (root) -- node[above, rotate=326]{props} (entry);
+  \draw[->, thick] (header) -- node[above, rotate=62]{props} (dots1);
+  \draw[->, thick] (header) -- node[above, rotate=295]{props} (dots2);
+  \draw[->, thick] (entry) -- (name);
+  \draw[->, thick] (entry) -- node[right, xshift=0.2cm, yshift=0.6cm, rotate=270]{props} (link);
+  \draw[->, thick] (entry) -- (desc);
+  \draw[->, thick] (link) -- node[right, xshift=0.2cm, yshift=0.6cm, rotate=270]{props} (button);
+  \end{tikzpicture}}
+  \caption{The React component tree of the Glossary Page}
+  \label{fig:glossaryTree}
+  \end{figure}
 
-Since props are read-only, updating the internal state of a component can only affect its children.
-If it is necessary to change something in a component on a higher level in the tree, it is possible to "lift up" the state.
-This means adding the change to the state of the higher node. 
+The unidirectional design of React has the consequence that an update of a component can only affect its children.
+But sometimes it is necessary for a component to change something on a higher level in the tree.
+In this case it is possible to "lift up" the state.
+This means moving the value that initiates the change to the state of the higher node. 
 This node then has to give it back to its child as a prop.
 
 Sometimes an update of a state should affect other components on the same level.
-As shown in figure \ref{fig:lift}, this can be done by lifting up the state to a new node in the tree that has all the components as children, that are affected by the update.
+As shown in figure \ref{fig:lift}, this can be done by lifting up the state to a new node that has all the components as children, that are affected by the update.
 \cite{reactjsGS}
  
 \begin{figure}[H]
@@ -290,11 +296,13 @@ As shown in figure \ref{fig:lift}, this can be done by lifting up the state to a
 \draw[->, thick] (new) -- node[above, rotate=302]{props} (com4);
 \draw[->, dotted] (oldb) -- node[above]{lift up} (newb);
 \end{tikzpicture}
-\caption{Lift up the state to a new component}
+\caption{Lifting up the state to a new component}
 \label{fig:lift}
 \end{figure}
 
- 
+The scalability and the ability to adapt to change of this design makes the React framework perfect for a Math Information System like MathHub.info.
+Creating new components and lifting up the state makes it easier to to add new functionalities and adjust the representation without creating the need to rebuild entire sections of the frontend.
+
 \section{The Architecture of MathHub} \label{architecture}
 \subsection{Realization}
 Now that a new framework has been chosen lets see how this changes MathHubs architecture that was introduced in section \ref{previous}.
@@ -334,7 +342,7 @@ This results in the new architecture displayed in Figure \ref{fig:architecture}.
 \label{fig:architecture}
 \end{figure}
 
-\subsection{MathHub.info Routes}
+\subsection{MathHub.info Routes} \label{routes}
 \begin{figure}[h]
 \begin{tikzpicture}[xscale=\myxscale, yscale=\myyscale]
   \tikzstyle{component} = [rectangle, draw, fill=orange!20, text width=2cm, text centered,
@@ -499,7 +507,7 @@ On every group-, archive- and document-page there also is a statistics button th
 When the cursor hovers over a keyword of a statistic that keyword is explained in a pop-up as can be seen in figure \ref{fig:stats}.
 
 \section{The Applications of MathHub} \label{apps}
-\subsection{Glossary}
+\subsection{Glossary} \label{gloss}
 \begin{figure}[H]
 \includegraphics[width=1\textwidth]{glossary.png}
 \caption{the glossary in the frontend}
@@ -566,7 +574,7 @@ First, the user should be transferred to GitHub to open a new issue, if they hav
 
 Second, if the user finds an issue within the content that is displayed on MathHub.info, they should be redirected to the corresponding GitLab page. 
 \subsection{Jupyter Integration}
-
+\newpage
 \printbibliography
 \ednote{use this: github.com/KWARC/bibs/kwarc.bib}
 \end{document}
