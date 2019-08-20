@@ -541,10 +541,19 @@ If a translation exists then the translated term, its definition and potential s
 By selecting the same language for "from" and "to" the Math Dictionary can also be used to get the definition for an expression without searching the glossary.
 
 \section{Conclusion} \label{conclusion}
- \ednote{re-iterate everything}
+This thesis showed that a light framework is definitely a valuable option for building an User Interface for a math information system.
+Since the UI is just a part of a bigger architecture that also includes a server backend and an external storage, it does not need features like user right management and versioned storage.
+This partition greatly reduces the costs of working with MathHub compared to the previous implementation with Drupal.
+The ability to easily introduce new features and the scalability of React makes it a remarkable choice for this task.
+
+Having an established hierarchy for every group ensures an intuitive navigation through the MathHub library in order to create an accessible user experience.
+As stated before MathHub.info is an ever-growing system in terms of content and functionalities.
+This reality in combination with new insight gained through continuous usage of the system will naturally lead to improvements made to the individual pages of the frontend.
+As of right now the clear design introduced in this paper proved to be adequate.
+
 \section{Future Work} \label{future}
-Obviously the work on a project like MathHub.info is never completely finished.
-The biggest expansions that will be added to MathHub.info in the near future are TGView and MathWebSearch.
+There already is a plan to add certain features in the future. 
+The biggest expansions that will be added to MathHub.info before long are TGView and MathWebSearch.
 
 \subsection{TGView} 
 TGView is a graph viewer with the task to visualize the relations between multiple theories to give a better overview over a system like MathHub.
@@ -579,6 +588,9 @@ First, the user should be transferred to GitHub to open a new issue, if they hav
 
 Second, if the user finds an issue within the content that is displayed on MathHub.info, they should be redirected to the corresponding GitLab page. 
 \subsection{Jupyter Integration}
+Recently the OpenDreamKit project has designed and implemented a Jupyter kernel\cite{notebook} for MMT. 
+This kernel enables Jupyter to be used as a frontend for Math-in-the-Middle (MitM) operations.
+Since MitM is part of the MathHub library it would make a great addition to integrate this feature into MathHub.info.
 \newpage
 \printbibliography
 \ednote{use this: github.com/KWARC/bibs/kwarc.bib}
