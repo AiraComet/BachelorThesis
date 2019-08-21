@@ -20,7 +20,15 @@
 \begin{titlepage}
 \maketitle
 \begin{abstract}
-Abstract will be added at the end
+While there are many math information systems in existence that either have a formal or informal approach to representing mathematical knowledge there is also a need for a system for documents that contain both, formal and informal, components.
+MathHub.info is a platform for these so called flexiformal documents.
+Previously it has been implemented with the heavy framework Drupal.
+But this implementation resulted in multiple security issues as well as redundant extra work that had to be done in order to maintain the library of MathHub.
+These circumstances led to the decision to rebuild MathHub.info with the lighter framework React.
+
+This thesis explains the reason why React was chosen and shows that it is applicable for the User Interface of a math information system.
+It also presents the structure of the frontend and the hierarchy of the MathHub library with the goal to make the website as accessible and intuitive as possible.
+
 \end{abstract}
 
 \end{titlepage}
@@ -47,14 +55,16 @@ This is the reason why \textbf{MathHub}\cite{MathHub} was created.
 To make MathHub a valuable contribution to science it needed an User Interface called MathHub.info.
 During the years MathHub.info has been active, its users had to deal with a number of problems.
 For example the choice to use a heavy framework, with a lot of unused functionalities, to implement the frontend came with a lot of unforeseen additional work.
-This led to the question: Is it possible and practical to use a lighter framework to build an easy and intuitive UI that can handle the different levels of formality while being able to adapt to changes in the library and functionalities of a Math Information System like MathHub.info?
+This led to the question: Is it possible and practical to use a lighter framework to build an easy and intuitive UI that can handle the different levels of formality while being able to adapt to changes in the library and functionalities of a math information system like MathHub.info?
+\newline
 
-This thesis tries to find an answer for this ambitious question. It starts with a description of the MathHub system and its previous realization in Section \ref{mathhub}.
-Then Section \ref{SoA} presents some frameworks that can be used to create a frontend.
-Following up on this, Section \ref{react} and \ref{components} take a closer look at React while \ref{mmt} gives a short introduction to the content of MathHub.
-In section \ref{architecture} the inner workings of the frontend are discussed.
-Afterwards in section \ref{library} and \ref{apps} the design of the individual pages are discussed.
-Section \ref{conclusion} concludes this thesis, while Section \ref{future} takes a look at some plans for the future.
+This thesis tries to find an answer for this ambitious question. It starts with Section \ref{preliminaries}, a short introduction of  MMT and OMDoc, the content of MathHub. 
+Next Section \ref{mathhub} gives a description of MathHub and its previous realization.
+Section \ref{SoA} presents and compares some frameworks that can be used to create a frontend.
+Then Section \ref{react} takes a look at the philosophy of React and the way this framework is used in order to create a frontend.
+Following up on that Section \ref{architecture} presents the different aspects of the architecture of the new MathHub system.
+Afterwards Section \ref{library} and \ref{apps} displays the design choices for the individual pages.
+Section \ref{conclusion} draws a conclusion to the main question of this thesis, while Section \ref{future} takes a look at some future plans for MathHub.info.
 
 \section{Preliminaries - MMT and OMDoc} \label{preliminaries}
 The abbreviation MMT is short for either \underline{M}eta-\underline{M}eta-\underline{T}heory or \underline{M}eta-\underline{M}eta-\underline{T}ool.
@@ -195,14 +205,14 @@ Vue.js separates its view layer library from its support libraries for complex a
 It also automatically keeps track of the dependencies between components.
 So the system knows what exactly has to be rerendered when the page changed\cite{vuegit}.
 
-In the end the decision was made to use \textbf{React} developed by Facebook.
+In the end the decision was made to use \textbf{React}, developed by Facebook.
 React is a component based framework that uses a virtual DOM to avoid unnecessary rerendering.
-It was chosen because the focus on reusable components makes it perfect for a large and still growing system like MathHub. \ednote{Make reference to the question from the intro}
+It was chosen because the focus on reusable components makes it perfect for a large and still growing system like MathHub.
 Further details about React and how it is used can be found in section \ref{react}.
 
 
-\section{React}
-\subsection{The core concept of React} \label{react}
+\section{React}\label{react}
+\subsection{The core concept of React} 
 React is an open source JavaScript library owned and maintained by Facebook.
 It was created to build interactive user interfaces (UI), for example Facebook and Instagram.
 What makes React unique is its use of a virtual Document Object Model (DOM).
@@ -305,7 +315,7 @@ As shown in figure \ref{fig:lift}, this can be done by lifting up the state to a
 \label{fig:lift}
 \end{figure}
 
-The scalability and the ability to adapt to change of this design makes the React framework perfect for a Math Information System like MathHub.info.
+The scalability and the ability to adapt to change of this design makes the React framework perfect for a math information system like MathHub.info.
 Creating new components and lifting up the state makes it easier to to add new functionalities and adjust the representation without creating the need to rebuild entire sections of the frontend.
 
 \section{The Architecture of MathHub} \label{architecture}
@@ -445,13 +455,15 @@ This is illustrated with the Homepage as an example in figure \ref{fig:home}.
 \end{figure}
 
 The header is a menu with the routes to Home, the news, the glossary and the Math Dictionary as well some external links.
-Under the menu there are breadcrumbs for an easier navigation.
+Under the menu there are breadcrumbs that help the user to navigate through the library.
 In the footer the logos of the institutions that are involved in MathHub can be found.
 There also are the routes to the Log, the licenses, the imprint and the privacy policy.
-The body itself depends on the page the user is currently on.
+The body in between depends on the page the user is currently on.
 
 \section{MathHub Library Components} \label{library}
-In this section the implementation of the different components of the MathHub library is discussed.
+In this section the design choices for the different components of the MathHub library are discussed.
+Each page tries to maintain a certain degree of clarity while giving enough information about the currently displayed content to the user.
+The challenge to find the right balance results in a very clean theme throughout the library.
 The first page of the library is a list of all the groups of MathHub.
 Every group is rendered in its own React component that has the name of the group, a short teaser and links to the corresponding group-page.
 
@@ -492,7 +504,7 @@ The document entries do not have a teaser text so they just link to the document
 \end{figure}
 Depending on the document, the its page can be a combination of modules and opaque elements as well as links to further documents.
 Figure \ref{fig:doc} displays a document in the OMDoc format.
-There is also a button that links to a documents source file on GitLab\ednote{+ jupyter} if it is in the OMDoc format.
+There is also a button that links to a documents source file on GitLab if it is in the OMDoc format.
 
 The modules are expandable React components that consist of a name, a type, either theory or view and a button to show further details.
 Clicking on the button shows all the declarations and nested theories inside of that module.
@@ -535,7 +547,7 @@ By clicking on an entry its definition becomes visible.
 \end{figure}
 Figure \ref{fig:dict} displays the Math Dictionary of MathHub.info.
 To translate a term with the help of the Math Dictionary the user has to select the language from a dropdown menu in which the term currently is and also the language to which it should be translated into
-Pressing the "translate" - button sends a translation request to the server.
+Pressing the "translate" - button sends a translation request to the MMT server.
 Until the servers responds, the message "translating" is shown and the button is disabled to prevent sending to many translation requests at once.
 If a translation exists then the translated term, its definition and potential synonyms are shown and the button is enabled again.
 By selecting the same language for "from" and "to" the Math Dictionary can also be used to get the definition for an expression without searching the glossary.
@@ -544,12 +556,12 @@ By selecting the same language for "from" and "to" the Math Dictionary can also 
 This thesis showed that a light framework is definitely a valuable option for building an User Interface for a math information system.
 Since the UI is just a part of a bigger architecture that also includes a server backend and an external storage, it does not need features like user right management and versioned storage.
 This partition greatly reduces the costs of working with MathHub compared to the previous implementation with Drupal.
-The ability to easily introduce new features and the scalability of React makes it a remarkable choice for this task.
+The ability to easily introduce new features and the scalability of React makes it a remarkable choice for this frontend.
 
-Having an established hierarchy for every group ensures an intuitive navigation through the MathHub library in order to create an accessible user experience.
+Having an established hierarchy for every group as well as consistent theme ensures an intuitive navigation through the MathHub library in order to create an accessible user experience.
 As stated before MathHub.info is an ever-growing system in terms of content and functionalities.
 This reality in combination with new insight gained through continuous usage of the system will naturally lead to improvements made to the individual pages of the frontend.
-As of right now the clear design introduced in this paper proved to be adequate.
+As of right now the clean design introduced in this paper proved to be adequate.
 
 \section{Future Work} \label{future}
 There already is a plan to add certain features in the future. 
