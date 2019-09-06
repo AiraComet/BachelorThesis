@@ -48,7 +48,7 @@
 
 \thispagestyle{empty}
 I confirm that I have written this thesis unaided and without using sources other than those listed and that this thesis has never been submitted to another examination authority and accepted as part of an examination achievement, neither in this form nor in a similar form. 
-All content that was taken from a third party either verbatim or in substance has been acknowledged as such. \par
+All content that was taken from a third party either is verbatim or in substance has been acknowledged as such. \par
 \vspace{1.5cm}
 \hspace{-0.34cm} \begin{tabularx}{14.2cm}{l X r}
 Erlangen, \today & & \\
@@ -77,12 +77,12 @@ With time people created more and more websites that share a common goal: spread
 Every one of these sites has its own unique approach of imparting this complex subject.
 For example \textbf{Wolfram$|$Alpha} \cite{wolfram} is one of the most popular calculation and plotting tools today.
 It has a large and still growing database of algorithms and methods to compute and represent the result of countless mathematical problems.
-Furthermore, the \textbf{Stack Exchange Network} has two very active question and answer websites where mathematicians assist each other and share their wisdom.
+Furthermore, the \textbf{Stack Exchange Network} \cite{stack} has two very active question and answer websites where mathematicians assist each other and share their wisdom.
 While \textbf{Math.stackexchange} has its focus set on education, the community of \textbf{MathOverflow} deals with more advanced questions and problems that come up during research.
 Even the universally known encyclopedia \textbf{Wikipedia} plays an important role, since its huge database is often the first place people look up formulas, algorithms etc..
 \newline \newline
 Out of these examples Wikipedia and Stack Exchange have a rather informal approach in representing knowledge.
-In this context informal stands for human readable explanations and proof sketches.
+In this context informal stands for human readable explanations and proof sketches \cite{flexiforms}.
 Wolfram$|$Alpha on the other hand lays its focus on formal math.
 While these websites do quite well in achieving their goals none of those are really suited for documents that combine a formal and informal representation of mathematical knowledge.
 But exactly these type of documents with varying degrees of formality resulted from the research done with the \textbf{MMT} framework for knowledge representation.
@@ -93,13 +93,13 @@ For example the choice to use a heavy framework, with a lot of unused functional
 This led to the question: Is it possible and practical to use a lighter framework to build an easy and intuitive UI that can handle the different levels of formality while being able to adapt to changes in the library and functionalities of a mathematics information system like MathHub.info?
 \newline \newline
 This thesis tries to find an answer for this ambitious question. It starts with Section \ref{omdoc}, a short introduction of  MMT and OMDoc, the content of MathHub. 
-Next Section \ref{mathhub} to Section \ref{security} gives a description of MathHub and its previous realization.
-Section \ref{SoA} presents and compares some frameworks that can be used to create a frontend.
+Next Section \ref{mathhub} to Section \ref{security} gives a description of MathHub and its previous implementation.
+Section \ref{SoA} presents and compares some frameworks that can be used to create a User Interface.
 Then Section \ref{react} and  Section \ref{components} take a look at the philosophy of React and the way this framework is used in order to create a frontend.
 Following up on that Section \ref{architecture} presents the different technical aspects that are a part of the new MathHub system.
-Afterwards Section \ref{library} and \ref{apps} displays the design choices for the individual pages.
+Afterwards Section \ref{library} and \ref{apps} display the design choices for the individual pages.
 Section \ref{conclusion} draws a conclusion to the main question of this thesis and takes a look at some future plans for MathHub.info.
-
+\newpage
 \section{Preliminaries} \label{preliminaries}
 MathHub.info is a place to showcase the knowledge gained through research with MMT.
 Therefore before being able to build a new User Interface for MathHub, one has to understand: "What is MMT?" and "How is it structured?".
@@ -112,7 +112,7 @@ It is a knowledge representation framework that uses a combination of formal and
 That means that in MMT the features of the syntax and the semantics of a language are defined as individual, reusable modules.
 This way of building individual languages leads to a high degree of abstraction of advanced algorithms \cite{mmtsys}.
 \newline \newline
-MMT builds on the \textbf{OMDoc} representation, which is a philosophy about the design of an uniform language for knowledge.
+MMT builds on the \textbf{OMDoc} \cite{omdoc} representation, which is a philosophy about the design of an uniform language for knowledge.
 More specifically MMT uses an XML format which follows this philosophy.
 \begin{figure}[H]
   \centerline{
@@ -148,13 +148,13 @@ An archive can be described as a collection of documents that typically are equi
 Therefore it provides a work flow for a language in MMT.
 Groups and archives only exist to help the user to navigate through the library as well as to give a human readable description of the mathematical knowledge.
 The modules that can be found in an archive, make up the actual content.
-These are either theories or a view that shows the relation between different theories.
+These are either theories or a view that shows the relation between multiple theories.
 A theory is defined by its declarations which can be either rules or constants \cite{mmt}.
 
 \subsection{MathHub} \label{mathhub}
 MathHub.info is a portal specifically created for the active mathematical documents of MMT.
 As stated before each one of these documents has a different degree of formal and informal content.
-The representation of this data, knowledge and structure with varying degrees of formality is called \textbf{flexiformal}.\ednote{ref herer}
+The representation of this data, knowledge and structure with varying degrees of formality is called \textbf{flexiformal} \cite{flexiforms}.
 But realizing machine support for this approach of representing knowledge comes with a high formalization cost.
 As a consequence it can be quiet challenging to find the right balance between costs and machine support.
 The latest stable release of MathHub is available on \url{https://mathhub.info}.
@@ -167,7 +167,7 @@ The source documents were stored, edited and converted on the GitLab repository 
 There the documents are organized into their proper repositories and converted from their source formats into OMDoc/MMT.
 These documents could be edited by their authors in a working copy of the GIT repository.
 From there the MMT API could load the documents and send them to the frontend.
-The frontend itself was implemented with Drupal \cite{comp}, while user interactions were handled by the JavaScript modules in the JOBAD framework.
+The frontend itself was implemented with \textbf{Drupal} \cite{comp}, while user interactions were handled by the JavaScript modules in the JOBAD framework \cite{jobad}.
 Drupal is an open source content-management framework that also supplies uniform theming and is currently used by millions of different websites.
 The reason Drupal was used for the User Interface up until April 2018 was that it has an integrated rights-management.
 \begin{figure}[H]
@@ -202,24 +202,24 @@ The reason Drupal was used for the User Interface up until April 2018 was that i
   \caption{Old MathHub Architecture}
   \label{fig:old_architecture}
   \end{figure}
-Initially it sounded like a good idea to have rights handled directly by the frontend.
+Initially it sounded like a good idea to have the user rights handled directly by the frontend.
 But with time it showed that it is easier to use the rights-manager provided by GitLab.
 In the end the users of Mathhub.info still had to deal with the huge overhead that is necessary to use Drupal without benefiting from its features.
 This created a lot of unnecessary and tedious extra work.	
 
 \subsection{Security Issues} \label{security}
-Additionally a critical security flaw in the versions 6 to 8 went public in April 2018.
-The problem was that Drupal in these versions accepts request parameters without any validation.
+Additionally a critical security flaw in the Drupal versions 6 to 8 went public in April 2018.
+The problem is that these versions accept request parameters without any validation.
 This means it processes any input from anybody \cite{zdnet}.
 To exploit this weakness an attacker doesn't even need to log in or have any other privileges on a vulnerable website \cite{register}.
 With this flaw it is possible to inject malicious code and compromise a website in multiple ways.
 This can be used to access, change and delete private data and create backdoors to make future attacks possible.
 The Drupal community called this weakness "Drupalgeddon2" while its official name was "CVE-2018-7600".
-Some code that was injected installed the program XMRig Monero miner, which is a cryptocurrency mining program, as well as deleting other mining programs on the compromised system \cite{hacker}.
-The National Institute of Standards (NIST) and Technology gave Drupal a "Highly Critical" Rating because of this vulnerability \cite{nist}.
+Some code that was injected installed the program XMRig Monero miner, which is a cryptocurrency mining program, as well as deleted other mining programs on the compromised system \cite{hacker}.
+The National Institute of Standards and Technology (NIST) gave Drupal a "Highly Critical" rating because of this vulnerability \cite{nist}.
 After this flaw was discovered a patch was published and a warning to update every website that used a vulnerable version was given.
 \newline \newline	
-Since there have been multiple flaws in Drupal before that compromised MathHub.info, the decision to stop using it and rebuild the frontend from ground up with a lighter and easier to use framework to not be affected by future attacks, was made.
+Since there have been multiple security flaws in Drupal before that compromised MathHub.info, the decision was made to stop using it and rebuild the frontend from ground up with a lighter and easier to use framework to not be affected by future attacks.
 
 \subsection{State of the art - Building an interactive Frontend} \label{SoA}
 The first step of creating a new frontend is to chose a new framework.
@@ -229,10 +229,10 @@ There are many options available so lets take a look at the most popular ones in
 It uses the native technologies of a browser instead of large custom JavaScript libraries.
 This makes Polymer remarkably fast on Chrome and Safari.
 It also provides a set of features that makes it easy to create custom elements, that work like standard web components.
-It is used for several Google services for example Youtube, Google Earth, Google Play Music etc. as well as Netflix, Electronic Arts and many other companies. 
+It is used for several Google services like Youtube, Google Earth, Google Play Music etc. as well as for the websites of Netflix, Electronic Arts and many other companies. 
 \newline \newline
 Another open source web framework from Google is \textbf{Angular} \cite{angular}.
-This TypeScript library has framework architectures that simplifies the development of new web applications.
+This TypeScript library has a framework architecture that simplifies the development of new web applications.
 Angular transfers all content of a website at once and leaves the task of building the page to the browser.
 This significantly speeds up the loading process and search optimization while keeping the communication with the server at a minimum. 
 It also has Angular Material, a collection of UI components that work in browsers, on mobile and desktop.
@@ -241,40 +241,40 @@ After using Angular on several Google projects, Evan You decided to create his o
 Depending on the project it can be scaled between a framework and a library.
 Vue.js separates its view layer library from its support libraries for complex applications, to create an easy approach to the framework.
 It also automatically keeps track of the dependencies between components.
-Therefore the system knows what exactly has to be rerendered when the page changed \cite{vuegit}.
+Therefore the system knows what exactly has to be rerendered when a page changed \cite{vuegit}.
 \newline \newline
 In the end the decision was made to use \textbf{React}, developed by Facebook.
 React is a component based framework that uses a virtual DOM to avoid unnecessary rerendering.
 It was chosen because the focus on reusable components makes it perfect for a large and still growing system like MathHub.
-Further details about React and how it is used can be found in section \ref{react}.
+Further details about React and how it is used can be found in Section \ref{react} and Section \ref{components}.
 
 \subsection{The core concept of React} \label{react}
-React is an open source JavaScript library owned and maintained by Facebook.
+React \cite{reactjs} is an open source JavaScript library owned and maintained by Facebook.
 It was created to build interactive user interfaces (UI), for example Facebook and Instagram.
 What makes React unique is its use of a virtual Document Object Model (DOM).
 The concept of the virtual DOM is that updating a website does not rerender everything.
 React computes the differences between the last and the next page and only changes the necessary parts.
 On top of that it also has conditional rendering which means that an item will only be rendered if it is shown.
 The advantage of the virtual DOM and conditional rendering is that this makes updating a website fast, but it comes with high RAM costs.
-The actual interface is made up of many different elements and components.
-A website that uses React can have multiple unique features so it is helpful to build new components to realize these features \cite{reactjs}.
+The actual interface that is displayed in the browser is made up of many different elements and components.
+A website that uses React can have multiple unique features so it is helpful to build new components to implement these features.
 Further details on how to create components are discussed in Section \ref{components}.
 \newline \newline
 Since React was designed by Facebook, there was a need for a design pattern that handles a large code base better than MVC (Model View Controller).
-This lead them to create an updated and improved version of the MVC and they names it \textbf{Flux}.
+This lead them to create an updated and improved version of the MVC and they named it \textbf{Flux}.
 The philosophy behind the Flux design is that data flows only in one direction to create unidirectional cycles \cite{flux}.
 \newline \newline
 React itself does not have a styling system.
-Consequently its community created the Semantic UI React library to provide an easy way to maintain a consistent theme throughout the frontend.
+Consequently its community created the Semantic UI React library \cite{semantic} to provide an easy way to maintain a consistent theme throughout the frontend.
 Of course it is still possible to use a different library or create new styling components but MathHub.info mostly uses Semantic UI React.
 
 \subsection{Building new components in React} \label{components} 
-This section provides insight into the work that takes up the majority of the time of creating, updating or amending to a part of the MathHub.info frontend. 
+This section provides insight into the work that takes up the majority of the time of creating, updating or amending to a part of the new MathHub.info frontend. 
 The actual interface that can be seen in a browser is the combination of many individual components.
 This way, on an update, the virtual DOM can check each component for differences.
 As a result only the affected ones have to be rendered again.
 \newline \newline
-React already has a large external library with a lot of different components, but it is often necessary to make new ones that have a desired functionality.
+React already has large external libraries with a lot of different components, but it is often necessary to make new ones that have a desired functionality.
 In JavaScript new components can either be implemented as a function or as a class.
 Their inputs are called props.
 To ensure the unidirectional design of React and prevent unwanted side effects in other components, props are read-only.
@@ -316,7 +316,7 @@ The actual output often has a tree structure with several levels.
   \label{fig:glossaryTree}
   \end{figure}
 In this tree the nodes are the individual components and the leaves are the elements that are directly rendered by the DOM.
-A good example for a tree with multiple levels is the Glossary Page of MathHub.info (more details about the glossary can be found in Section \ref{routes} and \ref{gloss}), which can be seen in Figure \ref{fig:glossaryTree}.
+A good example for a tree with multiple levels is the Glossary Page of MathHub.info (more details about the Glossary can be found in Section \ref{routes} and \ref{gloss}), which can be seen in Figure \ref{fig:glossaryTree}.
 In this example the headline can be rendered directly while the Header and the Entries are the child components of the Glossary.
 They both have their own elements and and several layers of children, resulting in this tree structure.
 \newline \newline
@@ -325,32 +325,31 @@ But sometimes it is necessary for a component to change something on a higher le
 In this case it is possible to "lift up" the state.
 This means moving the value that initiates the change to the state of the higher node. 
 This node then has to give it back to its child as a prop.
-\newline \newline
-Sometimes an update of a state should affect other components on the same level.
-As shown in Figure \ref{fig:lift}, this can be done by lifting up the state to a new node that has all the components as children, that are affected by the update \cite{reactjsGS}.
 \begin{figure}[H]
-\centerline{
-\begin{tikzpicture}[xscale=\myxscale, yscale=\myyscale]
-  \tikzstyle{node} = [rectangle, draw, fill=orange!20, text width=2cm, text centered,
-                                    minimum height=.8cm,shade, 
-                                    top color=white, bottom color=orange!40]
-                                    top color=white, bottom color=green!40]
-  \tikzstyle{back} = [rectangle, draw, fill=gray!10, text width=5cm,
-                                    rounded corners, minimum height=4.3cm]
-\node[back, label ={[shift={(0ex,-4ex)}]north:before}](oldb){};
-\node[node, below of=oldb, xshift=-1.3cm, yshift=-0.4cm](com1){Component};
-\node[node, right of=com1, xshift=1.6cm](com2){Component};
-\node[back, right of=oldb, xshift=6cm, label ={[shift={(0ex,-4ex)}]north:after}](newb){};
-\node[node, below of=newb, yshift=1.8cm](new){New Component};
-\node[node, below of=new, xshift=-1.4cm, yshift=-1.2cm](com3){Component};
-\node[node, below of=new, xshift=1.4cm, yshift=-1.2cm](com4){Component};
-\draw[->, thick] (new) -- node[above, rotate=56]{props} (com3);
-\draw[->, thick] (new) -- node[above, rotate=302]{props} (com4);
-\draw[->, dotted] (oldb) -- node[above]{lift up} (newb);
-\end{tikzpicture}}
-\caption{Lifting up the State to a new Component}
-\label{fig:lift}
-\end{figure}
+  \centerline{
+  \begin{tikzpicture}[xscale=\myxscale, yscale=\myyscale]
+    \tikzstyle{node} = [rectangle, draw, fill=orange!20, text width=2cm, text centered,
+                                      minimum height=.8cm,shade, 
+                                      top color=white, bottom color=orange!40]
+                                      top color=white, bottom color=green!40]
+    \tikzstyle{back} = [rectangle, draw, fill=gray!10, text width=5cm,
+                                      rounded corners, minimum height=4.3cm]
+  \node[back, label ={[shift={(0ex,-4ex)}]north:before}](oldb){};
+  \node[node, below of=oldb, xshift=-1.3cm, yshift=-0.4cm](com1){Component};
+  \node[node, right of=com1, xshift=1.6cm](com2){Component};
+  \node[back, right of=oldb, xshift=6cm, label ={[shift={(0ex,-4ex)}]north:after}](newb){};
+  \node[node, below of=newb, yshift=1.8cm](new){New Component};
+  \node[node, below of=new, xshift=-1.4cm, yshift=-1.2cm](com3){Component};
+  \node[node, below of=new, xshift=1.4cm, yshift=-1.2cm](com4){Component};
+  \draw[->, thick] (new) -- node[above, rotate=56, xshift=-0.1cm]{props} (com3);
+  \draw[->, thick] (new) -- node[above, rotate=302, xshift=0.1cm]{props} (com4);
+  \draw[->, dotted] (oldb) -- node[above]{lift up} (newb);
+  \end{tikzpicture}}
+  \caption{Lifting up the State to a new Component}
+  \label{fig:lift}
+  \end{figure}
+  Sometimes an update of a state should affect other components on the same level.
+As shown in Figure \ref{fig:lift}, this can be done by lifting up the state to a new node that has all the components as children, that are affected by the update \cite{reactjsGS}.
 The scalability and the ability to adapt to change of this design makes the React framework perfect for a mathematics information system like MathHub.info.
 Creating new components and lifting up the state makes it easier to to add new functionalities and adjust the representation without creating the need to rebuild entire sections of the frontend.
 
@@ -360,7 +359,7 @@ It starts with the updated Version of the architecture.
 Next Section \ref{routes} introduces all Routes that currently exist in the frontend.
 A Route leads to a specific page that is accessible on MathHub.info.
 After that there is a brief outline of the communication between the backend and the frontend. 
-The final part of Section presents the layout that is used in the entire User Interface.
+The final part of Section presents the layout that is used for the entire User Interface.
 \subsection{The Architecture of MathHub}
 \begin{figure}[H]
   \begin{tikzpicture}[xscale=\myxscale,yscale=\myyscale]
@@ -396,15 +395,16 @@ The library is still stored and converted into OMDoc/MMT in GitLab.
 But now the documents are loaded by a new plugin of an MMT server that provides the user with several semantic services in addition to the actual content.
 The plugins responses to the requests of the React based frontend follow the constraints set by REST (Representational State Transfer) and use the JavaScript Object Notation (JSON).
 The use of the Semantic-UI-React TypeScript library provides an universal theme throughout MathHub.info.
-This results in the new architecture displayed in Figure \ref{fig:architecture}.
-
+This results in the new architecture that is depicted in Figure \ref{fig:architecture}.
+\newpage
 \subsection{MathHub.info Routes} \label{routes}
-\begin{figure}[h]
-  \begin{tikzpicture}[xscale=\myxscale, yscale=\myyscale]
+To create a logical navigation system MathHub.info uses Routes to divide its content into numerous pages, that can be accessed from the \textbf{Homepage}.
+The structure of these Routes can be seen in Figure \ref{fig:routes}.
+\begin{figure}[H]
+  \centerline{\begin{tikzpicture}[xscale=\myxscale, yscale=\myyscale]
     \tikzstyle{component} = [rectangle, draw, fill=orange!20, text width=2cm, text centered,
                                       rounded corners, minimum height=.8cm,shade, 
-                                      top color=white, bottom color=orange!40]
-                                     
+                                      top color=white, bottom color=orange!40]                                     
   \node[component, text width=2.3cm] (MH) {MathHub.info};
   \node[component, below of =MH, xshift=-1.2cm, yshift=-0.7cm] (lib) {Library};
   \node[component, below of =lib, yshift=-0.7cm] (groups) {Groups};
@@ -431,13 +431,10 @@ This results in the new architecture displayed in Figure \ref{fig:architecture}.
   \draw [->,thick] (mod) -- node[above]{} (decl);
   \draw[->,thick] (apps) -- node[above]{} (glos);
   \draw[->,thick] (apps) -- node[above]{} (dict);
-  \end{tikzpicture}
+  \end{tikzpicture}}
   \caption{MathHub Routes}
   \label{fig:routes}
   \end{figure}  
-To create a logical navigation system MathHub.info uses Routes to divide its content into numerous pages, that can be accessed from the \textbf{Homepage}.
-The structure of these Routes can be seen in Figure \ref{fig:routes}.
-\newline \newline
 First of is the main content of MathHub, the \textbf{MMT Library}.
 It starts with the different \textbf{Groups}.
 The next page displays the \textbf{Archives} that belong to a specific group.
@@ -448,20 +445,20 @@ These documents consist of multiple modules (i.e. theories and views) as well as
 The archive-page has a list of all the documents in an archive.
 On the document-page the user can find modules with all their declarations.
 \newline \newline
-The many groups, archives and theories within the MathHub library make use of a lot mathematical terms.
+The many groups, archives and theories within the MathHub library make use of a lot of mathematical terms.
 In addition to being a collection of these expressions, the \textbf{Glossary} also provides a definition for each term.
-Over the time many different authors have contributed to the theories, therefore it can happen that there are different terms that share a meaning.
-These synonyms can also be found in the glossary.
-Since many theories exist in multiple languages it makes sense to have a glossary available for every used language.
-Currently the biggest collection of terms are in the English glossary, followed by German and French.
+Over the time many different authors have contributed to the MathHub library, therefore it can happen that there are different terms that share the same meaning.
+These synonyms can also be found in the Glossary.
+Since many theories exist in multiple languages it makes sense to have a Glossary available for every used language.
+Currently the biggest collection of terms are in the English Glossary, followed by German and French.
 Smaller collections for Turkish and Romanian are also available as well as simplified and traditional Chinese \cite{smglom}.
 \newline \newline
-Most of the times a user does not want to browse through the gigantic glossary to just find a single term.
-This is the reason why the \textbf{Math Dictionary} is a useful extension of the glossary.
+Most of the times a user does not want to browse through the gigantic Glossary just to find a single term.
+This is the reason why the \textbf{Math Dictionary} is a useful extension of the Glossary.
 The main purpose of the Math Dictionary is to translate a term into another language and look up a definition of a specific expression.
 \newline \newline
 There is also a page with all the latest \textbf{News} regarding MathHub, as well as a couple of static pages like \textbf{Licenses} and the \textbf{Privacy Policy}.
-At last there is a \textbf{Log} with the most recent messages from the backend.
+At last there is a \textbf{Log} for the developers that shows the most recent messages from the backend.
 
 \subsection{Communication with the Backend}
 As previously mentioned the frontend does not have any actual content.
@@ -478,7 +475,7 @@ The different clients are:
 The answers that are received from the backend use the JSON format.
 The data objects in JSON consist of attribute-value pairs and arrays.
 The frontend then uses these objects as props for React components.
-
+\newpage
 \subsection{Layout}
 Every page consists of three parts: A header, a footer and the actual content in between.
 This is illustrated with the Homepage as an example in Figure \ref{fig:home}.
@@ -495,7 +492,7 @@ These lead to the log, the licenses, the imprint and the privacy policy.
 All these Routes and links are independent from the current page.
 Therefore they should always be accessible.
 The body that is displayed in between depends on the content of the present page.
-
+\newpage
 \section{MathHub Library Components} \label{library}
 This Section discusses the design choices for the different components of the MathHub library.
 Each page tries to maintain a certain degree of clarity while giving enough information about the currently displayed content to the user.
@@ -552,7 +549,7 @@ Then the design of the list entries should be changed to be like the lists of th
 \caption{A Document in the Frontend}
 \label{fig:doc}
 \end{figure}
-Depending on the document, the its page can be a combination of modules and opaque elements as well as links to further documents.
+Depending on the document, its page can be a combination of modules and opaque elements as well as links to further documents.
 Figure \ref{fig:doc} displays a document in the OMDoc format.
 There is also a button that links to a documents source file on GitLab.
 \newline \newline
@@ -576,7 +573,7 @@ These make up the informal part of theories in MMT.
 \end{figure}
 On every group-, archive- and document-page there also is a statistics button that shows some available statistics about that particular group, archive or document.
 When the cursor hovers over a keyword of a statistic that keyword is explained in a pop-up as can be seen in Figure \ref{fig:stats}.
-
+\newpage
 \section{The Applications of MathHub} \label{apps}
 Now that the implementation of every level of the MathHub library has been show it is time to take a look at the pages of the Glossary and the Math Dictionary. 
 Since these do not have a clear hierarchy structure like the library, they do need a different design approach.
@@ -597,7 +594,7 @@ By clicking on an entry its definition and its synonyms become visible.
 
 \subsection{Math Dictionary}
 \begin{figure}[H]
-\includegraphics[width=1\textwidth]{dictionary.png}
+\centerline{\includegraphics[width=0.7\textwidth]{dictionary.png}}
 \caption{The Math Dictionary in the Frontend}
 \label{fig:dict}
 \end{figure}
@@ -619,7 +616,7 @@ As stated before MathHub.info is an ever-growing system in terms of content and 
 This reality in combination with new insight gained through continuous usage of the system will naturally lead to improvements made to the individual pages of the frontend.
 As of right now the clean design introduced in this paper proved to be adequate.
 \newline \newline
-There already is a plan to add certain features in the future. 
+There already are plans to add certain features in the future. 
 The biggest expansions that will be added to MathHub.info before long are TGView and MathWebSearch.
 
 \subsection{TGView} 
