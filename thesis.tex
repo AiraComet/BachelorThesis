@@ -318,7 +318,7 @@ The actual output often has a tree structure with several levels.
 In this tree the nodes are the individual components and the leaves are the elements that are directly rendered by the DOM.
 A good example for a tree with multiple levels is the Glossary Page of MathHub.info (more details about the Glossary can be found in Section \ref{routes} and \ref{gloss}), which can be seen in Figure \ref{fig:glossaryTree}.
 In this example the headline can be rendered directly while the Header and the Entries are the child components of the Glossary.
-They both have their own elements and and several layers of children, resulting in this tree structure.
+They both have their own elements and several layers of children, resulting in this tree structure.
 \newline \newline
 The unidirectional design of React has the consequence that an update of a component can only affect its children.
 But sometimes it is necessary for a component to change something on a higher level in the tree.
